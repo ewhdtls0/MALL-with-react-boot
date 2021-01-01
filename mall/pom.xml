@@ -100,6 +100,7 @@
 				<artifactId>frontend-maven-plugin</artifactId>
 				<version>1.9.1</version>
 				<configuration>
+				<!--플러그인 설치가 안된다면 자신의 frontend 경로대로 -->
 					<workingDirectory>C:\Users\Shin\Desktop\work\reboot\MALL-with-react-boot\frontend</workingDirectory>
 					<installDirectory>target</installDirectory>
 				</configuration>
@@ -134,6 +135,7 @@
 						<configuration>
 							<target>
 								<copy todir="${project.build.directory}/classes/public">
+								<!--플러그인 설치가 안된다면 자신의 frontend 경로대로 -->
 									<fileset dir="C:\Users\Shin\Desktop\work\reboot\MALL-with-react-boot\frontend\build"/>
 								</copy>
 							</target>
