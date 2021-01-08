@@ -79,7 +79,7 @@
 				<version>1.9.1</version>
 				<configuration>
 				<!--자신의 frontend 경로대로 -->
-					<workingDirectory>C:\Users\Shin\Desktop\work\MALL-with-react-boot\frontend</workingDirectory>
+					<workingDirectory>C:\Users\xhens\Desktop\NEW\react_mall\MALL-with-react-boot\frontend</workingDirectory>
 					<installDirectory>target</installDirectory>
 				</configuration>
 				<executions>
@@ -123,7 +123,7 @@
 							<target>
 								<copy todir="${project.build.directory}/classes/public">
 								<!--자신의 frontend 경로대로 -->
-									<fileset dir="C:\Users\Shin\Desktop\work\MALL-with-react-boot\frontend\build"/>
+									<fileset dir="C:\Users\xhens\Desktop\NEW\react_mall\MALL-with-react-boot\frontend\build"/>
 								</copy>
 							</target>
 						</configuration>

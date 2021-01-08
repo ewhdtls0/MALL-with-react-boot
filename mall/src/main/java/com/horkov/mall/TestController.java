@@ -9,5 +9,5 @@ public class TestController {
     public String test(){
         return "8080포트로 접속하였으면 연동이 된 것";
     }
-    
+
 }
