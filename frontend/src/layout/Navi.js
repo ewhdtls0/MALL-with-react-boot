@@ -24,12 +24,16 @@ const width100 = {
     width: '100%',
 }
 
+const workingPart = {
+    backgroundColor: 'yellow',
+}
+
 const Navi = () => (
     <Wrapper>
         <div style={width100}>
             <Grid container spacing={1}>
                 <Grid item xs={12}>
-                    <Paper>Navigation Part</Paper>
+                    <Paper style={workingPart}>Navigation Part</Paper>
                 </Grid>
             </Grid>
         </div>
