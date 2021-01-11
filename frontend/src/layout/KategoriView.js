@@ -43,8 +43,10 @@ const Body = () => (
     <div style={Kate_width}>
       <Grid container spacing={1}>
         <Grid item xs={12}>
-          <ListItem>
-            <ListItemText style={Kate_Sty} primary="카테고리"></ListItemText>
+          <ListItem button onClick={ () => alert("클릭!")}>
+            <ListItemText style={Kate_Sty}>
+              카테고리
+            </ListItemText>
           </ListItem>
         </Grid>
       </Grid>
