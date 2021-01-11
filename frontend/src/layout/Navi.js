@@ -15,9 +15,11 @@ const Wrapper = styled.div`
     z-index: 5;
     
     background: white;
-    color: white;
+    color: black;
     
-    font-size: 40px;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 15px;
 `;
 
 const width100 = {
@@ -32,9 +34,16 @@ const Navi = () => (
     <Wrapper>
         <div style={width100}>
             <Grid container spacing={1}>
-                <Grid item xs={12}>
-                    <Paper style={workingPart}>Navigation Part</Paper>
-                </Grid>
+                <Grid item xs={1}>space</Grid>
+                <Grid item xs={1}>BEST 100</Grid>
+                <Grid item xs={1}>의류</Grid>
+                <Grid item xs={1}>도서</Grid>
+                <Grid item xs={1}>전자제품</Grid>
+                <Grid item xs={1}>TODAY HOT</Grid>
+                <Grid item xs={3}>space</Grid>
+                <Grid item xs={1}>로그인</Grid>
+                <Grid item xs={1}>회원가입</Grid>
+                <Grid item xs={1}>space</Grid>
             </Grid>
         </div>
 

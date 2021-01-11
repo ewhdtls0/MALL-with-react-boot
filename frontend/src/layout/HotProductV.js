@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import oc from 'open-color';  
 
 const Wrapper = styled.div`
     display: flex;
@@ -31,14 +32,8 @@ const HotProductV = () => (
     <Wrapper>
         <div style={width100}>
             <Grid container spacing={1}>
-                <Grid item xs={1}>
-                    <Paper>Space</Paper>
-                </Grid>
-                <Grid item xs={10}>
+                <Grid item xs={12}>
                     <Paper style={workingPart}>Product View</Paper>
-                </Grid>
-                <Grid item xs={1}>
-                    <Paper>Space</Paper>
                 </Grid>
             </Grid>
         </div>

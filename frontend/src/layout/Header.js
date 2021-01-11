@@ -1,7 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import oc from 'open-color';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 
 import horkov from './img/logo.png';
@@ -14,7 +12,7 @@ const Wrapper = styled.div`
     display: flex;
     position: flex;
     align-items: center;
-    height: 88px;
+    height: 100px;
     width: 100%;
     top: 0px;
     z-index: 5;
