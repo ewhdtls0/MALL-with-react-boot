@@ -1,8 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
-import oc from 'open-color';  
+import { Fade } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+
+import test1 from './img/test1.png';
+import test2 from './img/test2.png';
+import test3 from './img/test3.png';
+
 
 const Wrapper = styled.div`
     display: flex;
@@ -14,29 +19,45 @@ const Wrapper = styled.div`
     width: 100%;
     z-index: 5;
     
-    background: aqua;
     color: black;
     
     font-size: 2.5rem;
 `;
 
-const width100 = {
-    width: '100%',
-
+const fixImages = {
+    marginTop: '10px',
 }
-const workingPart = {
-    backgroundColor: 'yellow',
+
+const properties = {
+    duration: 2000,
+    transitionDuration: 300,
 }
 
 const HotProductV = () => (
     <Wrapper>
-        <div style={width100}>
             <Grid container spacing={1}>
                 <Grid item xs={12}>
-                    <Paper style={workingPart}>Product View</Paper>
+                <div className="slide-container">
+                    <Fade {...properties}>
+                        <div className="each-fade">
+                            <div className="image-container">
+                                <img style={fixImages} src={test1} width='100%' height='306px'/>
+                            </div>
+                         </div>
+                        <div className="each-fade">
+                            <div className="image-container">
+                                <img style={fixImages} src={test2} width='100%' height='306px'/>
+                             </div>
+                        </div>
+                        <div className="each-fade">
+                            <div className="image-container">
+                                <img style={fixImages} src={test3} width='100%' height='306px'/>
+                            </div>
+                        </div>
+                    </Fade>
+                </div>
                 </Grid>
             </Grid>
-        </div>
     </Wrapper>
 )
 
