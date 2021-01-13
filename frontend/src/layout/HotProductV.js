@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
-import { Fade } from 'react-slideshow-image';
+import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
-import test1 from './img/test1.png';
-import test2 from './img/test2.png';
-import test3 from './img/test3.png';
+import test1 from './img/product1.jpg';
+import test2 from './img/product2.jpg';
+import test3 from './img/product3.jpg';
 
 
 const Wrapper = styled.div`
@@ -30,7 +30,7 @@ const fixImages = {
 
 const properties = {
     duration: 2000,
-    transitionDuration: 300,
+    transitionDuration: 650,
 }
 
 const HotProductV = () => (
@@ -38,7 +38,7 @@ const HotProductV = () => (
             <Grid container spacing={1}>
                 <Grid item xs={12}>
                 <div className="slide-container">
-                    <Fade {...properties}>
+                    <Slide {...properties}>
                         <div className="each-fade">
                             <div className="image-container">
                                 <img style={fixImages} src={test1} width='100%' height='306px'/>
@@ -54,7 +54,7 @@ const HotProductV = () => (
                                 <img style={fixImages} src={test3} width='100%' height='306px'/>
                             </div>
                         </div>
-                    </Fade>
+                    </Slide>
                 </div>
                 </Grid>
             </Grid>

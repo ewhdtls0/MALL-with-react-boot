@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-//import oc from 'open-color';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+
+import './css/Navi.css';
 
 const Wrapper = styled.div`
     display: flex;
@@ -26,24 +26,29 @@ const width100 = {
     width: '100%',
 }
 
-const workingPart = {
-    backgroundColor: 'yellow',
+const vertical_M = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '50px',
+    color: 'black'
+
 }
 
 const Navi = () => (
     <Wrapper>
         <div style={width100}>
             <Grid container spacing={1}>
-                <Grid item xs={1}>space</Grid>
-                <Grid item xs={1}>BEST 100</Grid>
-                <Grid item xs={1}>의류</Grid>
-                <Grid item xs={1}>도서</Grid>
-                <Grid item xs={1}>전자제품</Grid>
-                <Grid item xs={1}>TODAY HOT</Grid>
-                <Grid item xs={3}>space</Grid>
-                <Grid item xs={1}>로그인</Grid>
-                <Grid item xs={1}>회원가입</Grid>
-                <Grid item xs={1}>space</Grid>
+                <Grid item xs={1}><div style={vertical_M}></div></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>BEST 100</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>의류</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>도서</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>전자제품</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>TODAY HOT</div></a></Grid>
+                <Grid item xs={3}><div style={vertical_M}></div></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>로그인</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>회원가입</div></a></Grid>
+                <Grid item xs={1}><div style={vertical_M}></div></Grid>
             </Grid>
         </div>
 

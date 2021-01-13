@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Login from '../img/loginIcon.png';
 import Basket from '../img/basketIcon.png';
-
+import '../css/Header.css';
 const LoginBoxOptions = {
     display: 'flex',
     width: '100%',
@@ -15,10 +15,10 @@ const LoginBox = () => {
         <div style={LoginBoxOptions}>
             <Grid container >
                 <Grid item xs={6}>
-                    <img src={Login} width="30%" height="50%"></img>
+                    <a className="LoginBox" href="/"><div className="NoneBorder"><img src={Login} width="30%" height="50%"></img></div></a>
                 </Grid>
                 <Grid item xs={6}>
-                    <img src={Basket} width="30%" height="50%"></img>
+                    <a className="LoginBox" href="/"><div className="NoneBorder"><img src={Basket} width="30%" height="50%"></img></div></a>
                 </Grid>
             </Grid>
         </div>
