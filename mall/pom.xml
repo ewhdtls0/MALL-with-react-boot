@@ -56,6 +56,20 @@
 			<scope>test</scope>
 		</dependency>
 
+		<dependency> 
+			<groupId>mysql</groupId> 
+			<artifactId>mysql-connector-java</artifactId> 
+		</dependency> 
+		<dependency> 
+			<groupId>com.zaxxer</groupId> 
+			<artifactId>HikariCP</artifactId> 
+		</dependency> 
+		<dependency> 
+			<groupId>org.mybatis.spring.boot</groupId> 
+			<artifactId>mybatis-spring-boot-starter</artifactId> 
+			<version>1.3.2</version> 
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -79,7 +93,7 @@
 				<version>1.9.1</version>
 				<configuration>
 				<!--자신의 frontend 경로대로 -->
-					<workingDirectory>C:\Users\Shin\Desktop\work\MALL-with-react-boot\frontend</workingDirectory>
+					<workingDirectory>C:\Users\Feel\Desktop\Github\mallTeam\frontend</workingDirectory>
 					<installDirectory>target</installDirectory>
 				</configuration>
 				<executions>
@@ -123,7 +137,7 @@
 							<target>
 								<copy todir="${project.build.directory}/classes/public">
 								<!--자신의 frontend 경로대로 -->
-									<fileset dir="C:\Users\Shin\Desktop\work\MALL-with-react-boot\frontend\build"/>
+									<fileset dir="C:\Users\Feel\Desktop\Github\mallTeam\frontend\build"/>
 								</copy>
 							</target>
 						</configuration>
@@ -133,6 +147,16 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.19.1</version>
+				<configuration>
+					<testFailureIgnore>true</testFailureIgnore>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
