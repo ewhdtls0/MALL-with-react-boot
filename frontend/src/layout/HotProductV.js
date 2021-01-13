@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
+
+import test1 from './img/product1.jpg';
+import test2 from './img/product2.jpg';
+import test3 from './img/product3.jpg';
+
 
 const Wrapper = styled.div`
     display: flex;
@@ -13,35 +19,45 @@ const Wrapper = styled.div`
     width: 100%;
     z-index: 5;
     
-    background: aqua;
     color: black;
     
     font-size: 2.5rem;
 `;
 
-const width100 = {
-    width: '100%',
-
+const fixImages = {
+    marginTop: '10px',
 }
-const workingPart = {
-    backgroundColor: 'yellow',
+
+const properties = {
+    duration: 2000,
+    transitionDuration: 650,
 }
 
 const HotProductV = () => (
     <Wrapper>
-        <div style={width100}>
             <Grid container spacing={1}>
-                <Grid item xs={1}>
-                    <Paper>Space</Paper>
-                </Grid>
-                <Grid item xs={10}>
-                    <Paper style={workingPart}>Product View</Paper>
-                </Grid>
-                <Grid item xs={1}>
-                    <Paper>Space</Paper>
+                <Grid item xs={12}>
+                <div className="slide-container">
+                    <Slide {...properties}>
+                        <div className="each-fade">
+                            <div className="image-container">
+                                <img style={fixImages} src={test1} width='100%' height='306px'/>
+                            </div>
+                         </div>
+                        <div className="each-fade">
+                            <div className="image-container">
+                                <img style={fixImages} src={test2} width='100%' height='306px'/>
+                             </div>
+                        </div>
+                        <div className="each-fade">
+                            <div className="image-container">
+                                <img style={fixImages} src={test3} width='100%' height='306px'/>
+                            </div>
+                        </div>
+                    </Slide>
+                </div>
                 </Grid>
             </Grid>
-        </div>
     </Wrapper>
 )
 
