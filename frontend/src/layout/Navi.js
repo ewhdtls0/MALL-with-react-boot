@@ -17,7 +17,7 @@ const Wrapper = styled.div`
     background: white;
     color: black;
     
-    border: 1px solid black;
+    border-top: none;
     font-weight: bold;
     font-size: 15px;
 `;
@@ -40,14 +40,14 @@ const Navi = () => (
         <div style={width100}>
             <Grid container spacing={1}>
                 <Grid item xs={1}><div style={vertical_M}></div></Grid>
-                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>BEST 100</div></a></Grid>
-                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>의류</div></a></Grid>
-                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>도서</div></a></Grid>
-                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>전자제품</div></a></Grid>
-                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>TODAY HOT</div></a></Grid>
+                <Grid item xs={1}><a className="navi_a_tag" href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>BEST 100</div></a></Grid>
+                <Grid item xs={1}><a className="navi_a_tag" href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>의류</div></a></Grid>
+                <Grid item xs={1}><a className="navi_a_tag" href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>도서</div></a></Grid>
+                <Grid item xs={1}><a className="navi_a_tag" href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>전자제품</div></a></Grid>
+                <Grid item xs={1}><a className="navi_a_tag" href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>TODAY HOT</div></a></Grid>
                 <Grid item xs={3}><div style={vertical_M}></div></Grid>
-                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>로그인</div></a></Grid>
-                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>회원가입</div></a></Grid>
+                <Grid item xs={1}><a className="navi_a_tag" href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>로그인</div></a></Grid>
+                <Grid item xs={1}><a className="navi_a_tag" href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>회원가입</div></a></Grid>
                 <Grid item xs={1}><div style={vertical_M}></div></Grid>
             </Grid>
         </div>
