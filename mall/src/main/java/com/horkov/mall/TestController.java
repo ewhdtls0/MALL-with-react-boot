@@ -16,18 +16,16 @@ public class TestController {
     @Autowired
     private UserDAO userDAO;
 
-    @RequestMapping("/users")
+    @RequestMapping("/users") // select * from user 확인
     public List<UserDTO> users() throws Exception{
         final List<UserDTO> userList = userDAO.selectUsers();
         return userList;
     }
 
-    @GetMapping("/abc")
-    public void testabc() throws Exception {
-        String title2 = "제목3";
-        String content2 = "내용3";
-        String writer2 = "글쓴이3";
-        UserDTO aaa = new UserDTO(title2, content2, writer2);
+    @PostMapping("/check")
+    @ResponseBody // 별도의 페이지를 보여주지 않음
+    public void check(@ModelAttribute UserDTO q) throws Exception {
+        UserDTO aaa = new UserDTO(q.getTitle(), q.getContent(), q.getWriter());
         userDAO.insertUsers(aaa);
     }
 
