@@ -5,23 +5,17 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import Login from "./login/login";
 import SignUp from "./login/signup";
-import Header from './layout/Header';
-import Body from './layout/Body';
 
 class App extends Component{
   render(){
     return(<Router>
       <div className="App">
-        <div>
-          <Header/>
-          <Body/>
-        </div>
         <div className="outer">
-          <div className="inner">
-            <Switch>
-              <Route path="/sign-in" component={Login} />
-              <Route path="/sign-up" component={SignUp} />
-            </Switch>
+          <div className="body">
+            <div className="inner">
+              <Login buttonLabel={"로그인"}></Login>
+              <SignUp buttonLabel={"회원가입"}></SignUp>
+            </div>
           </div>
         </div>
       </div></Router>
