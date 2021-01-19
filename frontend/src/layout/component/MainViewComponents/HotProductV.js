@@ -4,9 +4,9 @@ import Grid from '@material-ui/core/Grid';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 
-import test1 from './img/product1.jpg';
-import test2 from './img/product2.jpg';
-import test3 from './img/product3.jpg';
+import test1 from '../../img/product1.jpg';
+import test2 from '../../img/product2.jpg';
+import test3 from '../../img/product3.jpg';
 
 
 const Wrapper = styled.div`

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from './layout/Header';
-import Body from './layout/Body';
 import Grid from '@material-ui/core/Grid';
+import NaviRoutes from './layout/component/Routes/NaviRoutes';
 
 
 class App extends Component{
@@ -12,7 +12,7 @@ class App extends Component{
           <Grid item xs={2}></Grid>
           <Grid item xs={8}>
             <Header/>
-            <Body/>
+            <NaviRoutes/>
           </Grid>  
           <Grid item xs={2}></Grid> 
         </Grid>

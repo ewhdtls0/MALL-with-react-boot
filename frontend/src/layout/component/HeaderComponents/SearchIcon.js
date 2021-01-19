@@ -1,7 +1,7 @@
 import { Button } from '@material-ui/core';
 import React from 'react';
-import searchIcon from '../img/searchIcon.png';
-import '../css/Header.css';
+import searchIcon from '../../img/searchIcon.png';
+import '../../css/Header.css';
 const searchIconOptions = {
     display: 'flex',
     borderRadius: '25px', 

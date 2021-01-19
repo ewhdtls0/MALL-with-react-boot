@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 
 import horkov from './img/logo.png';
-import SearchBox from './component/SearchBox.js';
-import SearchIcon from './component/SearchIcon.js';
+import SearchBox from './component/HeaderComponents/SearchBox.js';
+import SearchIcon from './component/HeaderComponents/SearchIcon.js';
 
-import LoginBox from './component/LoginBox.js';
+import LoginBox from './component/HeaderComponents/LoginBox.js';
 import './css/Header.css';
 
 const Wrapper = styled.div`

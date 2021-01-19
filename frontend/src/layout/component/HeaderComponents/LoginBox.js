@@ -1,8 +1,8 @@
 import React from 'react';
 import Grid from '@material-ui/core/Grid';
-import Login from '../img/loginIcon.png';
-import Basket from '../img/basketIcon.png';
-import '../css/Header.css';
+import Login from '../../img/loginIcon.png';
+import Basket from '../../img/basketIcon.png';
+import '../../css/Header.css';
 const LoginBoxOptions = {
     display: 'flex',
     width: '100%',
