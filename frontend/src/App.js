@@ -1,24 +1,22 @@
 import React, {Component} from 'react';
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Header from './layout/Header';
+import Grid from '@material-ui/core/Grid';
+import NaviRoutes from './layout/component/Routes/NaviRoutes';
 
-import Login from "./login/login";
-import SignUp from "./login/signup";
 
 class App extends Component{
   render(){
-    return(<Router>
-      <div className="App">
-        <div className="outer">
-          <div className="body">
-            <div className="inner">
-              <Login buttonLabel={"로그인"}></Login>
-              <SignUp buttonLabel={"회원가입"}></SignUp>
-            </div>
-          </div>
-        </div>
-      </div></Router>
+    return(
+      <div>
+        <Grid container spacing={1}>
+          <Grid item xs={2}></Grid>
+          <Grid item xs={8}>
+            <Header/>
+            <NaviRoutes/>
+          </Grid>  
+          <Grid item xs={2}></Grid> 
+        </Grid>
+      </div>
     );
   }
 }
