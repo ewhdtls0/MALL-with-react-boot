@@ -41,6 +41,7 @@ const Navi = () => (
         <div style={width100}>
             <Grid container spacing={1}>
                 <Grid item xs={1}><div style={vertical_M}></div></Grid>
+                <Grid item xs={1}><Link className="navi_a_tag" to="/" style={{textDecoration: 'none'}}><div style={vertical_M}>HOME</div></Link></Grid>
                 <Grid item xs={1}><Link className="navi_a_tag" to="/Best100" style={{textDecoration: 'none'}}><div style={vertical_M}>BEST 100</div></Link></Grid>
                 <Grid item xs={1}><Link className="navi_a_tag" to="/Books" style={{textDecoration: 'none'}}><div style={vertical_M}>의류</div></Link></Grid>
                 <Grid item xs={1}><Link className="navi_a_tag" to="/Clothes" style={{textDecoration: 'none'}}><div style={vertical_M}>도서</div></Link></Grid>
@@ -49,7 +50,6 @@ const Navi = () => (
                 <Grid item xs={3}><div style={vertical_M}></div></Grid>
                 <Grid item xs={1}><Link className="navi_a_tag" to="/" style={{textDecoration: 'none'}}><div style={vertical_M}>로그인</div></Link></Grid>
                 <Grid item xs={1}><Link className="navi_a_tag" to="/" style={{textDecoration: 'none'}}><div style={vertical_M}>회원가입</div></Link></Grid>
-                <Grid item xs={1}><div style={vertical_M}></div></Grid>
             </Grid>
         </div>
 
