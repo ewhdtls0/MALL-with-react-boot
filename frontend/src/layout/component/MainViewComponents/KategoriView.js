@@ -1,9 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Paper";
-import ListItem from "@material-ui/core/ListItem";
+import { Grid } from "@material-ui/core";
+
 import ListItemText from "@material-ui/core/ListItemText";
+import ListItem from "@material-ui/core/ListItem";
+
+import ItemViews from '../MainViewComponents/views/components/ItemViews'
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,8 +18,8 @@ const Wrapper = styled.div`
   width: 100%;
   z-index: 5;
 
+  background: white;
   color: black;
-  background: red;
 
   font-size: 2.5rem;
 `;
@@ -26,51 +28,56 @@ const Kate_width = {
   width: "25%",
 };
 
-const Kate_Sty = {
-    background: "aqua",
+const contents_Size = {
+  overflow: "scroll",
+  height: "95%",
+  width: "75%",
 };
 
-const Item_width = {
-    width: "75%",
-};
+const vertical_M = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  height: '30px',
+  color: 'black'
 
-const Items_Sty = {
-  background: "yellow",
-};
+}
 
-const Body = () => (
-  <Wrapper>
-    <div style={Kate_width}>
-      <Grid container spacing={1}>
-          <Grid item xs={1}>
-              <Paper>여백의 미</Paper>
-          </Grid>
-          <Grid item xs={10}>
-              <ListItem>
-                  <ListItemText style={Kate_Sty} primary="카테고리"></ListItemText>
-              </ListItem>
-          </Grid>
-          <Grid item xs={1}>
-              <Paper>여백의 미</Paper>
-          </Grid>
-      </Grid>
-    </div>
-    <div style={Item_width}>
-        <Grid container spacing={1}>
-            <Grid item xs={1}>
-              <Paper>여백의 미</Paper>
+const obj ={
+  0 : <ItemViews />,
+  1 : <ItemViews />,
+
+}
+
+class Body extends Component{
+  state= {
+    activTab : 0
+  }
+  
+  clickHandler = (id) => {
+    this.setState({activTab : id})
+  }
+
+  render(){
+    return(
+      <Wrapper>
+        <div style={Kate_width}>
+          <Grid container spacing={1}>
+            <Grid item xs={12}>
+              <ListItem button onClick={ () => this.clickHandler(0)}><ListItemText style={vertical_M}>BEST100</ListItemText></ListItem>
+              <ListItem button onClick={ () => this.clickHandler(1)}><ListItemText style={vertical_M}>의류</ListItemText></ListItem>
+              <ListItem button onClick={ () => this.clickHandler(2)}><ListItemText style={vertical_M}>도서</ListItemText></ListItem>
+              <ListItem button onClick={ () => this.clickHandler(3)}><ListItemText style={vertical_M}>전자제품</ListItemText></ListItem>
+              <ListItem button onClick={ () => this.clickHandler(4)}><ListItemText style={vertical_M}>TODAY HOT</ListItemText></ListItem>
             </Grid>
-            <Grid item xs={10}>
-                <ListItem>
-                    <ListItemText style={Items_Sty} primary="상품"></ListItemText>
-                </ListItem>
-            </Grid>
-            <Grid item xs={1}>
-              <Paper>여백의 미</Paper>
           </Grid>
-        </Grid>
-    </div>
-  </Wrapper>
-);
+        </div>
+        <div style={contents_Size}>
+          {obj[this.state.activTab]}
+        </div>
+    </Wrapper>
+    );
+  }
+}
 
 export default Body;
