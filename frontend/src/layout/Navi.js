@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-//import oc from 'open-color';
-import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+
+import './css/Navi.css';
 
 const Wrapper = styled.div`
     display: flex;
@@ -15,22 +15,40 @@ const Wrapper = styled.div`
     z-index: 5;
     
     background: white;
-    color: white;
+    color: black;
     
-    font-size: 40px;
+    border: 1px solid black;
+    font-weight: bold;
+    font-size: 15px;
 `;
 
 const width100 = {
     width: '100%',
 }
 
+const vertical_M = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '50px',
+    color: 'black'
+
+}
+
 const Navi = () => (
     <Wrapper>
         <div style={width100}>
             <Grid container spacing={1}>
-                <Grid item xs={12}>
-                    <Paper>Navigation Part</Paper>
-                </Grid>
+                <Grid item xs={1}><div style={vertical_M}></div></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>BEST 100</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>의류</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>도서</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>전자제품</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>TODAY HOT</div></a></Grid>
+                <Grid item xs={3}><div style={vertical_M}></div></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>로그인</div></a></Grid>
+                <Grid item xs={1}><a href="/" style={{textDecoration: 'none'}}><div style={vertical_M}>회원가입</div></a></Grid>
+                <Grid item xs={1}><div style={vertical_M}></div></Grid>
             </Grid>
         </div>
 

@@ -1,0 +1,11 @@
+.LoginBox :hover
+{
+    background: white;
+}
+
+.NoneBorder :hover
+{
+    border: none;
+    border-bottom: 0px solid violet;
+    margin: 0px 0px 0px 0px;
+}

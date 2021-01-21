@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import oc from "open-color";
 import { Paper, Grid, Box } from "@material-ui/core";
-import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
 const Wrapper = styled.div`
@@ -17,7 +15,6 @@ const Wrapper = styled.div`
   z-index: 5;
 
   color: black;
-  background: red;
 
   font-size: 2.5rem;
 `;
@@ -26,57 +23,37 @@ const Kate_width = {
   width: "25%",
 };
 
-const Kate_Sty = {
-  background: "aqua",
-};
-
 const Item_width = {
   width: "75%",
 };
 
-const ItemsBox_Sty = {
-  background: "yellow",
-};
+const [number, setnumber] = useState(0);
+
+const onlncrease = () => {
+  setnumber(preNum => preNum + 1)
+}
+
+const onDecrease = () => {
+  setnumber(preNum => preNum - 1)
+}
+
 
 const Body = () => (
   <Wrapper>
     <div style={Kate_width}>
       <Grid container spacing={1}>
         <Grid item xs={12}>
-          <ListItem button onClick={ () => alert("클릭!")}>
-            <ListItemText style={Kate_Sty}>
-              카테고리
-            </ListItemText>
-          </ListItem>
+          <div>{number}</div>
+          <ListItemText button primary="BEST 100" onClick={onlncrease}></ListItemText>
+          <ListItemText button primary="의류" onClick={onDecrease}></ListItemText>
+          <ListItemText button primary="도서"></ListItemText>
+          <ListItemText button primary="전자제품"></ListItemText>
+          <ListItemText button primary="TODAY HOT"></ListItemText>
         </Grid>
       </Grid>
     </div>
     <div style={Item_width}>
-      <Grid container spacing={6}>
-        <Grid item xs={12} sm={3}>
-          <Box style={ItemsBox_Sty}>1</Box>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Box style={ItemsBox_Sty}>2</Box>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Box style={ItemsBox_Sty}>3</Box>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Box style={ItemsBox_Sty}>4</Box>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Box style={ItemsBox_Sty}>5</Box>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Box style={ItemsBox_Sty}>6</Box>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Box style={ItemsBox_Sty}>7</Box>
-        </Grid>
-        <Grid item xs={12} sm={3}>
-          <Box style={ItemsBox_Sty}>8</Box>
-        </Grid>
+      <Grid container spacing={12}>
       </Grid>
     </div>
   </Wrapper>
