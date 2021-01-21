@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Header from './layout/Header';
 import Grid from '@material-ui/core/Grid';
 import NaviRoutes from './layout/component/Routes/NaviRoutes';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 
 class App extends Component{

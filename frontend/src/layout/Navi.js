@@ -4,6 +4,7 @@ import Grid from '@material-ui/core/Grid';
 
 import './css/Navi.css';
 import { Link } from 'react-router-dom';
+import Login from '../login/login'
 
 const Wrapper = styled.div`
     display: flex;
@@ -47,7 +48,7 @@ const Navi = () => (
                 <Grid item xs={1}><Link className="navi_a_tag" to="/Electronics" style={{textDecoration: 'none'}}><div style={vertical_M}>전자제품</div></Link></Grid>
                 <Grid item xs={1}><Link className="navi_a_tag" to="/TodayHot" style={{textDecoration: 'none'}}><div style={vertical_M}>TODAY HOT</div></Link></Grid>
                 <Grid item xs={3}><div style={vertical_M}></div></Grid>
-                <Grid item xs={1}><Link className="navi_a_tag" to="/" style={{textDecoration: 'none'}}><div style={vertical_M}>로그인</div></Link></Grid>
+                <Grid item xs={1}><Login className="navi_a_tag" buttonLabel={"로그인"}></Login></Grid>
                 <Grid item xs={1}><Link className="navi_a_tag" to="/" style={{textDecoration: 'none'}}><div style={vertical_M}>회원가입</div></Link></Grid>
                 <Grid item xs={1}><div style={vertical_M}></div></Grid>
             </Grid>
