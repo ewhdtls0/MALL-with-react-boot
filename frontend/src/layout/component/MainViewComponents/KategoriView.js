@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
-import { Link } from 'react-router-dom';
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
 
@@ -19,7 +18,7 @@ const Wrapper = styled.div`
   width: 100%;
   z-index: 5;
 
-   background: white;
+  background: white;
   color: black;
 
   font-size: 2.5rem;
@@ -29,9 +28,9 @@ const Kate_width = {
   width: "25%",
 };
 
-const Item_Size = {
+const contents_Size = {
   overflow: "scroll",
-  height: "60%",
+  height: "95%",
   width: "75%",
 };
 
@@ -44,13 +43,10 @@ const vertical_M = {
 
 }
 
-
 const obj ={
   0 : <ItemViews />,
   1 : <ItemViews />,
-  2 : <ItemViews />,
-  3 : <ItemViews />,
-  4 : <ItemViews />,
+
 }
 
 class Body extends Component{
@@ -65,7 +61,7 @@ class Body extends Component{
   render(){
     return(
       <Wrapper>
-        <div className="Kategori_Tabs" style={Kate_width}>
+        <div style={Kate_width}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <ListItem button onClick={ () => this.clickHandler(0)}><ListItemText style={vertical_M}>BEST100</ListItemText></ListItem>
@@ -76,7 +72,7 @@ class Body extends Component{
             </Grid>
           </Grid>
         </div>
-        <div className="contents" style={Item_Size}>
+        <div style={contents_Size}>
           {obj[this.state.activTab]}
         </div>
     </Wrapper>
