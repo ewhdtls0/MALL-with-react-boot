@@ -3,10 +3,11 @@ import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 
 import horkov from './img/logo.png';
-import SearchBox from './component/SearchBox.js';
-import SearchIcon from './component/SearchIcon.js';
+import SearchBox from './component/HeaderComponents/SearchBox.js';
+import SearchIcon from './component/HeaderComponents/SearchIcon.js';
 
-import LoginBox from './component/LoginBox.js';
+import LoginBox from './component/HeaderComponents/LoginBox.js';
+import './css/Header.css';
 
 const Wrapper = styled.div`
     display: flex;
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
     z-index: 5;
     text-align: center;
     color: white;
-    border-bottom: 1px solid black;
+    border-bottom: 3px solid black;
     
     font-size: 40px;
 
@@ -39,9 +40,9 @@ const marginAll = {
 const searchBar = {
     margin: '15px 5px 5px 20%',
     width: '60%',
-    height: '38%',
+    height: '50%',
     borderRadius : '25px',
-    border: '1px solid black',
+    border: '1px solid #D3D3D3',
 }
 
 const Header = () => (
@@ -52,15 +53,17 @@ const Header = () => (
               <Grid item xs={2}>
               </Grid>
               <Grid item xs={8}>
-                  <div style={marginAll}><img src={horkov} width='70%' height='60px'></img></div>
+                  <div style={marginAll}><a href="/"><img src={horkov} width='100%' height='60px'></img></a></div>
               </Grid>
               <Grid item xs={2}>
               </Grid>
           </Grid>
           <Grid item xs={6}>
             <div container style={searchBar}>
-                <SearchBox item xs={10} placeholder="Search ..."/>
-                <SearchIcon item xs={2}/>
+                <form>
+                    <SearchBox item xs={10} placeholder="Search ..."/>
+                    <SearchIcon item xs={2}/>
+                </form>
             </div>
           </Grid>
           <Grid container spacing={1} item xs={3}>

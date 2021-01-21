@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import oc from 'open-color';  
-import Navi from './Navi';
-import HotProductV from './HotProductV';
-import KategoriV from './KategoriView'
+import HotProductV from './component/MainViewComponents/HotProductV';
+import KategoriV from './component/MainViewComponents/KategoriView'
 
 const Wrapper = styled.div`
     height: 1020px;
@@ -21,7 +20,6 @@ const Wrapper = styled.div`
 
 const Body = () => (
     <Wrapper>
-        <Navi/>
         <HotProductV/>
         <KategoriV/>
     </Wrapper>
