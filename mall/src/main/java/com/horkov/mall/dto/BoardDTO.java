@@ -7,7 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
-    private String id;
-    // user table
+public class BoardDTO {
+    private String title;
+    private String content;
+    private String writer;
 }

@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.horkov.mall.dao.UserDAO;
 import com.horkov.mall.dto.UserDTO;
+import com.horkov.mall.dao.BoardDAO;
+import com.horkov.mall.dto.BoardDTO;
 
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,22 +18,26 @@ public class TestController {
     @Autowired
     private UserDAO userDAO;
 
-    @RequestMapping("/users") // select * from user 확인
+    @Autowired
+    private BoardDAO boardDAO;
+    
+    @GetMapping("/users") // select * from user 확인
     public List<UserDTO> users() throws Exception{
         final List<UserDTO> userList = userDAO.selectUsers();
         return userList;
     }
 
+    @GetMapping("/boards") // select * from board 확인
+    public List<BoardDTO> boards() throws Exception{
+        final List<BoardDTO> boardList = boardDAO.selectBoards();
+        return boardList;
+    }
+
     @PostMapping("/check")
     @ResponseBody // 별도의 페이지를 보여주지 않음
-    public void check(@ModelAttribute UserDTO q) throws Exception {
-        UserDTO aaa = new UserDTO(q.getTitle(), q.getContent(), q.getWriter());
-        userDAO.insertUsers(aaa);
+    public void check(@ModelAttribute BoardDTO q) throws Exception{
+        BoardDTO aaa = new BoardDTO(q.getTitle(), q.getContent(), q.getWriter());
+        boardDAO.insertBoards(aaa);
     }
-
-    @GetMapping("/api/test")
-    public String test(){
-        return "8080포트로 접속하였으면 연동이 된 것";
-    }
-
+    
 }
