@@ -1,6 +1,7 @@
 package com.horkov.mall;
 
 import java.util.List;
+import java.util.Map;
 
 import com.horkov.mall.dao.UserDAO;
 import com.horkov.mall.dto.UserDTO;
@@ -27,14 +28,19 @@ public class TestController {
         return userList;
     }
 
-    @GetMapping("/boards") // select * from board 확인
+    @GetMapping("/boards") // select * from board
     public List<BoardDTO> boards() throws Exception{
         final List<BoardDTO> boardList = boardDAO.selectBoards();
         return boardList;
     }
 
+    @GetMapping("/boardOne") // select * from board where title=param
+    public List<BoardDTO> boardOne(@RequestParam String title) throws Exception{
+        final List<BoardDTO> boardList = boardDAO.selectBoardOne(title);
+        return boardList;
+    }
+
     @PostMapping("/check")
-    @ResponseBody // 별도의 페이지를 보여주지 않음
     public void check(@ModelAttribute BoardDTO q) throws Exception{
         BoardDTO aaa = new BoardDTO(q.getTitle(), q.getContent(), q.getWriter());
         boardDAO.insertBoards(aaa);

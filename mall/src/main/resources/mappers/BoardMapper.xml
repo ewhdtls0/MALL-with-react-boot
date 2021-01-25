@@ -8,6 +8,10 @@
         SELECT * FROM board
     </select>
 
+    <select id="selectBoardOne" parameterType="com.horkov.mall.dto.BoardDTO" resultType="com.horkov.mall.dto.BoardDTO">
+        SELECT * FROM board where title = #{title}
+    </select>
+
     <insert id="insertBoards" parameterType="com.horkov.mall.dto.BoardDTO">
         INSERT INTO board(title, content, writer)
         VALUES (#{title}, #{content}, #{writer})

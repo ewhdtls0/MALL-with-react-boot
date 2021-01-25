@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface BoardDAO {
     List<BoardDTO> selectBoards() throws Exception;
+    List<BoardDTO> selectBoardOne(String title) throws Exception;
     public void insertBoards(BoardDTO abc) throws Exception;
 }
