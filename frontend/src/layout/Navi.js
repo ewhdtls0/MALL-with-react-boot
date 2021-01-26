@@ -6,6 +6,7 @@ import './css/Navi.css';
 import { Link } from 'react-router-dom';
 import Login from '../login/login'
 
+
 const Wrapper = styled.div`
     display: flex;
     position: flex;

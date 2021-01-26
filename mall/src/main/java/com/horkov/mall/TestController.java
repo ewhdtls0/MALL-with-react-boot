@@ -1,5 +1,6 @@
 package com.horkov.mall;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.horkov.mall.dao.UserDAO;
@@ -16,15 +17,16 @@ public class TestController {
     @Autowired
     private UserDAO userDAO;
 
+    @GetMapping("/api/test")
+    public String test(){
+        return "하이용";
+    }
+
     @RequestMapping("/users")
     public List<UserDTO> users() throws Exception{
         final List<UserDTO> userList = userDAO.selectUsers();
         return userList;
     }
 
-    @GetMapping("/api/test")
-    public String test(){
-        return "8080포트로 접속하였으면 연동이 된 것";
-    }
 
 }
