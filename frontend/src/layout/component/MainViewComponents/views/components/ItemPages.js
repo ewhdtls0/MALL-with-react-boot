@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -14,14 +14,28 @@ const Wrapper = styled.div`
     min-width: 1300px;
 `;
 
-class ItemPages extends Component{
-    render(){
-      return(
-        <Wrapper>
-          <p>이러지 마세요</p>
-        </Wrapper>
-      );
-    }
-  }
+const ItemPages = ({match}) => {
+  const [users, setUsers] = useState([]);
+  useEffect(() => {
+      fetch("/boardOne?title=" + match.params.title)
+        .then((response) => response.json())
+        .then((users) => {
+          setUsers(users)
+        })
+  }, [])
+  console.log(1);
+  console.log(users);
+  return (
+    <Wrapper>
+      {users.map((user) => (
+        <div>
+          <h5>{user.title}</h5>
+          <h5>{user.content}</h5>
+          <h5>{user.writer}</h5>
+        </div>
+      ))}
+    </Wrapper>
+  )
+}
 
 export default ItemPages;

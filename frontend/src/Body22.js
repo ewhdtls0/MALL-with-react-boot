@@ -3,10 +3,10 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Write from './Write';
 import Test from './Test'
-import './Body.css'
+import './Body22.css'
 <script src = "https://unpkg.com/react/umd/react.production.min.js" crossorigin ></script>
 
-function Body() {
+function Body22() {
     return(
         <div>
             <Router>
@@ -17,9 +17,8 @@ function Body() {
                     <Route path="/Write" component={Write}></Route>
                 </nav>
             </Router>
-            <Test></Test>
         </div>
     )
 }
 
-export default Body;
+export default Body22;

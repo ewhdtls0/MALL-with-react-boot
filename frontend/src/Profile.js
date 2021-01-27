@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 const Profile = ({match}) => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
-      fetch("http://localhost:8080/boardOne?title=" + match.params.title)
+      fetch("/boardOne?title=" + match.params.title)
         .then((response) => response.json())
         .then((users) => {
           setUsers(users)

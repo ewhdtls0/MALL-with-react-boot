@@ -7,15 +7,15 @@ const Test = () => {
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:8080/boards")
+        fetch("/boards")
           .then((response) => response.json())
           .then((users) => {
             setUsers(users)
             setLoading(false)
           })
     }, [])
-
-    //if (loading) return <div>Loading...</div>
+    
+    if (loading) return <div>Loading...</div>
     return (
         <Router>
             <Route exact path="/">

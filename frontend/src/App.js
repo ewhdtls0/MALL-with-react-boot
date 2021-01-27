@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import Body from './Body';
+import Body22 from './Body22';
 import Header from './layout/Header';
 import Grid from '@material-ui/core/Grid';
 import NaviRoutes from './layout/component/Routes/NaviRoutes';
@@ -30,7 +30,7 @@ function App(){
           </Grid>  
           <Grid item xs={2}></Grid> 
         </Grid>
-        <Body></Body>
+        <Body22></Body22>
       </div>
     );
 }
