@@ -1,6 +1,5 @@
 package com.horkov.mall;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.horkov.mall.dao.UserDAO;
