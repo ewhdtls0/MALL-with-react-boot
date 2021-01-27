@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalBody } from 'reactstrap';
-
+import '../layout/css/loginParts.css';
 export default class Login extends Component {
     constructor(props) {
         super(props);
@@ -20,7 +20,7 @@ export default class Login extends Component {
     render() {
         return (
             <div>
-                <Button color="danger" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+                <Button className="loginComponents" onClick={this.toggle}>{this.props.buttonLabel}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalBody>
                     <form>
