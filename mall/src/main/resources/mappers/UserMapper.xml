@@ -7,9 +7,5 @@
     <select id="selectUsers" parameterType="com.horkov.mall.dto.UserDTO" resultType="com.horkov.mall.dto.UserDTO">
         SELECT * FROM USER
     </select>
-
-    <insert id="insertUsers" parameterType="com.horkov.mall.dto.UserDTO">
-        INSERT INTO board(title, content, writer)
-        VALUES (#{title}, #{content}, #{writer})
-    </insert>
+ 
 </mapper>
