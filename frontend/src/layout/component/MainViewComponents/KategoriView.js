@@ -29,10 +29,10 @@ const Kate_width = {
 };
 
 const contents_Size = {
-  overflow: "scroll",
-  height: "95%",
   width: "75%",
 };
+
+const Infinite = require('react-infinite');
 
 const vertical_M = {
   display: 'flex',
@@ -48,7 +48,6 @@ const obj ={
   1 : <ItemViews />,
 
 }
-
 class Body extends Component{
   state= {
     activTab : 0
@@ -73,7 +72,9 @@ class Body extends Component{
           </Grid>
         </div>
         <div style={contents_Size}>
-          {obj[this.state.activTab]}
+          <Infinite containerHeight={550} elementHeight={200}>
+            {obj[this.state.activTab]}
+          </Infinite>
         </div>
     </Wrapper>
     );

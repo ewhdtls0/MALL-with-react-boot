@@ -138,6 +138,50 @@ const ItemViews = () => {
                     </Grid>
                 </Grid>
             </div>
+            <div className="row">
+                <Grid style={{height: '100%'}} container spacing={1}>
+                    <Grid item xs={3}>
+                        <a href="/" className="linkEffect"><div className="items">
+                            <div className="imgWrapper">
+                                <img src={testImage} width="80%" height="60%"></img>
+                            </div>
+                            <div className="cardWrapper">
+                                <p className="card">this is a card for items</p>
+                            </div>
+                        </div></a>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <a href="/" className="linkEffect"><div className="items">
+                            <div className="imgWrapper">
+                                <img src={testImage} width="80%" height="60%"></img>
+                            </div>
+                            <div className="cardWrapper">
+                                <p className="card">this is a card for items</p>
+                            </div>
+                        </div></a>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <a href="/" className="linkEffect"><div className="items">
+                            <div className="imgWrapper">
+                                <img src={testImage} width="80%" height="60%"></img>
+                            </div>
+                            <div className="cardWrapper">
+                                <p className="card">this is a card for items</p>
+                            </div>
+                        </div></a>
+                    </Grid>
+                    <Grid item xs={3}>
+                        <a href="/" className="linkEffect"><div className="items">
+                            <div className="imgWrapper">
+                                <img src={testImage} width="80%" height="60%"></img>
+                            </div>
+                            <div className="cardWrapper">
+                                <p className="card">this is a card for items</p>
+                            </div>
+                        </div></a>
+                    </Grid>
+                </Grid>
+            </div>  
       </div>
     )
 
