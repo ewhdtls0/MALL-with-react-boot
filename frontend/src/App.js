@@ -25,7 +25,6 @@ function App(){
           <Grid item xs={8}>
             <Header/>
             <NaviRoutes/>
-            <h1 className="App-title">{message}</h1>
           </Grid>  
           <Grid item xs={2}></Grid> 
         </Grid>
