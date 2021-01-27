@@ -10,6 +10,14 @@ public class Item {
     private Date created;
     private int is_deleted;
 
+    public Item(String id, String title, String content)
+    {
+        super();
+        this.id = id;
+        this.title = title;
+        this.content = content;
+    }
+
     public String getId(){
         return id;
     }
