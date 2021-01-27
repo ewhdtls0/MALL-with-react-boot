@@ -9,6 +9,8 @@ import Electronics from '../MainViewComponents/views/Electronics';
 import TodayHot from '../MainViewComponents/views/TodayHot';
 import ItemPages from '../MainViewComponents/views/components/ItemPages';
 
+import Cart from '../HeaderComponents/views/components/CartViews';
+
 export default() => (
     <Router>
         <Navi/>
@@ -20,6 +22,7 @@ export default() => (
         <Route path="/TodayHot" component={TodayHot}></Route>
 
         <Route path="/ItemPages" component={ItemPages}></Route>
-    </Router>
 
+        <Route path="/Cart" component={Cart}></Route>
+    </Router>
 )
