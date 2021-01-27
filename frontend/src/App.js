@@ -1,12 +1,23 @@
-import React, {Component} from 'react';
+import React, {Component, useState, useEffect} from 'react';
 import Header from './layout/Header';
 import Grid from '@material-ui/core/Grid';
 import NaviRoutes from './layout/component/Routes/NaviRoutes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import axios from 'axios';
 
 
-class App extends Component{
-  render(){
+function App(){
+
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    fetch('/api/test')
+      .then(response => response.text())
+      .then(message => {
+        setMessage(message);
+      });
+  }, [])
+
     return(
       <div>
         <Grid container spacing={1}>
@@ -18,8 +29,8 @@ class App extends Component{
           <Grid item xs={2}></Grid> 
         </Grid>
       </div>
+      
     );
-  }
 }
 
 export default App;
