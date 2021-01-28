@@ -3,7 +3,7 @@ package com.horkov.mall.Model;
 import java.util.Date;
 
 public class User {
-    
+
     private String userID;
     private String userPW;
     private String userName;
@@ -12,6 +12,17 @@ public class User {
     private String userPH;
     private Date created;
     private Date modified;
+
+    public User(String userID, String userPW, String userName, String userSex, String userEmail, String userPH)
+    {
+        super();
+        this.userID = userID;
+        this.userPW = userPW;
+        this.userName = userName;
+        this.userSex = userSex;
+        this.userEmail = userEmail;
+        this.userPH = userPH;
+    }
 
     public String getuserID(){
         return userID;
@@ -75,14 +86,6 @@ public class User {
 
     public void setModified(Date modified){
         this.modified = modified;
-    }
-
-    public int getDeleted(){
-        return is_deleted;
-    }
-
-    public void setDeleted(int is_deleted){
-        this.is_deleted = is_deleted;
     }
 
 }

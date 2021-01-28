@@ -7,13 +7,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ItemController {
-    
+
     private ItemMapper mapper;
 
     public ItemController(ItemMapper mapper){
@@ -25,13 +24,13 @@ public class ItemController {
         return mapper.getItem(id);
     }
 
-    @PostMapping("/user/{id}")
-    public void postItem(@PathVariable("id") String id, @RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("writer") String writer,
-        @RequestParam("category") String category, @RequestParam("lookup") int lookup, @RequestParam("todaylookup") int todaylookup){
+    @PostMapping("/item/{id}")
+    public void postItem(@PathVariable("id") String id, @RequestParam("title") String title, @RequestParam("content") String content, 
+        @RequestParam("writer") String writer, @RequestParam("category") String category, @RequestParam("lookup") int lookup, @RequestParam("todaylookup") int todaylookup){
         mapper.insertItem(id, title, content, writer, category, lookup, todaylookup);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/item/{id}")
     public void deleteItem(@PathVariable("id") String id){
         mapper.deleteItem(id);
     }

@@ -20,7 +20,7 @@ public interface UserMapper {
     @Select("SELECT * FROM user")
     List<User> getUserList();
 
-    @Insert("INSERT INTO user VALUES(#{userID}, #{userPW}, #{userName}, #{userSex}, #{userEmail}, #{userPH}")
+    @Insert("INSERT INTO user(userID, userPW, userName, userSex, userEmail, userPH) VALUES(#{userID}, MD5(#{userPW}), #{userName}, #{userSex}, #{userEmail}, #{userPH})")
     int insertUser(@Param("userID") String userID, @Param("userPW") String userPW, @Param("userName") String userName, @Param("userSex") String userSex, @Param("userEmail") String userEmail, @Param("userPH") String userPH);
 
     @Update("UPDATE user SET userPW=#{userPW} WHERE userID=#{userID}")

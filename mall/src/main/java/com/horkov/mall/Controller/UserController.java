@@ -5,6 +5,7 @@ import java.util.List;
 import com.horkov.mall.Mapper.UserMapper;
 import com.horkov.mall.Model.User;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,27 +28,28 @@ public class UserController {
         return mapper.getUser(userID);
     }
 
-    @GetMapping("user/all")
+    @GetMapping("/user/all")
     public List<User> getUserList(){
         return mapper.getUserList();
     }
 
-    @PutMapping("user/{userID}")
-    public void putUser(@PathVariable("userID") String userID, @RequestParam("userPW") String userPW, @RequestParam("userName") String userName, @RequestParam("userSex") String userSex, @RequestParam("userEmail") String userEmail, @RequestParam("userPH") String userPH){
+    @CrossOrigin("*")
+    @PostMapping("/user")
+    public void putUser(@RequestParam("userID") String userID, @RequestParam("userPW") String userPW, @RequestParam("userName") String userName, @RequestParam("userSex") String userSex, @RequestParam("userEmail") String userEmail, @RequestParam("userPH") String userPH){
         mapper.insertUser(userID, userPW, userName, userSex, userEmail, userPH);
     }
 
-    @PostMapping("/user/{userID}")
+    @PutMapping("/user/{userID}")
     public void changeUserPW(@PathVariable("userID") String userID, @RequestParam("userPW") String userPW){
         mapper.updateUserPW(userID, userPW);
     }
-
+/*
     @PostMapping("/user/{userID}")
     public void postUser(@PathVariable("userID") String userID, @RequestParam("userName") String userName, @RequestParam("userSex") String userSex, @RequestParam("userEmail") String userEmail, @RequestParam("userPH") String userPH){
         mapper.updateUserInfo(userID, userName, userSex, userEmail, userPH);
     }
-
-    @DeleteMapping("user/{userID}")
+*/
+    @DeleteMapping("/user/{userID}")
     public void deleteUser(@PathVariable("userID") String userID){
         mapper.deleteUser(userID);
     }

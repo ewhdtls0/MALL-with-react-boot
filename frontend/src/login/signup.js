@@ -1,22 +1,23 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalBody } from 'reactstrap';
+import axios from 'axios';
 
 export default class SignUp extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-          modal: false
+            modal: false
         };
     
         this.toggle = this.toggle.bind(this);
-      }
+    }
     
-      toggle() {
+    toggle() {
         this.setState(prevState => ({
-          modal: !prevState.modal
+        modal: !prevState.modal
         }));
-      }
+    }
 
     render() {
         return (
@@ -24,40 +25,40 @@ export default class SignUp extends Component {
                 <Button className="loginComponents" onClick={this.toggle}>{this.props.buttonLabel}</Button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalBody>
-                    <form>
+                    <form action="/user" method="POST">
                     <h3>Register</h3>
 
                     <div className="form-group">
                         <label>ID</label>
-                        <input type="text" className="form-control" placeholder="Enter ID" />
+                        <input type="text" className="form-control" name="userID" placeholder="Enter ID" />
                     </div>
 
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" placeholder="Enter password" />
+                        <input type="password" className="form-control" name="userPW" placeholder="Enter password" />
                     </div>
 
                     <div className="form-group">
                         <label>Your name</label>
-                        <input type="text" className="form-control" placeholder="name" />
+                        <input type="text" className="form-control" name="userName" placeholder="name" />
                     </div>
                         <div className="form-group">
                             <label>Gender</label><br/>
                             <label className="col-6 text-center">
-                                <input type="radio" className="form-control" name ="sex" /><p>Man</p>
+                                <input type="radio" className="form-control" name ="userSex" value="Man" /><p>Man</p>
                             </label>
                             <label className="col-6 text-center">
-                                <input type="radio" className="form-control" name ="sex"/><p>Woman</p>
+                                <input type="radio" className="form-control" name ="userSex" value="Woman"/><p>Woman</p>
                             </label>
                     </div>
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" placeholder="Enter email" />
+                        <input type="email" className="form-control" name ="userEmail" placeholder="Enter email" />
                     </div>
 
                     <div className="form-group">
                         <label>Phone Number</label>
-                        <input type="text" className="form-control" placeholder="네 전화번호" />
+                        <input type="text" className="form-control" name ="userPH" placeholder="네 전화번호" />
                     </div>
 
                     <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>

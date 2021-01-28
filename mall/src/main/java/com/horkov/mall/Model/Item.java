@@ -14,7 +14,7 @@ public class Item {
     private Date created;
     private int is_deleted;
 
-    public Item(String id, String title, String content)
+    public Item(String id, String title, String content, String writer, String category, int lookup, int todaylookup)
     {
         super();
         this.id = id;
