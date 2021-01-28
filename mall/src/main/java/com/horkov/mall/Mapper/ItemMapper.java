@@ -9,7 +9,6 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-
 import com.horkov.mall.Model.Item;
 
 @Mapper
@@ -26,5 +25,6 @@ public interface ItemMapper {
 
     @Delete("DELETE FROM items WHERE id=#{id}")
     int deleteItem(@Param("id") String id);
+
 
 }
