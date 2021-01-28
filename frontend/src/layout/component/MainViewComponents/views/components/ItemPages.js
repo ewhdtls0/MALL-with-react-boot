@@ -13,7 +13,7 @@ const Wrapper = styled.div`
     font-size: 25px;
     min-width: 1300px;
 `;
-
+/*
 const ItemPages = ({match}) => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
@@ -23,8 +23,7 @@ const ItemPages = ({match}) => {
           setUsers(users)
         })
   }, [])
-  console.log(1);
-  console.log(users);
+
   return (
     <Wrapper>
       {users.map((user) => (
@@ -39,3 +38,4 @@ const ItemPages = ({match}) => {
 }
 
 export default ItemPages;
+*/

@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import './Write.css'
+import '../../../../css/itemWriter.css'
 
-function Write() {
+function itemWriter() {
     return (
         <Route>
             <nav>
@@ -34,4 +34,4 @@ function Write() {
     )
 }
 
-export default Write;
+export default itemWriter;
