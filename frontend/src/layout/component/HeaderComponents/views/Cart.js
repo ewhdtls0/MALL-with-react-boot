@@ -15,7 +15,7 @@ const Wrapper = styled.div`
     min-width: 1300px;
 `;
 
-class Clothes extends Component{
+class Cart extends Component{
   render(){
     return(
       <Wrapper>
@@ -25,4 +25,4 @@ class Clothes extends Component{
   }
 }
 
-export default Clothes;
+export default Cart;
