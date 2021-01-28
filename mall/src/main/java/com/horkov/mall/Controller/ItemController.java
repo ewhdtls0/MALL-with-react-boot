@@ -26,8 +26,9 @@ public class ItemController {
     }
 
     @PostMapping("/user/{id}")
-    public void postItem(@PathVariable("id") String id, @RequestParam("title") String title, @RequestParam("content") String content){
-        mapper.insertItem(id, title, content);
+    public void postItem(@PathVariable("id") String id, @RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("writer") String writer,
+        @RequestParam("category") String category, @RequestParam("lookup") int lookup, @RequestParam("todaylookup") int todaylookup){
+        mapper.insertItem(id, title, content, writer, category, lookup, todaylookup);
     }
 
     @DeleteMapping("/user/{id}")
