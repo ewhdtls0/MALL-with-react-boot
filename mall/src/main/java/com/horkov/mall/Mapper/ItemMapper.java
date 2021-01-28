@@ -26,4 +26,5 @@ public interface ItemMapper {
     @Delete("DELETE FROM items WHERE id=#{id}")
     int deleteItem(@Param("id") String id);
 
+
 }
