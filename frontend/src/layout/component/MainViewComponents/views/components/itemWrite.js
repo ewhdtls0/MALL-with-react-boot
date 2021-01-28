@@ -1,25 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import '../../../../css/itemWriter.css'
+import axios from 'axios';
+import $ from "jquery";
 
-function itemWriter() {
+
+function itemWrite(){
+
     return (
         <Route>
-            <nav>
-                <Link to="/"><Button variant="secondary">뒤로 가기</Button></Link>
-            </nav>
             <br/>
-            <form action="/check" method="POST">
+            <form action="/item" method="POST">
                 <table id="abc">
                     <tbody>
                         <tr>
                             <td>판매 제목</td>
-                            <td><input name="title" placeholder="제목"/></td>
+                            <td><input name="title" placeholder="제목" /></td>
                         </tr>
                         <tr>
                             <td>판매 내용</td>
-                            <td><input name="content" placeholder="내용"/></td>
+                            <td><input name="content" placeholder="내용" /></td>
                         </tr>
                         <tr>
                             <td>판매 글쓴이</td>
@@ -32,6 +33,7 @@ function itemWriter() {
             </form>
         </Route>
     )
+
 }
 
-export default itemWriter;
+export default itemWrite;

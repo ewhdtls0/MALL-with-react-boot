@@ -21,7 +21,7 @@ export default class SignUp extends Component {
     render() {
         return (
             <div>
-                <Button className="loginComponents" onClick={this.toggle}>{this.props.buttonLabel}</Button>
+                <button className="loginComponents" onClick={this.toggle}>{this.props.buttonLabel}</button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalBody>
                     <form>
