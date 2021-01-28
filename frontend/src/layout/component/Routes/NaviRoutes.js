@@ -19,7 +19,6 @@ export default() => (
         <Route path="/Electronics" component={Electronics}></Route>
         <Route path="/TodayHot" component={TodayHot}></Route>
 
-        <Route path="/ItemPages" component={ItemPages}></Route>
     </Router>
 
 )
