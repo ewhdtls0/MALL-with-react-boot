@@ -8,24 +8,18 @@ class CartCounter extends Component {
     }
 
     updateQuantity = (modifier) => {
-        // 최대 최소값 범위
         const minimum = this.props.min || 0;
-        const maximum = this.props.max || Number.POSITIVE_INFINITY; // 양수 무한대
+        const maximum = this.props.max || Number.POSITIVE_INFINITY;
 
-        // 업데이트된 수량의 값
         const quantity = this.state.quantity + modifier;
 
-        // 최대 최소값 예외처리
         if (quantity < minimum || maximum < quantity) {
             return;
         }
 
-        // state를 업데이트하고
         this.setState({
             quantity
         }, () => {
-            // 2번째 인수로 콜백을 넣을 수 있다
-            // setState가 완료된 시점에서 호출됨
             this.props.updateOrder({
                 name: this.props.name,
                 price: this.getPrice()

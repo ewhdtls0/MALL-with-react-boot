@@ -18,7 +18,7 @@ body {
     
 }
 .prd-temp>*{display: table-cell;vertical-align: middle;height: 80px;}
-.prd-img{height: 180px; width: 180px;}
+.prd-img{height: 180px; width: 550px;}
 .prd-quantity{padding: 8px 16px;}
 .prd-btn{
     padding: 8px 16px;
