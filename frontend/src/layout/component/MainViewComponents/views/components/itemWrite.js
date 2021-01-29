@@ -17,11 +17,7 @@ class itemWrite extends Component{
     handleSubmit(event){
         const { title, content, writer, category } = this.state;
         event.preventDefault();
-        alert(`title : ${title}
-        content: ${content}
-        writer: ${writer}
-        category: ${category}
-        `);
+        alert('등록되었습니다');
 
         axios.post('/item', {
             "title": title,
@@ -30,7 +26,7 @@ class itemWrite extends Component{
             "category": category,
         })
             .then((result) => {
-                console.log(result)
+                window.location = "/";
             })
             .catch((error) => {
                 console.log(title)
@@ -48,7 +44,7 @@ class itemWrite extends Component{
             <Router>
                 <br/>
                 <form onSubmit={this.handleSubmit}>
-                    <table id="abc">
+                    <table>
                         <tbody>
                             <tr>
                                 <td>분류</td>

@@ -3,7 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import testImage from '../../../../img/testImage.png';
 import '../../../../css/items.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import ItemPages from './ItemPages';
 
 const ItemViews = () => {
 
