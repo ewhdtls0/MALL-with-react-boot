@@ -7,7 +7,6 @@ import CartCounter from "./CartCounter";
 import "../../../../css/CartCounter.css";
 
 import logoImg from "../../../../img/logo.png";
-
 import testImg1 from "../../../../img/product1.jpg";
 import testImg2 from "../../../../img/product2.jpg";
 import testImg3 from "../../../../img/product3.jpg";
@@ -42,7 +41,7 @@ import testImg3 from "../../../../img/product3.jpg";
 //   width: "200px",
 // }
 
-class CartPages extends Component {
+class CartViews extends Component {
   _removeCartView = async function () {
     if (window.confirm("해당 상품을 장바구니에서 삭제하시겠습니까?")) {
     }
@@ -50,8 +49,8 @@ class CartPages extends Component {
 
   render() {
     return (
-      <div className="wrap">
-        <div>
+      <div>
+        <div className="wrap">
           <img className="logoImg" src={logoImg}></img>
           <div className="prd-title">
             <span className="prd-img">이미지</span>
@@ -71,7 +70,7 @@ class CartPages extends Component {
           <CartCounter
             seq={2}
             name="시계"
-            price={3000}
+            price={2000}
             url={testImg2}
             max={10}
             updateOrder={this.props.updateOrder}
@@ -79,20 +78,20 @@ class CartPages extends Component {
           <CartCounter
             seq={3}
             name="가방"
-            price={3000}
+            price={1000}
             url={testImg3}
             max={10}
             updateOrder={this.props.updateOrder}
           />
           <br></br>
-          <div className="total-all">총 계 : {this.props.orderTotal}</div>
         </div>
+        <div className="total-all">총 계 : {this.props.orderTotal}</div>
       </div>
     );
   }
 }
 
-export default CartPages;
+export default CartViews;
 
 // <h3>장바구니</h3>
 // <div style={Cart_Width100}>

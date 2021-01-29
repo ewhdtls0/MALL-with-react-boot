@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import CartViews from "./components/CartViews";
-import { numberWithCommas } from "./components/CartUtil";
+import { numberWithCommas } from "./components/CartUtil.js";
+import '../../../css/CartCounter.css'
 
 const Wrapper = styled.div`
   height: 1020px;
@@ -34,7 +35,7 @@ class Cart extends Component {
 
     this.setState({
       order,
-      orderTotal,
+      orderTotal
     })
   }
 
@@ -43,7 +44,8 @@ class Cart extends Component {
       <Wrapper>
         <CartViews
           orderTotal={numberWithCommas(this.state.orderTotal)}
-          updateOrder={this.updateOrder} />
+          updateOrder={this.updateOrder}
+        />
       </Wrapper>
     );
   }
