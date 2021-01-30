@@ -1,13 +1,17 @@
 package com.horkov.mall.Controller;
 
+import java.util.List;
+
 import com.horkov.mall.Mapper.ItemMapper;
 import com.horkov.mall.Model.Item;
 
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,18 +24,23 @@ public class ItemController {
     }
 
     @GetMapping("/item/{id}")
-    public Item getItem(@PathVariable("id") String id){
+    public Item getItem(@PathVariable("id") int id){
         return mapper.getItem(id);
     }
 
-    @PostMapping("/item/{id}")
-    public void postItem(@PathVariable("id") String id, @RequestParam("title") String title, @RequestParam("content") String content, 
-        @RequestParam("writer") String writer, @RequestParam("category") String category, @RequestParam("lookup") int lookup, @RequestParam("todaylookup") int todaylookup){
-        mapper.insertItem(id, title, content, writer, category, lookup, todaylookup);
+    @GetMapping("/item/all")
+    public List<Item> getItemList(){
+        return mapper.getItemList();
+    }
+
+    @CrossOrigin("*")
+    @PostMapping("/item")
+    public void postItem(@RequestBody Item item){
+        mapper.insertItem(item.getTitle(), item.getContent(), item.getWriter(), item.getCategory());
     }
 
     @DeleteMapping("/item/{id}")
-    public void deleteItem(@PathVariable("id") String id){
+    public void deleteItem(@PathVariable("id") int id){
         mapper.deleteItem(id);
     }
 }

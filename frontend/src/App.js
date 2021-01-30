@@ -3,7 +3,6 @@ import Header from './layout/Header';
 import Grid from '@material-ui/core/Grid';
 import NaviRoutes from './layout/component/Routes/NaviRoutes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Enroll from './layout/component/MainViewComponents/views/components/itemEroll';
 
 function App(){
     return(
@@ -16,7 +15,6 @@ function App(){
           </Grid>  
           <Grid item xs={2}></Grid> 
         </Grid>
-        <Enroll/>
       </div>
     );
 }
