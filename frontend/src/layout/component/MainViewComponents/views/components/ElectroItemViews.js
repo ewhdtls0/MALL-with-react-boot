@@ -29,7 +29,7 @@ const ElectroItemViews = () => {
             count++;
             rows.push(
                 <Grid item xs={3}>
-                    <Link to={`/ItemPages?id=${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
+                    <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
                         <div className="imgWrapper">
                             <img src={testImage} width="80%" height="60%"></img>
                         </div>
