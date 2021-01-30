@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import horkov from './img/logo.png';
 import SearchBox from './component/HeaderComponents/SearchBox.js';
 import SearchIcon from './component/HeaderComponents/SearchIcon.js';
-
 import LoginBox from './component/HeaderComponents/LoginBox.js';
 import './css/Header.css';
 
