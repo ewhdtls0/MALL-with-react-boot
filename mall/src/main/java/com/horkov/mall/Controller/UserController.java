@@ -24,9 +24,10 @@ public class UserController {
         this.mapper = mapper;
     }
 
-    @GetMapping("/user/{userID}")
-    public User getUser(@PathVariable("userID") String userID){
-        return mapper.getUser(userID);
+    @CrossOrigin("*")
+    @PostMapping("/login")
+    public User getUser(@RequestBody User user){
+        return mapper.getUser(user.getuserID());
     }
 
     @GetMapping("/user/all")
