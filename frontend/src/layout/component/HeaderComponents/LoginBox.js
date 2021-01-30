@@ -26,7 +26,11 @@ const LoginBox = () => {
                     </a>
                 </Grid>
                 <Grid item xs={6}>
-                    <a className="CartBox" href="/Cart"><div className="NoneBorder"><img src={Basket} width="30%" height="50%"></img></div></a>
+                    <a className="CartBox" href="/Cart">
+                        <div className="NoneBorder">
+                            <img src={Basket} width="30%" height="50%"></img>
+                        </div>
+                    </a>
                 </Grid>
             </Grid>
         </div>

@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 import CartViews from "./components/CartViews";
 import { numberWithCommas } from "./components/CartUtil.js";
-import '../../../css/CartCounter.css'
 
 const Wrapper = styled.div`
   height: 1020px;
@@ -21,14 +20,15 @@ const Wrapper = styled.div`
 class Cart extends Component {
   state = {
     order: {},
-    orderTotal: 0,
-  };
-
+    orderTotal: 0
+  }
+  
   updateOrder = ({ name, price }) => {
+
     var order = this.state.order;
     order[name] = price;
 
-    var orderTotal = 0;
+    var orderTotal = 0; 
     for (var key in order) {
       orderTotal += order[key];
     }
@@ -44,8 +44,7 @@ class Cart extends Component {
       <Wrapper>
         <CartViews
           orderTotal={numberWithCommas(this.state.orderTotal)}
-          updateOrder={this.updateOrder}
-        />
+          updateOrder={this.updateOrder} />
       </Wrapper>
     );
   }
