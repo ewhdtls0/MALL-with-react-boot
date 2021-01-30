@@ -18,7 +18,7 @@ export default() => (
         <Route path="/Clothes" component={Clothes}></Route>
         <Route path="/Electronics" component={Electronics}></Route>
         <Route path="/TodayHot" component={TodayHot}></Route>
-
+        <Route path="/ItemPages/:abc" component={ItemPages}></Route>
     </Router>
 
 )

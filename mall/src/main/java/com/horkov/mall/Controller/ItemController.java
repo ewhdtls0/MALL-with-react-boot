@@ -25,13 +25,13 @@ public class ItemController {
         return mapper.getItem(id);
     }
 
-    @PostMapping("/user/{id}")
+    @PostMapping("/item/{id}")
     public void postItem(@PathVariable("id") String id, @RequestParam("title") String title, @RequestParam("content") String content, @RequestParam("writer") String writer,
         @RequestParam("category") String category, @RequestParam("lookup") int lookup, @RequestParam("todaylookup") int todaylookup){
         mapper.insertItem(id, title, content, writer, category, lookup, todaylookup);
     }
 
-    @DeleteMapping("/user/{id}")
+    @DeleteMapping("/item/{id}")
     public void deleteItem(@PathVariable("id") String id){
         mapper.deleteItem(id);
     }

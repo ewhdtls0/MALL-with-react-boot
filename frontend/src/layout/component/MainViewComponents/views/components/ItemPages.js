@@ -23,6 +23,16 @@ const Rule = ({ color }) => (
 );
 
 const ItemPages = ({match}) => {
+  console.log(match.params);
+  const [a, setA] = useState([]);
+    useEffect(() => {
+        fetch("/item/")
+            .then((response) => response.json())
+            .then((a) => {
+            setA(a)
+            })
+    }, [])
+
   return (
     <Wrapper>
         <h5>제목</h5>

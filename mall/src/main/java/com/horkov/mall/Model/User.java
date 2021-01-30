@@ -12,6 +12,7 @@ public class User {
     private String userPH;
     private Date created;
     private Date modified;
+    private int is_deleted;
 
     public String getuserID(){
         return userID;
