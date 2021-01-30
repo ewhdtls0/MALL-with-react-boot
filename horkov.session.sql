@@ -1,2 +1,1 @@
-alter table items
-modify column is_deleted int default '0'
+select * from items

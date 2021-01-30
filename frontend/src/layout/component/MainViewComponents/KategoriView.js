@@ -5,7 +5,12 @@ import { Grid } from "@material-ui/core";
 import ListItemText from "@material-ui/core/ListItemText";
 import ListItem from "@material-ui/core/ListItem";
 
-import ItemViews from '../MainViewComponents/views/components/ItemViews'
+import BestItemViews from '../MainViewComponents/views/components/BestItemViews'
+import ClothesItemViews from '../MainViewComponents/views/components/ClothesItemViews'
+import BooksItemViews from '../MainViewComponents/views/components/BooksItemViews'
+import ElectroItemViews from '../MainViewComponents/views/components/ElectroItemViews'
+import TodayItemViews from '../MainViewComponents/views/components/TodayItemViews'
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,9 +49,11 @@ const vertical_M = {
 }
 
 const obj ={
-  0 : <ItemViews />,
-  1 : <ItemViews />,
-
+  0 : <BestItemViews />,
+  1 : <ClothesItemViews />,
+  2 : <BooksItemViews />,
+  3 : <ElectroItemViews />,
+  4 : <TodayItemViews />,
 }
 class Body extends Component{
   state= {
