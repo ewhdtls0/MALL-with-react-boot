@@ -1,6 +1,7 @@
 import React, {Component, useState, useEffect} from 'react';
 import styled from 'styled-components';
-
+import queryString from "query-string";
+import axios from 'axios';
 const Wrapper = styled.div`
     height: 1020px;
     width: 100%;
@@ -14,6 +15,8 @@ const Wrapper = styled.div`
 
     padding: 20px;
 `;
+
+
 const Rule = ({ color }) => (
   <hr
     style={{
@@ -22,25 +25,34 @@ const Rule = ({ color }) => (
   />
 );
 
-const ItemPages = ({match}) => {
+const ItemPages = ({match, location}) => {
   console.log(match.params);
-  const [a, setA] = useState([]);
-    useEffect(() => {
-        fetch("/item/")
-            .then((response) => response.json())
-            .then((a) => {
-            setA(a)
-            })
-    }, [])
+  
+  const [isLoading, setLoading] = useState(true);
+  const [item, setItem] = useState();
+
+  useEffect(() => {
+      axios.get(`/item/${match.params.id}`)
+          .then(response => {
+              setItem(response.data);
+              setLoading(false);
+          });
+  }, []);
+
+  if (isLoading) {
+      return <div className="App">상품을 불러오는중...</div>;
+  }
+
 
   return (
     <Wrapper>
-        <h5>제목</h5>
-        <h5 className="float-right">작성자</h5>
-        <br/>
-        <Rule color="blue" />
-        <h5>내용</h5>
-        <img src="https://w.namu.la/s/52cdde81ca492970bebd8d422bd57f3a0733fec9a9051948d23776e01956265d7a1c10974012343675e4809474a9e2fd4ca6da10adb882eebecbd81f4576635a49e66b76d794a8fb882fadff3554698faa7f95ae6d49048fd775e9daaf61adee" width="400"></img>
+      <h5>{item.title}</h5>
+      
+      <h5 className="float-right">{item.writer}</h5>
+      
+      <br/>
+      <Rule color="blue" />
+      <h5>{item.content}</h5>
     </Wrapper>
   )
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
-import ItemViews from './components/ItemViews';
+import BestItemViews from './components/BestItemViews';
 const Wrapper = styled.div`
     height: 1020px;
     width: 100%;
@@ -18,7 +18,7 @@ class Best100 extends Component{
   render(){
     return(
       <Wrapper>
-        <ItemViews/>
+        <BestItemViews/>
       </Wrapper>
     );
   }

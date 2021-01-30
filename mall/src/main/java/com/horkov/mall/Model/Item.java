@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class Item {
     
-    private String id;
+    private int id;
     private String title;
     private String content;
     private String writer;
@@ -14,7 +14,8 @@ public class Item {
     private Date created;
     private int is_deleted;
 
-    public Item(String id, String title, String content)
+    public Item(int id, String title, String content, String writer, String category, int lookup, int todaylookup)
+
     {
         super();
         this.id = id;
@@ -26,11 +27,11 @@ public class Item {
         this.todaylookup = todaylookup;
     }
 
-    public String getId(){
+    public int getId(){
         return id;
     }
 
-    public void setId(String id){
+    public void setId(int id){
         this.id = id;
     }
 
