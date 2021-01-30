@@ -50,6 +50,7 @@ class itemWrite extends Component{
                                 <td>분류</td>
                                 <td>
                                     <select name="category" onChange={this.handleChange} value={this.state.category}>
+                                        <option value="">선택</option>
                                         <option value="clothes">의류</option>
                                         <option value="books">도서</option>
                                         <option value="electronics">전자제품</option>

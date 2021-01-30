@@ -27,7 +27,7 @@ const BooksItemViews = () => {
         {
             rows.push(
                 <Grid item xs={3}>
-                    <Link to={`/ItemPages`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
+                    <Link to={`/ItemPages?id=${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
                         <div className="imgWrapper">
                             <img src={testImage} width="80%" height="60%"></img>
                         </div>
