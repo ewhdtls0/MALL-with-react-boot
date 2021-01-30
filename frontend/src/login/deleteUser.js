@@ -24,8 +24,7 @@ export default class deleteUser extends Component {
     handleFormSubmit(e){
         e.preventDefault();
         let user = {
-            userID : this.state.userID,
-            userPW : this.state.userPW
+            userID : this.state.userID
         };
         console.log("delete info => "+ JSON.stringify(user));
         UserService.deleteUser(user).then(res => {
