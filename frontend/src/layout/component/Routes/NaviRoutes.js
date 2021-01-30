@@ -8,6 +8,7 @@ import Clothes from '../MainViewComponents/views/Clothes';
 import Electronics from '../MainViewComponents/views/Electronics';
 import TodayHot from '../MainViewComponents/views/TodayHot';
 import itemWriter from '../MainViewComponents/views/components/itemWrite';
+import ItemPages from '../MainViewComponents/views/components/ItemPages';
 
 export default() => (
     <Router>
@@ -20,6 +21,8 @@ export default() => (
         <Route path="/TodayHot" component={TodayHot}></Route>
 
         <Route path="/Write" component={itemWriter}></Route>
+
+        <Route path="/itemPages/:id" component={ItemPages}></Route>
     </Router>
 
 )
