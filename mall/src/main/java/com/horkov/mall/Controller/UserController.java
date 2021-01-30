@@ -5,11 +5,13 @@ import java.util.List;
 import com.horkov.mall.Mapper.UserMapper;
 import com.horkov.mall.Model.User;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,12 +34,13 @@ public class UserController {
         return mapper.getUserList();
     }
 
-    @PutMapping("/user/{userID}")
-    public void putUser(@PathVariable("userID") String userID, @RequestParam("userPW") String userPW, @RequestParam("userName") String userName, @RequestParam("userSex") String userSex, @RequestParam("userEmail") String userEmail, @RequestParam("userPH") String userPH){
-        mapper.insertUser(userID, userPW, userName, userSex, userEmail, userPH);
+    @CrossOrigin("*")
+    @PostMapping("/user")
+    public void putUser(@RequestBody User user){
+        mapper.insertUser(user.getuserID(), user.getuserPW(), user.getuserName(), user.getuserSex(), user.getuserEmail(), user.getuserPH());
     }
 
-    @PostMapping("/user/{userID}")
+    @PutMapping("/user/{userID}")
     public void changeUserPW(@PathVariable("userID") String userID, @RequestParam("userPW") String userPW){
         mapper.updateUserPW(userID, userPW);
     }

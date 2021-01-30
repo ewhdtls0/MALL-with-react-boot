@@ -3,7 +3,7 @@ package com.horkov.mall.Model;
 import java.util.Date;
 
 public class User {
-    
+
     private String userID;
     private String userPW;
     private String userName;
@@ -89,3 +89,4 @@ public class User {
     }
 
 }
+
