@@ -5,7 +5,6 @@ import java.util.List;
 import com.horkov.mall.Mapper.ItemMapper;
 import com.horkov.mall.Model.Item;
 
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

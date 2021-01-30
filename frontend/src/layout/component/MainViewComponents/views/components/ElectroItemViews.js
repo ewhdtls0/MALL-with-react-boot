@@ -5,7 +5,7 @@ import '../../../../css/items.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const ItemViews = () => {
+const ElectroItemViews = () => {
     const [isLoading, setLoading] = useState(true);
     const [items, setItems] = useState();
 
@@ -22,8 +22,12 @@ const ItemViews = () => {
     }
     
     var rows = [];
+    var count = 0;
     for(var i=0; i < items.length; i++){
-        rows.push(
+        if(items[i].category === "electronics")
+        {
+            count++;
+            rows.push(
                 <Grid item xs={3}>
                     <Link to={`/ItemPages`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
                         <div className="imgWrapper">
@@ -34,8 +38,8 @@ const ItemViews = () => {
                         </div>
                     </div></Link>
                 </Grid>
-        )
-
+         )
+        }
     }
 
     return(
@@ -50,4 +54,4 @@ const ItemViews = () => {
 
 }
 
-export default ItemViews;
+export default ElectroItemViews;
