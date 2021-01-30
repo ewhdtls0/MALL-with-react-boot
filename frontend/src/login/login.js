@@ -1,21 +1,47 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalBody } from 'reactstrap';
 import '../layout/css/loginParts.css';
+import UserService from './UserService'
+
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          modal: false
+          modal: false,
+
+          userID:'',
+          userPW:''
         };
     
         this.toggle = this.toggle.bind(this);
-      }
+        this.handleFormSubmit = this.handleFormSubmit.bind(this);
+        this.changeuserIDHandler = this.changeuserIDHandler.bind(this);
+        this.changeuserPWHandler = this.changeuserPWHandler.bind(this);
+    }
     
-      toggle() {
+    toggle() {
         this.setState(prevState => ({
-          modal: !prevState.modal
+            modal: !prevState.modal
         }));
-      }
+    }
+    changeuserIDHandler = (e) => {
+        this.setState({userID : e.target.value});
+    }
+    changeuserPWHandler = (e) => {
+        this.setState({userPW : e.target.value});
+    }
+
+    handleFormSubmit(e){
+        e.preventDefault();
+        let user = {
+            userID : this.state.userID,
+            userPW : this.state.userPW
+        };
+        console.log("login info => "+ JSON.stringify(user));
+        UserService.getUser(user).then(res => {
+            alert("login info : "+res.data.userID);
+        });
+    }
       
     render() {
         return (
@@ -23,18 +49,18 @@ export default class Login extends Component {
                 <button className="loginComponents" onClick={this.toggle}>{this.props.buttonLabel}</button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalBody>
-                    <form>
+                    <form onSubmit={this.handleFormSubmit}>
 
                     <h3>Log in</h3>
 
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="email" className="form-control" placeholder="Enter email" />
+                        <input type="text" className="form-control" placeholder="Enter email" value={this.state.userID} onChange={this.changeuserIDHandler}/>
                     </div>
 
                     <div className="form-group">
                         <label>Password</label>
-                        <input type="password" className="form-control" placeholder="Enter password" />
+                        <input type="password" className="form-control" placeholder="Enter password" value={this.state.userPW} onChange={this.changeuserPWHandler}/>
                     </div>
 
                     <div className="form-group">
