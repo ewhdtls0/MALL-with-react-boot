@@ -1,5 +1,7 @@
 package com.horkov.mall.Controller;
 
+import java.util.List;
+
 import com.horkov.mall.Mapper.ItemMapper;
 import com.horkov.mall.Model.Item;
 
@@ -24,6 +26,11 @@ public class ItemController {
     @GetMapping("/item/{id}")
     public Item getItem(@PathVariable("id") int id){
         return mapper.getItem(id);
+    }
+
+    @GetMapping("/item/all")
+    public List<Item> getItemList(){
+        return mapper.getItemList();
     }
 
     @CrossOrigin("*")
