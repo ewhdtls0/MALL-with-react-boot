@@ -24,8 +24,8 @@ public interface ItemMapper {
     @Insert("INSERT INTO items(title, content, writer, category) VALUES(#{title}, #{content}, #{writer}, #{category})")
     int insertItem(@Param("title") String title, @Param("content") String content, @Param("writer") String writer, @Param("category") String category);
 
-    @Update("UPDATE items SET title=#{title} content=#{content} WHERE id=#{id}")
-    int updateItem(@Param("id") int id, @Param("title") String title, @Param("content") String content);
+    @Update("UPDATE items SET lookup=#{lookup}, todaylookup=#{todaylookup} WHERE id=#{id}")
+    int updateItem(@Param("id") int id, @Param("lookup") int lookup, @Param("todaylookup") int todaylookup);
 
     @Delete("DELETE FROM items WHERE id=#{id}")
     int deleteItem(@Param("id") int id);
