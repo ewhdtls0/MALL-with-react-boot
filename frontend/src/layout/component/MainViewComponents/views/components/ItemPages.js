@@ -2,6 +2,8 @@ import React, {Component, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import queryString from "query-string";
 import axios from 'axios';
+import '../../../../css/itemPages.css';
+
 const Wrapper = styled.div`
     height: 1020px;
     width: 100%;
@@ -13,7 +15,7 @@ const Wrapper = styled.div`
     font-size: 25px;
     min-width: 1300px;
 
-    padding: 20px;
+    padding: 10px 60px;
 `;
 
 
@@ -43,16 +45,15 @@ const ItemPages = ({match, location}) => {
       return <div className="App">상품을 불러오는중...</div>;
   }
 
-
   return (
     <Wrapper>
-      <h5>{item.title}</h5>
-      
-      <h5 className="float-right">{item.writer}</h5>
-      
-      <br/>
-      <Rule color="blue" />
-      <h5>{item.content}</h5>
+      <div className="wrapper2">
+        <p className="writer">{item.writer}</p>
+        <p className="title"><b>{item.title}</b></p>
+        <Rule color="gray" />
+        <p className="content">{item.content}</p>
+        <img width="500px" src="https://w.namu.la/s/52cdde81ca492970bebd8d422bd57f3a0733fec9a9051948d23776e01956265d7a1c10974012343675e4809474a9e2fd4ca6da10adb882eebecbd81f4576635a49e66b76d794a8fb882fadff3554698faa7f95ae6d49048fd775e9daaf61adee"></img>
+      </div>
     </Wrapper>
   )
 }
