@@ -24,5 +24,4 @@ export default() => (
 
         <Route path="/itemPages/:id" component={ItemPages}></Route>
     </Router>
-
 )
