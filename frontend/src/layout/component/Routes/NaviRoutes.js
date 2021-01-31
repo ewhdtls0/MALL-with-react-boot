@@ -22,14 +22,10 @@ export default() => (
         <Route path="/Electronics" component={Electronics}></Route>
         <Route path="/TodayHot" component={TodayHot}></Route>
 
-<<<<<<< HEAD
         <Route path="/ItemPages" component={ItemPages}></Route>
-=======
         <Route path="/Write" component={itemWriter}></Route>
 
         <Route path="/itemPages/:id" component={ItemPages}></Route>
-    </Router>
->>>>>>> 786cf40c55f27783bf1c5891898e8d12e66b4ed7
 
         <Route path="/Cart" component={Cart}></Route>
     </Router>
