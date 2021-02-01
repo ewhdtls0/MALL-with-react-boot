@@ -18,8 +18,11 @@ public interface ItemMapper {
     @Select("SELECT * FROM items WHERE id=#{id}")
     Item getItem(@Param("id") int id);
 
-    @Select("SELECT * FROM items")
+    @Select("SELECT * FROM items ORDER BY lookup DESC")
     List<Item> getItemList();
+
+    @Select("SELECT * FROM items ORDER BY todaylookup DESC")
+    List<Item> getTodayList();
 
     @Insert("INSERT INTO items(title, content, writer, category) VALUES(#{title}, #{content}, #{writer}, #{category})")
     int insertItem(@Param("title") String title, @Param("content") String content, @Param("writer") String writer, @Param("category") String category);
