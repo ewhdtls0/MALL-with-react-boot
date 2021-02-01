@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItem from "@material-ui/core/ListItem";
+import { List, ListItem } from "@material-ui/core";
 
+import '../../css/KategoriView.css'
 import { BsFillGiftFill, BsBook, BsFillDisplayFill } from "react-icons/bs";
 import { GiClothes, GiHotSurface } from "react-icons/gi"
  
@@ -47,7 +47,8 @@ const vertical_M = {
   alignItems: 'center',
   justifyContent: 'center',
   height: '30px',
-  color: 'black'
+  color: 'black',
+  margin: '8px'
 
 }
 
@@ -73,11 +74,13 @@ class Body extends Component{
         <div style={Kate_width}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              <ListItem button onClick={ () => this.clickHandler(0)}><ListItemText style={vertical_M}><div style={vertical_M} ><BsFillGiftFill /></div><div>BEST 100</div></ListItemText></ListItem>
-              <ListItem button onClick={ () => this.clickHandler(1)}><ListItemText style={vertical_M}><div style={vertical_M} ><GiClothes /></div><div>의류</div></ListItemText></ListItem>
-              <ListItem button onClick={ () => this.clickHandler(2)}><ListItemText style={vertical_M}><div style={vertical_M} ><BsBook /></div><div>도서</div></ListItemText></ListItem>
-              <ListItem button onClick={ () => this.clickHandler(3)}><ListItemText style={vertical_M}><div style={vertical_M} ><BsFillDisplayFill /></div><div>전자제품</div></ListItemText></ListItem>
-              <ListItem button onClick={ () => this.clickHandler(4)}><ListItemText style={vertical_M}><div style={vertical_M} ><GiHotSurface /></div><div>TODAY HOT</div></ListItemText></ListItem>
+              <List className="listWrap">
+                <ListItem button onClick={ () => this.clickHandler(0)}><div style={vertical_M} ><BsFillGiftFill /> &nbsp; BEST 100</div></ListItem>
+                <ListItem button onClick={ () => this.clickHandler(1)}><div style={vertical_M} ><GiClothes /> &nbsp; 의류</div></ListItem>
+                <ListItem button onClick={ () => this.clickHandler(2)}><div style={vertical_M} ><BsBook /> &nbsp; 도서</div></ListItem>
+                <ListItem button onClick={ () => this.clickHandler(3)}><div style={vertical_M} ><BsFillDisplayFill /> &nbsp; 전자제품</div></ListItem>
+                <ListItem button onClick={ () => this.clickHandler(4)}><div style={vertical_M} ><GiHotSurface /> &nbsp; TODAY HOT</div></ListItem>
+              </List>
             </Grid>
           </Grid>
         </div>
