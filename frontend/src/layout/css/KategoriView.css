@@ -1,11 +1,13 @@
-.listWrap :hover {
-    border: 1px solid #6c757d;
+.listWrap :focus {
+    background: #18bfe9;
     color: "black";
     text-align: "center";
+
+    border:  1px solid#18bfe9;
+    border-radius: 3em;
 }
 
-.listWrap :focus {
-    background: #6c757d;
-    color: "black";
-    text-align: "center";
+.listWrap :hover {
+    border:  1px solid #6b6769;
+    border-radius: 3em;
 }

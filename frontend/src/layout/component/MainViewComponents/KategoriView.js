@@ -75,11 +75,11 @@ class Body extends Component{
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <List className="listWrap">
-                <ListItem button onClick={ () => this.clickHandler(0)}><div style={vertical_M} ><BsFillGiftFill /> &nbsp; BEST 100</div></ListItem>
-                <ListItem button onClick={ () => this.clickHandler(1)}><div style={vertical_M} ><GiClothes /> &nbsp; 의류</div></ListItem>
-                <ListItem button onClick={ () => this.clickHandler(2)}><div style={vertical_M} ><BsBook /> &nbsp; 도서</div></ListItem>
-                <ListItem button onClick={ () => this.clickHandler(3)}><div style={vertical_M} ><BsFillDisplayFill /> &nbsp; 전자제품</div></ListItem>
-                <ListItem button onClick={ () => this.clickHandler(4)}><div style={vertical_M} ><GiHotSurface /> &nbsp; TODAY HOT</div></ListItem>
+                <ListItem button onClick={ () => this.clickHandler(0)}><BsFillGiftFill /> &nbsp; BEST 100</ListItem>
+                <ListItem button onClick={ () => this.clickHandler(1)}><GiClothes /> &nbsp; 의류</ListItem>
+                <ListItem button onClick={ () => this.clickHandler(2)}><BsBook /> &nbsp; 도서</ListItem>
+                <ListItem button onClick={ () => this.clickHandler(3)}><BsFillDisplayFill /> &nbsp; 전자제품</ListItem>
+                <ListItem button onClick={ () => this.clickHandler(4)}><GiHotSurface /> &nbsp; TODAY HOT</ListItem>
               </List>
             </Grid>
           </Grid>
