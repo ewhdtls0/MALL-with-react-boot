@@ -1,9 +1,17 @@
 import React, { useEffect, Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import '../../../../css/itemWriter.css';
 import axios from 'axios';
 
+const Rule = ({ px }, { color }) => (
+    <hr
+      style={{
+        borderWidth: px,
+      }}
+    />
+);
 
 class itemWrite extends Component{
 
@@ -47,27 +55,39 @@ class itemWrite extends Component{
                     <table>
                         <tbody>
                             <tr>
-                                <td>분류</td>
-                                <td>
-                                    <select name="category" onChange={this.handleChange} value={this.state.category}>
-                                        <option value="">선택</option>
-                                        <option value="clothes">의류</option>
-                                        <option value="books">도서</option>
-                                        <option value="electronics">전자제품</option>
-                                    </select>
-                                </td>
+                                <label className="Nanum">분류</label>
+                                <Form.Control as="select" id="sell_category" name="category" onChange={this.handleChange} value={this.state.category} custom>
+                                    <option value="">선택</option>
+                                    <option value="clothes">의류</option>
+                                    <option value="books">도서</option>
+                                    <option value="electronics">전자제품</option>
+                                </Form.Control>
+                            </tr>
+                            
+                            <Rule px="3px" />
+                            <tr>
+                                <label for="sell_title" className="Nanum">판매 제목</label>
+                                <br />
+                                <label for="sell_title"><small>판매 상품의 제목을 입력해 주세요</small></label>
                             </tr>
                             <tr>
-                                <td>판매 제목</td>
-                                <td><input name="title" placeholder="제목" value={this.state.title} onChange={this.handleChange} /></td>
+                                <input name="title" value={this.state.title} onChange={this.handleChange} class="form-control" id="sell_title"/>
+                            </tr>
+                            <Rule px="3px" />
+                            <tr>
+                                <label for="sell_content" className="Nanum">판매 내용</label>
+                                <br />
+                                <label for="sell_content"><small>판매 상품에 대한 내용을 입력해 주세요</small></label>
                             </tr>
                             <tr>
-                                <td>판매 내용</td>
-                                <td><input name="content" placeholder="내용" value={this.state.content} onChange={this.handleChange} /></td>
+                                <input name="content" value={this.state.content} onChange={this.handleChange} class="form-control" id="sell_content"/>
                             </tr>
+                            <Rule px="3px" />
                             <tr>
-                                <td>판매 글쓴이</td>
-                                <td><input name="writer" placeholder="글쓴이" value={this.state.writer} onChange={this.handleChange} /></td>
+                                <label for="sell_writer" className="Jua">판매 글쓴이</label>
+                                <br />
+                                <label for="sell_writer"><small>판매하시는 분의 성함을 입력해주세요. 근데 여긴 입력이 아니고 자동처리?</small></label>
+                                <input name="writer" value={this.state.writer} onChange={this.handleChange} class="form-control" id="sell_writer"/>
                             </tr>
                         </tbody>
                     </table>
