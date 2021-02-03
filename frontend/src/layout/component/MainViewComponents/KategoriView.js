@@ -46,8 +46,6 @@ const vertical_M = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  contents_Size: '20px'
-
 }
 
 const obj ={
