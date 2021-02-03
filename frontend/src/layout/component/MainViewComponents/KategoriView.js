@@ -46,9 +46,7 @@ const vertical_M = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '30px',
-  color: 'black',
-  margin: '8px'
+  contents_Size: '20px'
 
 }
 
@@ -75,11 +73,11 @@ class Body extends Component{
           <Grid container spacing={1}>
             <Grid item xs={12}>
               <List className="listWrap">
-                <ListItem button onClick={ () => this.clickHandler(0)}><BsFillGiftFill /> &nbsp; BEST 100</ListItem>
-                <ListItem button onClick={ () => this.clickHandler(1)}><GiClothes /> &nbsp; 의류</ListItem>
-                <ListItem button onClick={ () => this.clickHandler(2)}><BsBook /> &nbsp; 도서</ListItem>
-                <ListItem button onClick={ () => this.clickHandler(3)}><BsFillDisplayFill /> &nbsp; 전자제품</ListItem>
-                <ListItem button onClick={ () => this.clickHandler(4)}><GiHotSurface /> &nbsp; TODAY HOT</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(0)}><BsFillGiftFill /> &nbsp; BEST 100</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(1)}><GiClothes /> &nbsp; 의류</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(2)}><BsBook /> &nbsp; 도서</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(3)}><BsFillDisplayFill /> &nbsp; 전자제품</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(4)}><GiHotSurface /> &nbsp; TODAY HOT</ListItem>
               </List>
             </Grid>
           </Grid>
