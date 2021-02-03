@@ -1,6 +1,7 @@
 import React, {Component, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+
 const Wrapper = styled.div`
     height: 1020px;
     width: 100%;
@@ -39,12 +40,15 @@ const ItemPages = ({match}) => {
                 "todaylookup": response.data.todaylookup + 1,
               }).then()
           });
+      axios.get(`/showimage/${match.params.id}`)
+          .then(response => {
+            console.log(response.data)
+          })
   }, []);
 
   if (isLoading) {
       return null;
   }
-
 
   return (
     <Wrapper>
@@ -55,6 +59,7 @@ const ItemPages = ({match}) => {
       <br/>
       <Rule color="blue" />
       <h5>{item.content}</h5>
+      <img src="이미지 받아와야 함" width="400px" height="200px"></img>
     </Wrapper>
   )
 }

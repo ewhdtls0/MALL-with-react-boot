@@ -3,8 +3,6 @@ import Header from './layout/Header';
 import Grid from '@material-ui/core/Grid';
 import NaviRoutes from './layout/component/Routes/NaviRoutes';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
-import Imagetest from './layout/component/MainViewComponents/views/components/imagetest';
-import Imageview from './layout/component/MainViewComponents/views/components/imageview';
 function App(){
     return(
       <div>
@@ -13,8 +11,6 @@ function App(){
           <Grid item xs={8}>
             <Header/>
             <NaviRoutes/>
-            <Imagetest/>
-            <Imageview/>
           </Grid>  
           <Grid item xs={2}></Grid> 
         </Grid>
