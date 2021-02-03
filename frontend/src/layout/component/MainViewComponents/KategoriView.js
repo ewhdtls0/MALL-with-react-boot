@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItem from "@material-ui/core/ListItem";
+import { List, ListItem } from "@material-ui/core";
 
+import '../../css/KategoriView.css'
+import { BsFillGiftFill, BsBook, BsFillDisplayFill } from "react-icons/bs";
+import { FaCalendarDay, FaCalendarWeek, FaCalendarAlt } from "react-icons/fa"
+import { GiClothes } from "react-icons/gi"
+ 
 import BestItemViews from '../MainViewComponents/views/components/BestItemViews'
 import ClothesItemViews from '../MainViewComponents/views/components/ClothesItemViews'
 import BooksItemViews from '../MainViewComponents/views/components/BooksItemViews'
@@ -40,12 +44,8 @@ const contents_Size = {
 const Infinite = require('react-infinite');
 
 const vertical_M = {
-  display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  height: '30px',
-  color: 'black'
-
 }
 
 const obj ={
@@ -70,15 +70,17 @@ class Body extends Component{
         <div style={Kate_width}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
-              <ListItem button onClick={ () => this.clickHandler(0)}><ListItemText style={vertical_M}>BEST100</ListItemText></ListItem>
-              <ListItem button onClick={ () => this.clickHandler(1)}><ListItemText style={vertical_M}>의류</ListItemText></ListItem>
-              <ListItem button onClick={ () => this.clickHandler(2)}><ListItemText style={vertical_M}>도서</ListItemText></ListItem>
-              <ListItem button onClick={ () => this.clickHandler(3)}><ListItemText style={vertical_M}>전자제품</ListItemText></ListItem>
-              <ListItem button onClick={ () => this.clickHandler(4)}><ListItemText style={vertical_M}>TODAY HOT</ListItemText></ListItem>
+              <List className="listWrap">
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(0)}><BsFillGiftFill /> &nbsp; BEST 100</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(1)}><GiClothes /> &nbsp; 의류</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(2)}><BsBook /> &nbsp; 도서</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(3)}><BsFillDisplayFill /> &nbsp; 전자제품</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(4)}><FaCalendarDay /> &nbsp; 오늘의 상품</ListItem>
+              </List>
             </Grid>
           </Grid>
         </div>
-        <div style={contents_Size}>
+        <div  className="Kategori_Item_Wrap" style={contents_Size}>
           <Infinite containerHeight={550} elementHeight={200}>
             {obj[this.state.activTab]}
           </Infinite>
