@@ -26,7 +26,6 @@ export default() => (
         <Route path="/Write" component={itemWriter}></Route>
 
         <Route path="/itemPages/:id" component={ItemPages}></Route>
-
         <Route path="/Cart" component={Cart}></Route>
     </Router>
 )
