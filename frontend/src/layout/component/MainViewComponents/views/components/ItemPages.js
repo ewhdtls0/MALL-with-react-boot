@@ -1,6 +1,5 @@
 import React, {Component, useState, useEffect} from 'react';
 import styled from 'styled-components';
-import queryString from "query-string";
 import axios from 'axios';
 import '../../../../css/itemPages.css';
 
@@ -27,9 +26,7 @@ const Rule = ({ color }) => (
   />
 );
 
-const ItemPages = ({match, location}) => {
-  console.log(match.params);
-  
+const ItemPages = ({match}) => {  
   const [isLoading, setLoading] = useState(true);
   const [item, setItem] = useState();
 
@@ -38,11 +35,20 @@ const ItemPages = ({match, location}) => {
           .then(response => {
               setItem(response.data);
               setLoading(false);
+              axios.put(`/item/${match.params.id}`, {
+                "id" : match.params.id,
+                "lookup": response.data.lookup + 1,
+                "todaylookup": response.data.todaylookup + 1,
+              }).then()
           });
+      axios.get(`/showimage/${match.params.id}`)
+          .then(response => {
+            console.log(response.data)
+          })
   }, []);
 
   if (isLoading) {
-      return <div className="App">상품을 불러오는중...</div>;
+      return null;
   }
 
   return (

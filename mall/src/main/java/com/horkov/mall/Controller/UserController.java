@@ -45,15 +45,17 @@ public class UserController {
     public void changeUserPW(@PathVariable("userID") String userID, @RequestParam("userPW") String userPW){
         mapper.updateUserPW(userID, userPW);
     }
-/*
-    @PostMapping("/user/{userID}")
-    public void postUser(@PathVariable("userID") String userID, @RequestParam("userName") String userName, @RequestParam("userSex") String userSex, @RequestParam("userEmail") String userEmail, @RequestParam("userPH") String userPH){
-        mapper.updateUserInfo(userID, userName, userSex, userEmail, userPH);
+
+    @CrossOrigin("*")
+    @PostMapping("/changeInfo")
+    public void changeUserInfo(@RequestBody User user){
+        mapper.updateUserInfo(user.getuserID(), user.getuserName(), user.getuserSex(), user.getuserEmail(), user.getuserPH());
     }
-*/
-    @DeleteMapping("/user/{userID}")
-    public void deleteUser(@PathVariable("userID") String userID){
-        mapper.deleteUser(userID);
+
+    @CrossOrigin("*")
+    @PostMapping("/delete")
+    public void deleteUser(@RequestBody User user){
+        mapper.deleteUser(user.getuserID());
     }
 
 }

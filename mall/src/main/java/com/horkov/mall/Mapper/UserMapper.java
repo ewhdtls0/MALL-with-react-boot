@@ -26,7 +26,7 @@ public interface UserMapper {
     @Update("UPDATE user SET userPW=#{userPW} WHERE userID=#{userID}")
     int updateUserPW(@Param("userID") String userID, @Param("userPW") String userPW);
 
-    @Update("UPDATE user SET userName=#{userName}, userSex=#{userSex}, userEmail=#{userEmail}, userPH=#{userPH} WHERE userID=#{userID}")
+    @Update("UPDATE user SET userName=#{userName}, userSex=#{userSex}, userEmail=#{userEmail}, userPH=#{userPH}, modified=now() WHERE userID=#{userID}")
     int updateUserInfo(@Param("userID") String userID, @Param("userName") String userName, @Param("userSex") String userSex, @Param("userEmail") String userEmail, @Param("userPH") String userPH);
 
     @Delete("DELETE FROM user WHERE userID=#{userID}")

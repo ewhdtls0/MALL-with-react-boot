@@ -17,16 +17,27 @@ class itemWrite extends Component{
 
     constructor(props){
         super(props);
-        this.state = { title: '', content: '', writer: '', category: ''};
+        this.state = { title: '', content: '', writer: '', category: '', file: null};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    fileUpload(file){
+        const url = '/upload';
+        const formData = new FormData();
+        formData.append('file', file)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        return axios.post(url, formData, config)
     }
 
     handleSubmit(event){
         const { title, content, writer, category } = this.state;
         event.preventDefault();
-        alert('등록되었습니다');
-
+        
         axios.post('/item', {
             "title": title,
             "content": content,
@@ -39,12 +50,28 @@ class itemWrite extends Component{
             .catch((error) => {
                 console.log(title)
             });
+        
+        setTimeout(()=> {
+            for(let i=0; i<this.state.length; i++){
+                event.preventDefault();
+                this.fileUpload(this.state.file[i]).then((response) => {
+                    console.log(response.data)
+                })
+            }
+        }, 1000)
+
+        alert('등록되었습니다');
     }
+
 
     handleChange(event){
         this.setState({
             [event.target.name] : event.target.value
         })
+    }
+
+    fileChange = (e) => {
+        this.setState({ file: e.target.files, length: e.target.files.length})
     }
 
     render(){
@@ -89,6 +116,7 @@ class itemWrite extends Component{
                                 <label for="sell_writer"><small>판매하시는 분의 성함을 입력해주세요. 근데 여긴 입력이 아니고 자동처리?</small></label>
                                 <input name="writer" value={this.state.writer} onChange={this.handleChange} class="form-control" id="sell_writer"/>
                             </tr>
+                            <input multiple="multiple" type="file" onChange={this.fileChange} name="file" />
                         </tbody>
                     </table>
                     <br/>
