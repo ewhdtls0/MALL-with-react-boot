@@ -6,7 +6,8 @@ import { List, ListItem } from "@material-ui/core";
 
 import '../../css/KategoriView.css'
 import { BsFillGiftFill, BsBook, BsFillDisplayFill } from "react-icons/bs";
-import { GiClothes, GiHotSurface } from "react-icons/gi"
+import { FaCalendarDay, FaCalendarWeek, FaCalendarAlt } from "react-icons/fa"
+import { GiClothes } from "react-icons/gi"
  
 import BestItemViews from '../MainViewComponents/views/components/BestItemViews'
 import ClothesItemViews from '../MainViewComponents/views/components/ClothesItemViews'
@@ -43,7 +44,6 @@ const contents_Size = {
 const Infinite = require('react-infinite');
 
 const vertical_M = {
-  display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
 }
@@ -75,12 +75,12 @@ class Body extends Component{
                 <ListItem style={vertical_M} button onClick={ () => this.clickHandler(1)}><GiClothes /> &nbsp; 의류</ListItem>
                 <ListItem style={vertical_M} button onClick={ () => this.clickHandler(2)}><BsBook /> &nbsp; 도서</ListItem>
                 <ListItem style={vertical_M} button onClick={ () => this.clickHandler(3)}><BsFillDisplayFill /> &nbsp; 전자제품</ListItem>
-                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(4)}><GiHotSurface /> &nbsp; TODAY HOT</ListItem>
+                <ListItem style={vertical_M} button onClick={ () => this.clickHandler(4)}><FaCalendarDay /> &nbsp; 오늘의 상품</ListItem>
               </List>
             </Grid>
           </Grid>
         </div>
-        <div style={contents_Size}>
+        <div  className="Kategori_Item_Wrap" style={contents_Size}>
           <Infinite containerHeight={550} elementHeight={200}>
             {obj[this.state.activTab]}
           </Infinite>

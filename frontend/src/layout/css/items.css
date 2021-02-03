@@ -37,6 +37,6 @@
     text-decoration: none;  
     border: 1px solid red;
     box-shadow: 1px 1px 20px red;
-    margin: -1px -1px -1px -1px;
+    /* margin: 0.5px 0.5px 0.5px 0.5px; */
     color: red;
 }
