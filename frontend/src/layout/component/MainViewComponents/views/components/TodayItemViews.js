@@ -10,7 +10,7 @@ const TodayItemViews = () => {
     const [items, setItems] = useState();
 
     useEffect(() => {
-        axios.get("/item/all")
+        axios.get("/item/today")
             .then(response => {
                 setItems(response.data);
                 setLoading(false);
