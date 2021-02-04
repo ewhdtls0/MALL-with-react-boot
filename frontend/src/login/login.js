@@ -1,16 +1,20 @@
 import React, { Component } from "react";
 import { Button, Modal, ModalBody } from 'reactstrap';
 import '../layout/css/loginParts.css';
+import AuthenticationService from './jwt/AuthenticationService'
 import UserService from './UserService'
 
 export default class Login extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          modal: false,
+            modal: false,
 
-          userID:'',
-          userPW:''
+            userID: localStorage.getItem("authenticatedUser") || '',
+            userPW: '',
+            token: localStorage.getItem("token") || '',
+            hasLoginFailed: false,
+            showSuccessMessage: false
         };
     
         this.toggle = this.toggle.bind(this);
@@ -38,9 +42,21 @@ export default class Login extends Component {
             userPW : this.state.userPW
         };
         console.log("login info => "+ JSON.stringify(user));
-        UserService.getUser(user).then(res => {
-            alert("login info : "+res.data.userID);
-        });
+
+        AuthenticationService
+        .executeJwtAuthenticationService(this.state.userID, this.state.userPW)
+        .then((response) => {
+            console.log(response)
+            this.setState({
+                token: response.data.token
+            });
+            AuthenticationService.registerSuccessfulLoginForJwt(this.state.userID,this.state.token)
+            alert("login token : "+response.data.token);
+            window.location.href = 'http://localhost:3000/';
+        }).catch( () =>{
+            this.setState({showSuccessMessage:false})
+            this.setState({hasLoginFailed:true})
+        })
     }
       
     render() {
