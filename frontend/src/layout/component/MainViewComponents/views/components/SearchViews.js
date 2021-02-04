@@ -5,13 +5,14 @@ import '../../../../css/items.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
-const BestItemViews = () => {
+const SearchViews = ({match}) => {
     const [isLoading, setLoading] = useState(true);
     const [items, setItems] = useState();
 
     useEffect(() => {
-        axios.get("/item/all")
+        axios.get(`/search/${match.params.search}`)
             .then(response => {
+                console.log(response);
                 setItems(response.data);
                 setLoading(false);
             });
@@ -23,6 +24,7 @@ const BestItemViews = () => {
     
     var rows = [];
     for(var i=0; i < items.length; i++){
+
         if(items.length < 4)
         {
             rows.push(
@@ -53,6 +55,7 @@ const BestItemViews = () => {
                 </Grid>
              )
         }
+
     }
 
     return(
@@ -67,4 +70,4 @@ const BestItemViews = () => {
 
 }
 
-export default BestItemViews;
+export default SearchViews;

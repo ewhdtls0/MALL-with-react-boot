@@ -9,7 +9,7 @@ import Electronics from '../MainViewComponents/views/Electronics';
 import TodayHot from '../MainViewComponents/views/TodayHot';
 import itemWriter from '../MainViewComponents/views/components/itemWrite';
 import ItemPages from '../MainViewComponents/views/components/ItemPages';
-
+import SearchViews from '../MainViewComponents/views/components/SearchViews';
 import Cart from '../HeaderComponents/views/Cart';
 
 export default() => (
@@ -24,7 +24,7 @@ export default() => (
 
         <Route path="/ItemPages" component={ItemPages}></Route>
         <Route path="/Write" component={itemWriter}></Route>
-
+        <Route path="/SearchViews/:search" component={SearchViews}></Route>
         <Route path="/itemPages/:id" component={ItemPages}></Route>
 
         <Route path="/Cart" component={Cart}></Route>

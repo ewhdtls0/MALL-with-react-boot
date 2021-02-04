@@ -4,7 +4,6 @@ import Grid from '@material-ui/core/Grid';
 
 import horkov from './img/logo.png';
 import SearchBox from './component/HeaderComponents/SearchBox.js';
-import SearchIcon from './component/HeaderComponents/SearchIcon.js';
 import LoginBox from './component/HeaderComponents/LoginBox.js';
 import './css/Header.css';
 
@@ -59,10 +58,7 @@ const Header = () => (
           </Grid>
           <Grid item xs={6}>
             <div container style={searchBar}>
-                <form>
-                    <SearchBox item xs={10} placeholder="Search ..."/>
-                    <SearchIcon item xs={2}/>
-                </form>
+                <SearchBox item xs={12}/>
             </div>
           </Grid>
           <Grid container spacing={1} item xs={3}>

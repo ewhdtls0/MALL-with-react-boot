@@ -22,21 +22,37 @@ const TodayItemViews = () => {
     }
     
     var rows = [];
-    var count = 0;
     for(var i=0; i < items.length; i++){
-        count++;
-        rows.push(
-            <Grid item xs={3}>
-                <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
-                    <div className="imgWrapper">
-                        <img src={testImage} width="80%" height="60%"></img>
-                    </div>
-                    <div className="cardWrapper">
-                        <p className="card">{items[i].title}</p>
-                    </div>
-                </div></Link>
-            </Grid>
-         )
+        if(items.length < 4)
+        {
+            rows.push(
+                <Grid item xs={24}>
+                    <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
+                        <div className="imgWrapper">
+                            <img src={testImage} width="80%" height="60%"></img>
+                        </div>
+                        <div className="cardWrapper">
+                            <p className="card">{items[i].title}</p>
+                        </div>
+                    </div></Link>
+                </Grid>
+            )
+
+        }
+        else{
+            rows.push(
+                <Grid item xs={3}>
+                    <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
+                        <div className="imgWrapper">
+                            <img src={testImage} width="80%" height="60%"></img>
+                        </div>
+                        <div className="cardWrapper">
+                            <p className="card">{items[i].title}</p>
+                        </div>
+                    </div></Link>
+                </Grid>
+             )
+        }
     }
 
     return(

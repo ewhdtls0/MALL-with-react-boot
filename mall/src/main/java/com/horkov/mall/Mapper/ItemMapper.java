@@ -24,6 +24,9 @@ public interface ItemMapper {
     @Select("SELECT * FROM items ORDER BY todaylookup DESC")
     List<Item> getTodayList();
 
+    @Select("SELECT * FROM items WHERE title LIKE CONCAT('%',#{search},'%') ")
+    List<Item> getSearchList(@Param("search") String search);
+
     @Insert("INSERT INTO items(title, content, writer, category) VALUES(#{title}, #{content}, #{writer}, #{category})")
     int insertItem(@Param("title") String title, @Param("content") String content, @Param("writer") String writer, @Param("category") String category);
 
