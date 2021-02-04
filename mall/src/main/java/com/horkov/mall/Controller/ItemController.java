@@ -19,23 +19,28 @@ public class ItemController {
 
     private ItemMapper mapper;
 
-    public ItemController(ItemMapper mapper){
+    public ItemController(ItemMapper mapper) {
         this.mapper = mapper;
     }
 
     @GetMapping("/item/{id}")
-    public Item getItem(@PathVariable("id") int id){
+    public Item getItem(@PathVariable("id") int id) {
         return mapper.getItem(id);
     }
 
     @GetMapping("/item/all")
-    public List<Item> getItemList(){
+    public List<Item> getItemList() {
         return mapper.getItemList();
     }
 
     @GetMapping("/item/today")
-    public List<Item> getTodayList(){
+    public List<Item> getTodayList() {
         return mapper.getTodayList();
+    }
+
+    @GetMapping("/search/{search}")
+    public List<Item> getSearchList(@PathVariable("search") String search) {
+        return mapper.getSearchList(search);
     }
 
     @PutMapping("/item/{id}")

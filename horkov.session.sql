@@ -1,1 +1,1 @@
-select * from image;
+select * from information_schema.EVENTS
