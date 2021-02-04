@@ -56,6 +56,9 @@ const ItemPages = ({match}) => {
     <Wrapper>
       <div className="wrapper2">
         <p className="writer">{item.writer}</p>
+        <div className="back">
+          <b className="title">{item.id}</b>
+        </div>
         <p className="title"><b>{item.title}</b></p>
         <Rule color="gray" />
         <p className="content">{item.content}</p>
