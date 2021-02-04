@@ -1,1 +1,1 @@
-select * from items;
+select * from image;
