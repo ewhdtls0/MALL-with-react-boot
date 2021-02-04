@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-const BOARD_API_BASE_URL = "http://localhost:8080/";
+const BOARD_API_BASE_URL = "http://localhost:3030/";
 
 class BoardService {
     getUser(user) {
-       return axios.post(BOARD_API_BASE_URL+'login', user);
+       return axios.post(BOARD_API_BASE_URL+'authenticate', user);
     }
 
     createUser(user) {

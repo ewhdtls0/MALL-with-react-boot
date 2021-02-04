@@ -10,6 +10,8 @@ import TodayHot from '../MainViewComponents/views/TodayHot';
 import itemWriter from '../MainViewComponents/views/components/itemWrite';
 import ItemPages from '../MainViewComponents/views/components/ItemPages';
 
+import Cart from '../HeaderComponents/views/Cart';
+
 export default() => (
     <Router>
         <Navi/>
@@ -20,9 +22,11 @@ export default() => (
         <Route path="/Electronics" component={Electronics}></Route>
         <Route path="/TodayHot" component={TodayHot}></Route>
 
+        <Route path="/ItemPages" component={ItemPages}></Route>
         <Route path="/Write" component={itemWriter}></Route>
 
         <Route path="/itemPages/:id" component={ItemPages}></Route>
-    </Router>
 
+        <Route path="/Cart" component={Cart}></Route>
+    </Router>
 )

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Modal, ModalBody } from 'reactstrap';
 import '../layout/css/loginParts.css';
 import UserService from './UserService'
+import AuthenticationService from './AuthenticationService'
 
 export default class Login extends Component {
     constructor(props) {
@@ -10,7 +11,10 @@ export default class Login extends Component {
           modal: false,
 
           userID:'',
-          userPW:''
+          userPW:'',
+          token: localStorage.getItem("token") || '',
+          hasLoginFailed: false,
+          showSuccessMessage: false
         };
     
         this.toggle = this.toggle.bind(this);
@@ -32,20 +36,26 @@ export default class Login extends Component {
     }
 
     handleFormSubmit(e){
-        e.preventDefault();
-        let user = {
-            userID : this.state.userID,
-            userPW : this.state.userPW
-        };
-        console.log("login info => "+ JSON.stringify(user));
-        UserService.getUser(user).then(res => {
-            alert("login info : "+res.data.userID);
-        });
+        AuthenticationService
+        .executeJwtAuthenticationService(this.state.userID, this.state.userPW)
+        .then((response) => {
+            console.log(response)
+            this.setState({
+                token: response.data.token
+            });
+            AuthenticationService.registerSuccessfulLoginForJwt(this.state.userID,this.state.token)
+            this.props.history.push(`/welcome/${this.state.userID}`)
+        }).catch( () =>{
+            this.setState({showSuccessMessage:false})
+            this.setState({hasLoginFailed:true})
+        })
     }
       
     render() {
         return (
             <div>
+                {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                {this.state.showSuccessMessage && <div>Login Sucessful</div>}
                 <button className="loginComponents" onClick={this.toggle}>{this.props.buttonLabel}</button>
                 <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                 <ModalBody>
@@ -55,7 +65,7 @@ export default class Login extends Component {
 
                     <div className="form-group">
                         <label>Email</label>
-                        <input type="text" className="form-control" placeholder="Enter email" value={this.state.userID} onChange={this.changeuserIDHandler}/>
+                        <input type="text" className="form-control" placeholder="Enter ID" value={this.state.userID} onChange={this.changeuserIDHandler}/>
                     </div>
 
                     <div className="form-group">
