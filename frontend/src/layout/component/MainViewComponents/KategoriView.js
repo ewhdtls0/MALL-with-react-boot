@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Grid } from "@material-ui/core";
 
 import { List, ListItem } from "@material-ui/core";
+import { ScrollView } from "react-native"
 
 import '../../css/KategoriView.css'
 import { BsFillGiftFill, BsBook, BsFillDisplayFill } from "react-icons/bs";
@@ -39,6 +40,10 @@ const Kate_width = {
 
 const contents_Size = {
   width: "75%",
+};
+
+const scroll_Size = {
+  height: "550px",
 };
 
 const Infinite = require('react-infinite');
@@ -81,9 +86,9 @@ class Body extends Component{
           </Grid>
         </div>
         <div  className="Kategori_Item_Wrap" style={contents_Size}>
-          <Infinite containerHeight={550} elementHeight={200}>
+          <ScrollView style={scroll_Size}>
             {obj[this.state.activTab]}
-          </Infinite>
+          </ScrollView>
         </div>
     </Wrapper>
     );
