@@ -78,7 +78,7 @@ class itemWrite extends Component{
         return (
             <Router>
                 <br/>
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit} enctype="multipart/form-data">
                     <table>
                         <tbody>
                             <tr>
@@ -90,7 +90,6 @@ class itemWrite extends Component{
                                     <option value="electronics">전자제품</option>
                                 </Form.Control>
                             </tr>
-                            
                             <Rule px="3px" />
                             <tr>
                                 <label for="sell_title" className="Nanum">판매 제목</label>
