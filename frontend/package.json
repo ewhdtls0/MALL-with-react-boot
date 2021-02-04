@@ -11,6 +11,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "cors": "^2.8.5",
+    "file-loader": "^6.2.0",
     "jquery": "^3.5.1",
     "open-color": "^1.8.0",
     "query-string": "^6.13.8",
@@ -27,6 +28,7 @@
     "react-virtualized": "^9.22.3",
     "reactstrap": "^8.9.0",
     "styled-components": "^5.2.1",
+    "url-loader": "^4.1.1",
     "web-vitals": "^0.2.4"
   },
   "proxy": "http://localhost:8080",
