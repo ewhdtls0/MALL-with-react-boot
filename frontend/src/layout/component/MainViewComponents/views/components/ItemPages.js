@@ -42,10 +42,6 @@ const ItemPages = ({match}) => {
                 "todaylookup": response.data.todaylookup + 1,
               }).then()
           });
-      axios.get(`/showimage/${match.params.id}`)
-          .then(response => {
-            console.log(response.data)
-          })
   }, []);
 
   if (isLoading) {
@@ -59,7 +55,7 @@ const ItemPages = ({match}) => {
         <p className="title"><b>{item.title}</b></p>
         <Rule color="gray" />
         <p className="content">{item.content}</p>
-        <img width="500px" src="https://w.namu.la/s/52cdde81ca492970bebd8d422bd57f3a0733fec9a9051948d23776e01956265d7a1c10974012343675e4809474a9e2fd4ca6da10adb882eebecbd81f4576635a49e66b76d794a8fb882fadff3554698faa7f95ae6d49048fd775e9daaf61adee"></img>
+        <img alt="" width="500px" src={`/showimage/${match.params.id}`}></img>
       </div>
     </Wrapper>
   )
