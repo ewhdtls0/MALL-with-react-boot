@@ -30,6 +30,7 @@ const Rule = ({ color }) => (
 const ItemPages = ({match}) => {  
   const [isLoading, setLoading] = useState(true);
   const [item, setItem] = useState();
+  const [count, setCount] = useState(0);
 
   useEffect(() => {
       axios.get(`/item/${match.params.id}`)
@@ -42,7 +43,16 @@ const ItemPages = ({match}) => {
                 "todaylookup": response.data.todaylookup + 1,
               }).then()
           });
+      axios.get(`/countimage/${match.params.id}`)
+          .then(response => {
+            setCount(response.data);
+          })
   }, []);
+  
+  for (var i = 0; i < count; i++) {
+    document.getElementById("imgdiv").innerHTML += "<img class='image' id='image-" + i + "' alt='' src='' />";
+    document.getElementById("image-" + i).src = `/showimage/${match.params.id}/` + i;
+  }
 
   if (isLoading) {
       return null;
@@ -58,7 +68,9 @@ const ItemPages = ({match}) => {
         <p className="title"><b>{item.title}</b></p>
         <Rule color="gray" />
         <p className="content">{item.content}</p>
-        <img alt="" width="500px" src={`/showimage/${match.params.id}`}></img>
+        <div id="imgdiv">
+
+        </div>
       </div>
     </Wrapper>
   )

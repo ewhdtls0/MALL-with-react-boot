@@ -16,6 +16,7 @@
 .content {
     font-family: 'Nanum Myeongjo', serif;
     font-size: 20px;
+    padding: 10px;
 }
 .back {
     width: 50px;
@@ -23,4 +24,9 @@
     margin: 0px 10px 0px -10px;
     border-right: 1px solid gray;
     text-align: center;
+}
+.image {
+    width: 400px;
+    padding: 10px;
+    display: block;
 }
