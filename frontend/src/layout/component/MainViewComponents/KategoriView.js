@@ -31,6 +31,7 @@ const Wrapper = styled.div`
   color: black;
 
   font-size: 2.5rem;
+  border: 1px solid black;
 `;
 
 const Kate_width = {

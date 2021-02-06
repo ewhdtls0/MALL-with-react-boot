@@ -1,1 +1,1 @@
-select * from information_schema.EVENTS
+select * from items

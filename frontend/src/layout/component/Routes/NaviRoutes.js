@@ -11,6 +11,8 @@ import itemWriter from '../MainViewComponents/views/components/itemWrite';
 import ItemPages from '../MainViewComponents/views/components/ItemPages';
 import SearchViews from '../MainViewComponents/views/components/SearchViews';
 import Cart from '../HeaderComponents/views/Cart';
+import ItemUpdate from '../MainViewComponents/views/components/ItemUpdate';
+import ItemDelete from '../MainViewComponents/views/components/ItemDelete';
 
 export default() => (
     <Router>
@@ -26,6 +28,8 @@ export default() => (
         <Route path="/Write" component={itemWriter}></Route>
         <Route path="/SearchViews/:search" component={SearchViews}></Route>
         <Route path="/itemPages/:id" component={ItemPages}></Route>
+        <Route path="/deleteItem/:id" component={ItemDelete}></Route>
+        <Route path="/updateItem/:id/:category/:title/:content" component={ItemUpdate}></Route>
 
         <Route path="/Cart" component={Cart}></Route>
     </Router>
