@@ -25,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.*;
+
 @RestController
 public class FileController {
 
@@ -34,14 +36,18 @@ public class FileController {
         this.mapper = mapper;
     }
 
-    @GetMapping(value = "/showimage/{item_id}", produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<Resource> viewImage(@PathVariable("item_id") int item_id) throws IOException{
-        final ByteArrayResource inputStream = new ByteArrayResource(Files.readAllBytes(Paths.get(mapper.getItem_id(item_id))));
+    @GetMapping(value = "/countimage/{item_id}")
+    public int countImage(@PathVariable("item_id") int item_id) {
+        return mapper.getCountImage_id(item_id);
+    }
+
+    @GetMapping(value = "/showimage/{item_id}/{num}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public ResponseEntity<Resource> viewImage(@PathVariable("item_id") int item_id, @PathVariable("num") int num) throws IOException{
+        final ByteArrayResource inputStream = new ByteArrayResource(Files.readAllBytes(Paths.get(mapper.getItemList_id(item_id).get(num))));
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .contentLength(inputStream.contentLength())
                 .body(inputStream);
-
     }
 
     @CrossOrigin("*")
