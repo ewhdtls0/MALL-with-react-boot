@@ -27,7 +27,7 @@ const Rule = ({ color }) => (
   />
 );
 
-const ItemPages = ({match}) => {  
+const ItemPages = ({match}) => {
   const [isLoading, setLoading] = useState(true);
   const [item, setItem] = useState();
   const [count, setCount] = useState(0);
@@ -44,14 +44,14 @@ const ItemPages = ({match}) => {
               }).then()
           });
       axios.get(`/countimage/${match.params.id}`)
-          .then(response => {
-            setCount(response.data);
-          })
+        .then(response => {
+          setCount(response.data);
+        })
   }, []);
-  
+
   for (var i = 0; i < count; i++) {
-    document.getElementById("imgdiv").innerHTML += "<img class='image' id='image-" + i + "' alt='' src='' />";
-    document.getElementById("image-" + i).src = `/showimage/${match.params.id}/` + i;
+    document.getElementsByClassName("imgdiv")[0].innerHTML += "<img class='image' alt='' src='' />";
+    document.getElementsByClassName("image")[i].src = `/showimage/${match.params.id}/` + i;
   }
 
   if (isLoading) {
@@ -68,7 +68,7 @@ const ItemPages = ({match}) => {
         <p className="title"><b>{item.title}</b></p>
         <Rule color="gray" />
         <p className="content">{item.content}</p>
-        <div id="imgdiv">
+        <div className="imgdiv">
 
         </div>
       </div>
