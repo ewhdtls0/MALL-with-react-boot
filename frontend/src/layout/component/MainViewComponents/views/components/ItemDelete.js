@@ -17,6 +17,8 @@ const ItemDelete = ({match}) => {
     useEffect(()=>{
         axios.delete(`/item/${match.params.id}`)
         .then(response => {
+            axios.delete(`/deleteimage/${match.params.id}`)
+                .then(result => {})
             setLoading(false);
             alert('삭제되었습니다.');
             window.href="/";

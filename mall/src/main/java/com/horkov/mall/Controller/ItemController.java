@@ -38,6 +38,11 @@ public class ItemController {
         return mapper.getTodayList();
     }
 
+    @GetMapping("/item/best3")
+    public List<Item> getBestList(){
+        return mapper.getBestList();
+    }
+
     @GetMapping("/search/{search}")
     public List<Item> getSearchList(@PathVariable("search") String search) {
         return mapper.getSearchList(search);

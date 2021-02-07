@@ -16,11 +16,23 @@ class ItemUpdate extends Component{
 
     constructor({props, match}){
         super(props);
-        this.state = { id: match.params.id, title: match.params.title, content: match.params.content, category: match.params.category};
+        this.state = { id: match.params.id, title: match.params.title, content: match.params.content, category: match.params.category, file: null};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    fileUpload(file){
+        const url = '/upload';
+        const formData = new FormData();
+        formData.append('file', file)
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        }
+        return axios.post(url, formData, config)
+    }
+    
     handleSubmit(event){
         const { id, title, content, category } = this.state;
         event.preventDefault();
@@ -38,9 +50,20 @@ class ItemUpdate extends Component{
                 console.log(title)
             });
 
+        setTimeout(()=> {
+            for(let i=0; i<this.state.length; i++){
+                event.preventDefault();
+                this.fileUpload(this.state.file[i]).then((response) => {
+                    console.log(response.data)
+                })
+            }
+        }, 1000)
         alert('수정되었습니다');
     }
 
+    fileChange = (e) => {
+        this.setState({ file: e.target.files, length: e.target.files.length})
+    }
 
     handleChange(event){
         this.setState({
@@ -83,6 +106,7 @@ class ItemUpdate extends Component{
                             <tr>
                                 <input name="content" value={this.state.content} onChange={this.handleChange} class="form-control" id="sell_content"/>
                             </tr>
+                            <input multiple="multiple" type="file" onChange={this.fileChange} name="file" />
                         </tbody>
                     </table>
                     <br/>

@@ -24,6 +24,9 @@ public interface ItemMapper {
     @Select("SELECT * FROM items ORDER BY todaylookup DESC")
     List<Item> getTodayList();
 
+    @Select("SELECT * FROM items ORDER BY lookup DESC LIMIT 3")
+    List<Item> getBestList();
+
     @Select("SELECT * FROM items WHERE title LIKE CONCAT('%',#{search},'%') ")
     List<Item> getSearchList(@Param("search") String search);
 
