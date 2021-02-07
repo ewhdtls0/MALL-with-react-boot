@@ -29,7 +29,7 @@ const Rule = ({ color }) => (
   />
 );
 
-const ItemPages = ({match}) => {
+const ItemPages = ({match}, {props}) => {
   const [isLoading, setLoading] = useState(true);
   const [item, setItem] = useState();
   const [count, setCount] = useState(0);
@@ -48,13 +48,13 @@ const ItemPages = ({match}) => {
       axios.get(`/countimage/${match.params.id}`)
         .then(response => {
           setCount(response.data);
-        })
-  }, []);
-
-  for (var i = 0; i < count; i++) {
-    document.getElementsByClassName("imgdiv")[0].innerHTML += "<img class='image' alt='' src='' />";
-    document.getElementsByClassName("image")[i].src = `/showimage/${match.params.id}/` + i;
-  }
+        }).then(() => {
+            for (var i = 0; i < count; i++) {
+              document.getElementsByClassName("imgdiv")[0].innerHTML += "<img class='image' alt='' src='' />";
+              document.getElementsByClassName("image")[i].src = `/showimage/${match.params.id}/` + i;
+            }
+          }, [])
+  }, [count]);
 
   if (isLoading) {
       return null;
