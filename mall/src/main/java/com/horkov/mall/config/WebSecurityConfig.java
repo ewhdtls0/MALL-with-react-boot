@@ -77,6 +77,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             "/css",
             "/login",
             "/layout/**",
+            "/updateItem/*",
             "**"
         );
     }

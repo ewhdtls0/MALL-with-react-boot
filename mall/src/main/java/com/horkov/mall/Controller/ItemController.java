@@ -48,6 +48,11 @@ public class ItemController {
         mapper.updateItem(item.getId(), item.getLookup(), item.getTodaylookup());
     }
 
+    @PutMapping("/item/write/{id}")
+    public void re_writeItem(@RequestBody Item item){
+        mapper.re_writeItem(item.getId(), item.getTitle(), item.getContent(), item.getCategory());
+    }
+
     @CrossOrigin("*")
     @PostMapping("/item")
     public void postItem(@RequestBody Item item){

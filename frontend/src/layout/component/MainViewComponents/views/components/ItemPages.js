@@ -1,8 +1,10 @@
 import React, {Component, useState, useEffect} from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import styled from 'styled-components';
 import axios from 'axios';
 import '../../../../css/itemPages.css';
-
+import ItemUpdate from './ItemUpdate';
 
 const Wrapper = styled.div`
     height: 1020px;
@@ -70,6 +72,10 @@ const ItemPages = ({match}) => {
         <p className="content">{item.content}</p>
         <div className="imgdiv">
 
+        </div>
+        <div>
+          <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/updateItem/${item.id}/${item.category}/${item.title}/${item.content}`}>수정</Link></button>
+          <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/deleteItem/${item.id}`}>삭제</Link></button>
         </div>
       </div>
     </Wrapper>
