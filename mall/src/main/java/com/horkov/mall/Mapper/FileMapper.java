@@ -1,7 +1,7 @@
 package com.horkov.mall.Mapper;
 
 import org.apache.ibatis.annotations.Mapper;
-
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
@@ -18,4 +18,7 @@ public interface FileMapper {
 
     @Select("SELECT src FROM image WHERE item_id=#{item_id}")
     List<String> getItemList_id(@Param("item_id") int item_id);
+
+    @Delete("DELETE FROM image WHERE item_id = #{item_id}")
+    int deleteImage(@Param("item_id") int item_id);
 }

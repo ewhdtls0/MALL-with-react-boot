@@ -29,7 +29,7 @@ const TodayItemViews = () => {
                 <Grid item xs={24}>
                     <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
                         <div className="imgWrapper">
-                            <img src={testImage} width="80%" height="60%"></img>
+                            <img alt="No IMAGE" src={`/showimage/${items[i].id}/0`} className="img"></img>
                         </div>
                         <div className="cardWrapper">
                             <p className="card">{items[i].title}</p>
@@ -44,7 +44,7 @@ const TodayItemViews = () => {
                 <Grid item xs={3}>
                     <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
                         <div className="imgWrapper">
-                            <img src={testImage} width="80%" height="60%"></img>
+                            <img alt="No IMAGE" src={`/showimage/${items[i].id}/0`} className="img"></img>
                         </div>
                         <div className="cardWrapper">
                             <p className="card">{items[i].title}</p>

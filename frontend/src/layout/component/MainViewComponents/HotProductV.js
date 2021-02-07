@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Grid from '@material-ui/core/Grid';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
+import axios from 'axios';
 
-import test1 from '../../img/product1.jpg';
-import test2 from '../../img/product2.jpg';
-import test3 from '../../img/product3.jpg';
+
 
 
 const Wrapper = styled.div`
@@ -33,32 +32,50 @@ const properties = {
     transitionDuration: 650,
 }
 
-const HotProductV = () => (
-    <Wrapper>
+const HotProductV = () => {
+    const [isLoading, setLoading] = useState(true);
+    const [items, setItems] = useState();
+
+    useEffect(() => {
+        axios.get("/item/best3")
+            .then(response => {
+                console.log(response.data);
+                setItems(response.data);
+                setLoading(false);
+            });
+    }, []);
+
+    if (isLoading) {
+        return <div className="App">상품을 불러오는중...</div>;
+    }
+
+    return(
+        <Wrapper>
             <Grid container spacing={1}>
                 <Grid item xs={12}>
                 <div className="slide-container">
                     <Slide {...properties}>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img style={fixImages} src={test1} width='100%' height='306px'/>
+                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[0].id}/0`} width='100%' height='306px'/>
                             </div>
-                         </div>
+                            </div>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img style={fixImages} src={test2} width='100%' height='306px'/>
-                             </div>
+                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[1].id}/0`} width='100%' height='306px'/>
+                            </div>
                         </div>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img style={fixImages} src={test3} width='100%' height='306px'/>
+                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[2].id}/0`} width='100%' height='306px'/>
                             </div>
                         </div>
                     </Slide>
                 </div>
                 </Grid>
             </Grid>
-    </Wrapper>
-)
+        </Wrapper>
+    )
 
+}
 export default HotProductV;
