@@ -10,17 +10,17 @@ import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
-import com.horkov.mall.Model.User;
+import com.horkov.mall.Model.Member;
 
 @Mapper
 public interface UserMapper {
     @Select("SELECT * FROM user WHERE userID=#{userID}")
-    User getUser(@Param("userID") String userID);
+    Member login(@Param("userID") String userID);
 
     @Select("SELECT * FROM user")
-    List<User> getUserList();
+    List<Member> getUserList();
 
-    @Insert("INSERT INTO user(userID, userPW, userName, userSex, userEmail, userPH) VALUES(#{userID}, MD5(#{userPW}), #{userName}, #{userSex}, #{userEmail}, #{userPH})")
+    @Insert("INSERT INTO user(userID, userPW, userName, userSex, userEmail, userPH) VALUES(#{userID}, #{userPW}, #{userName}, #{userSex}, #{userEmail}, #{userPH})")
     int insertUser(@Param("userID") String userID, @Param("userPW") String userPW, @Param("userName") String userName, @Param("userSex") String userSex, @Param("userEmail") String userEmail, @Param("userPH") String userPH);
 
     @Update("UPDATE user SET userPW=#{userPW} WHERE userID=#{userID}")
@@ -31,5 +31,11 @@ public interface UserMapper {
 
     @Delete("DELETE FROM user WHERE userID=#{userID}")
     int deleteUser(@Param("userID") String userID);
+
+    @Select("SELECT userID FROM user WHERE userID=#{userID}")
+    String getID(@Param("userID") String userID);
+
+    @Select("SELECT userPW FROM user WHERE userID=#{userID}")
+    String getPW(@Param("userID") String userID);
 
 }

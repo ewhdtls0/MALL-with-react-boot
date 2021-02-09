@@ -13,6 +13,7 @@ import SearchViews from '../MainViewComponents/views/components/SearchViews';
 import Cart from '../HeaderComponents/views/Cart';
 import ItemUpdate from '../MainViewComponents/views/components/ItemUpdate';
 import ItemDelete from '../MainViewComponents/views/components/ItemDelete';
+import MyPage from '../MainViewComponents/views/MyPage'
 
 export default() => (
     <Router>
@@ -30,6 +31,8 @@ export default() => (
         <Route path="/itemPages/:id" component={ItemPages}></Route>
         <Route path="/deleteItem/:id" component={ItemDelete}></Route>
         <Route path="/updateItem/:id/:category/:title/:content" component={ItemUpdate}></Route>
+
+        <Route path="/MyPage" component={MyPage}></Route>
 
         <Route path="/Cart" component={Cart}></Route>
     </Router>
