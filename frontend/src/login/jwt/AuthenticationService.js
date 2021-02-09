@@ -10,11 +10,6 @@ class AuthenticationService {
         })
     }
 
-    executeHelloService() {
-        console.log("===executeHelloService===")
-        return axios.get('http://localhost:8080/hello');        
-    }
-
     registerSuccessfulLoginForJwt(username, token) {
         console.log("===registerSuccessfulLoginForJwt===")
         localStorage.setItem('token', token);
