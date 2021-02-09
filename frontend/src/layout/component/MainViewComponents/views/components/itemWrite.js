@@ -4,6 +4,13 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../../../../css/itemWriter.css';
 import axios from 'axios';
+
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Enter') {
+      event.preventDefault();
+    };
+}, true);
+
 const Rule = ({ px }, { color }) => (
     <hr
       style={{
