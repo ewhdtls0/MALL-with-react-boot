@@ -1,5 +1,6 @@
 import React, {Component, useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import TextareaAutosize from 'react-textarea-autosize';
 
 import styled from 'styled-components';
 import axios from 'axios';
@@ -53,9 +54,9 @@ const ItemPages = ({match}, {props}) => {
               document.getElementsByClassName("imgdiv")[0].innerHTML += "<img class='image' alt='' src='' />";
               document.getElementsByClassName("image")[i].src = `/showimage/${match.params.id}/` + i;
             }
-          }, [])
+          }, []);
   }, [count]);
-
+  
   if (isLoading) {
       return null;
   }
@@ -69,7 +70,7 @@ const ItemPages = ({match}, {props}) => {
         </div>
         <p className="title"><b>{item.title}</b></p>
         <Rule color="gray" />
-        <p className="content">{item.content}</p>
+        <TextareaAutosize className="content" value={item.content} disabled/>
         <div className="imgdiv">
 
         </div>

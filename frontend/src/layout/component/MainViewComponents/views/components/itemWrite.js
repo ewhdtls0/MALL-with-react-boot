@@ -5,12 +5,6 @@ import Form from 'react-bootstrap/Form';
 import '../../../../css/itemWriter.css';
 import axios from 'axios';
 
-document.addEventListener('keydown', function(event) {
-    if (event.code === 'Enter') {
-      event.preventDefault();
-    };
-}, true);
-
 const Rule = ({ px }, { color }) => (
     <hr
       style={{
@@ -84,7 +78,7 @@ class itemWrite extends Component{
         return (
             <Router>
                 <br/>
-                <form onSubmit={this.handleSubmit} enctype="multipart/form-data">
+                <div enctype="multipart/form-data">
                     <table>
                         <tbody>
                             <tr>
@@ -112,21 +106,21 @@ class itemWrite extends Component{
                                 <label for="sell_content"><small>판매 상품에 대한 내용을 입력해 주세요</small></label>
                             </tr>
                             <tr>
-                                <input name="content" value={this.state.content} onChange={this.handleChange} class="form-control" id="sell_content"/>
+                                <textarea name="content" value={this.state.content} rows="10" cols="50" onChange={this.handleChange} class="form-control" id="sell_content" onKeyUp={this.EnterNewLine}></textarea>
                             </tr>
                             <Rule px="3px" />
                             <tr>
                                 <label for="sell_writer" className="Jua">판매 글쓴이</label>
                                 <br />
-                                <label for="sell_writer"><small>판매하시는 분의 성함을 입력해주세요. 근데 여긴 입력이 아니고 자동처리?</small></label>
+                                <label for="sell_writer"><small>판매하시는 분의 성함을 입력해주세요</small></label>
                                 <input name="writer" value={this.state.writer} onChange={this.handleChange} class="form-control" id="sell_writer"/>
                             </tr>
                             <input multiple="multiple" type="file" onChange={this.fileChange} name="file" />
                         </tbody>
                     </table>
                     <br/>
-                    <Button type="submit" variant="secondary">판매 등록</Button>
-                </form>
+                    <Button type="submit" variant="secondary" onClick={this.handleSubmit}>판매 등록</Button>
+                </div>
                 
             </Router>
         )
