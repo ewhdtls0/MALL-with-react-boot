@@ -2,7 +2,7 @@ package com.horkov.mall.Model;
 
 import java.util.Date;
 
-public class User {
+public class Member {
 
     private String userID;
     private String userPW;
@@ -12,9 +12,9 @@ public class User {
     private String userPH;
     private Date created;
     private Date modified;
-    private int is_deleted;
+    private String role;
 
-    public User(String userID, String userPW, String userName, String userSex, String userEmail, String userPH)
+    public Member(String userID, String userPW, String userName, String userSex, String userEmail, String userPH, String role)
     {
         super();
         this.userID = userID;
@@ -23,6 +23,7 @@ public class User {
         this.userSex = userSex;
         this.userEmail = userEmail;
         this.userPH = userPH;
+        this.role = role;
     }
 
     public String getuserID(){
@@ -87,6 +88,14 @@ public class User {
 
     public void setModified(Date modified){
         this.modified = modified;
+    }
+
+    public String getrole(){
+        return role;
+    }
+
+    public void setrole(String role){
+        this.role = role;
     }
 
 }

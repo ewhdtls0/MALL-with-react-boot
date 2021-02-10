@@ -2,22 +2,33 @@ package com.horkov.mall.Service;
 
 import java.util.ArrayList;
 
+import com.horkov.mall.Mapper.UserMapper;
+import com.horkov.mall.config.PasswordEncoding;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
+    @Autowired
+    UserMapper mapper;
+    
+    PasswordEncoding passwordEncoding = new PasswordEncoding();
+
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        if ("horkov".equals(username)) {
-            return new User("horkov", "$2a$10$7OTPWNrGgDuzlnLo8fr2.eAm89VzWdbgSAx1ypOkL3Zi0cNEV6ECm",
-                new ArrayList<>());
+    public UserDetails loadUserByUsername(String userID) throws UsernameNotFoundException {
+        if (mapper.getID(userID).equals(userID)) {
+            String temp = passwordEncoding.encode(mapper.getPW(userID));
+            return new User(userID, temp , new ArrayList<>());
         } else {
-            throw new UsernameNotFoundException("User not found with username: " + username);
+            throw new UsernameNotFoundException("User not found with username: " + userID);
         }
     }
 }

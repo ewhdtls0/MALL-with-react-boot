@@ -14,7 +14,8 @@ export default class SignUp extends Component {
             userName:'',
             userSex:'',
             userEmail:'',
-            userPH:''
+            userPH:'',
+            role:''
         };
     
         this.toggle = this.toggle.bind(this);
@@ -25,6 +26,7 @@ export default class SignUp extends Component {
         this.changeuserSexHandler = this.changeuserSexHandler.bind(this);
         this.changeuserEmailHandler = this.changeuserEmailHandler.bind(this);
         this.changeuserPHHandler = this.changeuserPHHandler.bind(this);
+        this.changeRoleHandler = this.changeRoleHandler.bind(this);
     }
 
     changeuserIDHandler = (e) => {
@@ -44,6 +46,9 @@ export default class SignUp extends Component {
     }
     changeuserPHHandler = (e) => {
         this.setState({userPH : e.target.value});
+    }
+    changeRoleHandler = (e) => {
+        this.setState({Role : e.target.value});
     }
     
     toggle() {
@@ -94,10 +99,10 @@ export default class SignUp extends Component {
                         <div className="form-group">
                             <label>Gender</label><br/>
                             <label className="col-6 text-center">
-                                <input type="radio" className="form-control" name ="userSex" value="Man" value="Man" onChange={this.changeuserSexHandler} /><p>Man</p>
+                                <input type="radio" className="form-control" name ="userSex" value="Man" onChange={this.changeuserSexHandler} /><p>Man</p>
                             </label>
                             <label className="col-6 text-center">
-                                <input type="radio" className="form-control" name ="userSex" value="Woman" value="Woman" onChange={this.changeuserSexHandler} /><p>Woman</p>
+                                <input type="radio" className="form-control" name ="userSex" value="Woman" onChange={this.changeuserSexHandler} /><p>Woman</p>
                             </label>
                     </div>
                     <div className="form-group">
@@ -108,6 +113,16 @@ export default class SignUp extends Component {
                     <div className="form-group">
                         <label>Phone Number</label>
                         <input type="text" className="form-control" name ="userPH" placeholder="네 전화번호" value={this.state.userPH} onChange={this.changeuserPHHandler} />
+                    </div>
+
+                    <div className="form-group">
+                            <label>To do</label><br/>
+                            <label className="col-6 text-center">
+                                <input type="radio" className="form-control" name ="role" value="User" onChange={this.changeRoleHandler} /><p>User</p>
+                            </label>
+                            <label className="col-6 text-center">
+                                <input type="radio" className="form-control" name ="role" value="Seller" onChange={this.changeRoleHandler} /><p>Seller</p>
+                            </label>
                     </div>
 
                     <button type="submit" className="btn btn-dark btn-lg btn-block">Register</button>
