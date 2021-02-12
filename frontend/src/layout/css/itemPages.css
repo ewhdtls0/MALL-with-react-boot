@@ -27,8 +27,6 @@
     border-right: 1px solid gray;
     text-align: center;
 }
-.image {
-    width: 400px;
-    padding: 10px;
-    display: block;
+.carousel-control-prev-icon {
+    color: black;
 }

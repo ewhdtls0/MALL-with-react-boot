@@ -1,6 +1,7 @@
 import React, {Component, useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
+import Carousel from 'react-bootstrap/Carousel'
 
 import styled from 'styled-components';
 import axios from 'axios';
@@ -34,6 +35,7 @@ const ItemPages = ({match}, {props}) => {
   const [isLoading, setLoading] = useState(true);
   const [item, setItem] = useState();
   const [count, setCount] = useState(0);
+  const [abc, setAbc] = useState([]);
 
   useEffect(() => {
       axios.get(`/item/${match.params.id}`)
@@ -49,17 +51,33 @@ const ItemPages = ({match}, {props}) => {
       axios.get(`/countimage/${match.params.id}`)
         .then(response => {
           setCount(response.data);
-        }).then(() => {
-            for (var i = 0; i < count; i++) {
-              document.getElementsByClassName("imgdiv")[0].innerHTML += "<img class='image' alt='' src='' />";
-              document.getElementsByClassName("image")[i].src = `/showimage/${match.params.id}/` + i;
-            }
-          }, []);
-  }, [count]);
-  
+          var a = [];
+          for (var i = 0; i < count; i++) {
+            a.push(i);
+          }
+          setAbc(a);
+        })
+  }, [count])
+
   if (isLoading) {
       return null;
   }
+
+  const imagesliderItem = abc.map((a) =>
+    <Carousel.Item>
+      <img
+        className="d-block"
+        src={`/showimage/${match.params.id}/${a}`}
+        style={{display: "block", margin: "0px auto"}}
+      />
+    </Carousel.Item>
+  )
+
+  const imgslider = (
+    <Carousel fade={true} wrap={false}>
+        {imagesliderItem}
+    </Carousel>
+  )
 
   return (
     <Wrapper>
@@ -70,10 +88,8 @@ const ItemPages = ({match}, {props}) => {
         </div>
         <p className="title"><b>{item.title}</b></p>
         <Rule color="gray" />
-        <TextareaAutosize className="content" value={item.content} disabled/>
-        <div className="imgdiv">
-
-        </div>
+        <TextareaAutosize cols="110" className="content" value={item.content} disabled/>
+        {imgslider}
         <div>
           <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/updateItem/${item.id}/${item.category}/${item.title}/${item.content}`}>수정</Link></button>
           <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/deleteItem/${item.id}`}>삭제</Link></button>
