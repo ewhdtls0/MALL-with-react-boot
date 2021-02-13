@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {Component, useState, useEffect} from 'react';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import styled from 'styled-components';
-import oc from 'open-color';  
-import HotProductV from '../../MainViewComponents/HotProductV';
-import KategoriV from '../../MainViewComponents/KategoriView'
+import axios from 'axios';
+
+import AuthenticationService from '../../../../login/jwt/AuthenticationService'
 
 const Wrapper = styled.div`
     height: 1020px;
@@ -10,18 +12,54 @@ const Wrapper = styled.div`
     top: 60px;
     z-index: 5;
 
-    color: white;
-    
-    font-size: 2.5rem;
+    color: black;
+    border-top: 3px solid black;
+    font-size: 25px;
     min-width: 1300px;
+
+    padding: 10px 60px;
 `;
 
 
-const MyPage = () => (
+const Rule = ({ color }) => (
+  <hr
+    style={{
+      borderColor: color,
+    }}
+  />
+);
+
+const logined_user = AuthenticationService.getLoggedInUserName();
+
+const MyPage = ({match}, {props}) => {
+    const [isLoading, setLoading] = useState(true);
+    const [userInfo, setUserInfo] = useState();
+
+  useEffect(() => {
+      axios.get(`/user/${logined_user}`)
+          .then(response => {
+            setUserInfo(response.data);
+            setLoading(false);
+          });
+  });
+
+  if (isLoading) {
+      return null;
+  }
+
+  return (
     <Wrapper>
-        <HotProductV/>
-        <KategoriV/>
+      <div className="wrapper2">
+        <p className="userID">로그인 ID : {userInfo.userID}</p>
+        <p className="userID">이름 : {userInfo.userName}</p>
+        <p className="userID">성별 : {userInfo.userSex}</p>
+        <p className="userID">E-mail : {userInfo.userEmail}</p>
+        <p className="userID">Phone : {userInfo.userPH}</p>
+        <p className="userID">가입날짜 : {userInfo.created}</p>
+        <p className="userID">수정날짜 : {userInfo.modified}</p>
+      </div>
     </Wrapper>
-)
+  )
+}
 
 export default MyPage;
