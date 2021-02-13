@@ -14,6 +14,7 @@ import Cart from '../HeaderComponents/views/Cart';
 import ItemUpdate from '../MainViewComponents/views/components/ItemUpdate';
 import ItemDelete from '../MainViewComponents/views/components/ItemDelete';
 import MyPage from '../MainViewComponents/views/MyPage'
+import ItemBoxup from '../MainViewComponents/views/components/ItemBoxup';
 
 export default() => (
     <Router>
@@ -30,6 +31,7 @@ export default() => (
         <Route path="/SearchViews/:search" component={SearchViews}></Route>
         <Route path="/itemPages/:id" component={ItemPages}></Route>
         <Route path="/deleteItem/:id" component={ItemDelete}></Route>
+        <Route path="/basket/:id/:userID" component={ItemBoxup}></Route>
         <Route path="/updateItem/:id/:category/:title/:content" component={ItemUpdate}></Route>
 
         <Route path="/MyPage" component={MyPage}></Route>

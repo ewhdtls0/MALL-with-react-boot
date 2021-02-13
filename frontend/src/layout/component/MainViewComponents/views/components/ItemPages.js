@@ -111,7 +111,7 @@ const ItemPages = ({match}, {props}) => {
         }
         {loginUser!=item.writer && loginUser != null &&
           <div style={{margin: "0 0 0 50%"}}>
-            <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/basket/${UserID}`}>담기</Link></Button>{' '}
+            <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/basket/${item.id}/${UserID}`}>담기</Link></Button>{' '}
           </div>
         }
       </div>

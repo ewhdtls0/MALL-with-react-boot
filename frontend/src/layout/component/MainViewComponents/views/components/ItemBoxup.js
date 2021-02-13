@@ -17,10 +17,15 @@ const ItemBoxup = ({match}) => {
     useEffect(()=>{
         axios.get(`/item/${match.params.id}`)
         .then(response => {
-            axios.post(`/boxup/${match.params.id}`)
+            axios.post(`/boxup/${match.params.userID}`,{
+                "id": match.params.userID,
+                "title": response.data.title,
+                "cost": response.data.cost,
+            }
+            )
                 .then(result => {})
             setLoading(false);
-            alert('삭제되었습니다.');
+            alert('상품을 담았습니다.');
             window.href="/";
         })
     }, []);
