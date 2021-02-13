@@ -30,10 +30,10 @@ const ItemBoxup = ({match}) => {
         })
     }, []);
 
-    if(isLoading) {return "삭제중"}
+    if(isLoading) {return "상품 담는중"}
     
     return (
-        <div>존재하지 않는 게시물입니다.</div>
+        <div>이미 상품을 담았습니다.</div>
     )
 }
 
