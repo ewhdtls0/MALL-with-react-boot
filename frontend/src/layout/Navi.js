@@ -25,6 +25,8 @@ const Wrapper = styled.div`
     border-top: none;
     font-weight: bold;
     font-size: 15px;
+    min-width: 1300px;
+
 `;
 
 const width100 = {

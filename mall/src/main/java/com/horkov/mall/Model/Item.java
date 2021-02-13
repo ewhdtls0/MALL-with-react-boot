@@ -9,6 +9,7 @@ public class Item {
     private String content;
     private String writer;
     private String category;
+    private int cost;
     private int lookup;
     private int todaylookup;
     private Date created;
@@ -23,6 +24,7 @@ public class Item {
         this.content = content;
         this.writer = writer;
         this.category = category;
+        this.cost = cost;
         this.lookup = lookup;
         this.todaylookup = todaylookup;
     }
@@ -65,6 +67,14 @@ public class Item {
 
     public void setCategory(String category){
         this.category = category;
+    }
+
+    public int getCost(){
+        return cost;
+    }
+
+    public void setCost(int cost){
+        this.cost = cost;
     }
 
     public int getLookup(){

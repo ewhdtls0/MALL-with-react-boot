@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 30%;
+    height: 40%;
     width: 100%;
     z-index: 5;
     
@@ -57,17 +57,17 @@ const HotProductV = () => {
                     <Slide {...properties}>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[0].id}/0`} width='100%' height='306px'/>
+                                 <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[0].id}/0`} width='100%' height='408px'/>
                             </div>
                             </div>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[1].id}/0`} width='100%' height='306px'/>
+                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[1].id}/0`} width='100%' height='408px'/>
                             </div>
                         </div>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[2].id}/0`} width='100%' height='306px'/>
+                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[2].id}/0`} width='100%' height='408px'/>
                             </div>
                         </div>
                     </Slide>

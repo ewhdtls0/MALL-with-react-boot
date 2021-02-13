@@ -61,7 +61,7 @@ public class ItemController {
     @CrossOrigin("*")
     @PostMapping("/item")
     public void postItem(@RequestBody Item item){
-        mapper.insertItem(item.getTitle(), item.getContent(), item.getWriter(), item.getCategory());
+        mapper.insertItem(item.getTitle(), item.getContent(), item.getWriter(), item.getCategory(), item.getCost());
     }
 
     @DeleteMapping("/item/{id}")

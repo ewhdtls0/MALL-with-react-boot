@@ -20,7 +20,7 @@ class itemWrite extends Component{
 
     constructor(props){
         super(props);        
-        this.state = { title: '', content: '', writer: '', category: '', file: null};
+        this.state = { title: '', content: '', writer: '', category: '', cost: '', file: null};
         axios.get(`/user/${logined_user}`)
           .then(res => {
             const userInfo = res.data;
@@ -43,7 +43,7 @@ class itemWrite extends Component{
     }
 
     handleSubmit(event){
-        var { title, content, writer, category } = this.state;
+        var { title, content, writer, category, cost } = this.state;
         event.preventDefault();
         
         content = content.replace(/\r\n|\r|\n/g,"<br>")
@@ -53,6 +53,7 @@ class itemWrite extends Component{
             "content": content,
             "writer": writer,
             "category": category,
+            "cost": cost,
         })
             .then((result) => {
                 window.location = "/";
@@ -116,6 +117,15 @@ class itemWrite extends Component{
                             </tr>
                             <tr>
                                 <textarea name="content" value={this.state.content} rows="10" cols="50" onChange={this.handleChange} class="form-control" id="sell_content" onKeyUp={this.EnterNewLine}></textarea>
+                            </tr>
+                            <Rule px="3px" />
+                            <tr>
+                                <label for="sell_content" className="Nanum">판매 가격</label>
+                                <br />
+                                <label for="sell_content"><small>판매 상품 가격을 입력해 주세요</small></label>
+                            </tr>
+                            <tr>
+                                <input name="cost" value={this.state.cost} onChange={this.handleChange} class="form-control" id="sell_cost"></input>
                             </tr>
                             <Rule px="3px" />
                             <input multiple="multiple" type="file" onChange={this.fileChange} name="file" />
