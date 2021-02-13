@@ -34,9 +34,11 @@ class ItemUpdate extends Component{
     }
     
     handleSubmit(event){
-        const { id, title, content, category } = this.state;
+        var { id, title, content, category } = this.state;
         event.preventDefault();
         
+        content = content.replace(/\r\n|\r|\n/g,"<br>")
+
         axios.put(`/item/write/${id}`, {
             "id": id,
             "title": title,
@@ -76,7 +78,7 @@ class ItemUpdate extends Component{
         return (
             <Router>
                 <br/>
-                <form onSubmit={this.handleSubmit} enctype="multipart/form-data">
+                <div encType="multipart/form-data">
                     <table>
                         <tbody>
                             <tr>
@@ -104,14 +106,15 @@ class ItemUpdate extends Component{
                                 <label for="sell_content"><small>판매 상품에 대한 내용을 입력해 주세요</small></label>
                             </tr>
                             <tr>
-                                <input name="content" value={this.state.content} onChange={this.handleChange} class="form-control" id="sell_content"/>
+                                <textarea name="content" value={this.state.content.replace(/<br\s?\/?>/g,"\n")} rows="10" cols="50" onChange={this.handleChange} class="form-control" id="sell_content" onKeyUp={this.EnterNewLine}></textarea>
                             </tr>
+                            <Rule px="3px" />
                             <input multiple="multiple" type="file" onChange={this.fileChange} name="file" />
                         </tbody>
                     </table>
                     <br/>
-                    <Button type="submit" variant="secondary">수정</Button>
-                </form>
+                    <Button type="submit" variant="secondary" onClick={this.handleSubmit}>수정</Button>
+                </div>
                 
             </Router>
         )

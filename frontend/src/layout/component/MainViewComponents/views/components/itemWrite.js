@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../../../../css/itemWriter.css';
 import axios from 'axios';
+import AuthenticationService from '../../../../../login/jwt/AuthenticationService'
 
 const Rule = ({ px }, { color }) => (
     <hr
@@ -13,11 +14,18 @@ const Rule = ({ px }, { color }) => (
     />
 );
 
+const logined_user = AuthenticationService.getLoggedInUserName();
+
 class itemWrite extends Component{
 
     constructor(props){
-        super(props);
+        super(props);        
         this.state = { title: '', content: '', writer: '', category: '', file: null};
+        axios.get(`/user/${logined_user}`)
+          .then(res => {
+            const userInfo = res.data;
+            this.setState({ writer: userInfo.userName });
+          });
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -35,9 +43,11 @@ class itemWrite extends Component{
     }
 
     handleSubmit(event){
-        const { title, content, writer, category } = this.state;
+        var { title, content, writer, category } = this.state;
         event.preventDefault();
         
+        content = content.replace(/\r\n|\r|\n/g,"<br>")
+
         axios.post('/item', {
             "title": title,
             "content": content,
@@ -63,7 +73,6 @@ class itemWrite extends Component{
         alert('등록되었습니다');
     }
 
-
     handleChange(event){
         this.setState({
             [event.target.name] : event.target.value
@@ -78,7 +87,7 @@ class itemWrite extends Component{
         return (
             <Router>
                 <br/>
-                <div enctype="multipart/form-data">
+                <div encType="multipart/form-data">
                     <table>
                         <tbody>
                             <tr>
@@ -109,19 +118,12 @@ class itemWrite extends Component{
                                 <textarea name="content" value={this.state.content} rows="10" cols="50" onChange={this.handleChange} class="form-control" id="sell_content" onKeyUp={this.EnterNewLine}></textarea>
                             </tr>
                             <Rule px="3px" />
-                            <tr>
-                                <label for="sell_writer" className="Jua">판매 글쓴이</label>
-                                <br />
-                                <label for="sell_writer"><small>판매하시는 분의 성함을 입력해주세요</small></label>
-                                <input name="writer" value={this.state.writer} onChange={this.handleChange} class="form-control" id="sell_writer"/>
-                            </tr>
                             <input multiple="multiple" type="file" onChange={this.fileChange} name="file" />
                         </tbody>
                     </table>
                     <br/>
                     <Button type="submit" variant="secondary" onClick={this.handleSubmit}>판매 등록</Button>
                 </div>
-                
             </Router>
         )
     }

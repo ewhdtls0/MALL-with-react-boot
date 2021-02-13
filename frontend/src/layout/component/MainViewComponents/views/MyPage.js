@@ -20,15 +20,6 @@ const Wrapper = styled.div`
     padding: 10px 60px;
 `;
 
-
-const Rule = ({ color }) => (
-  <hr
-    style={{
-      borderColor: color,
-    }}
-  />
-);
-
 const logined_user = AuthenticationService.getLoggedInUserName();
 
 const MyPage = ({match}, {props}) => {

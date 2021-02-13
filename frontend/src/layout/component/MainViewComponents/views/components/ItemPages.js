@@ -2,11 +2,13 @@ import React, {Component, useState, useEffect} from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import TextareaAutosize from 'react-textarea-autosize';
 import Carousel from 'react-bootstrap/Carousel'
+import Button from 'react-bootstrap/Button'
 
 import styled from 'styled-components';
 import axios from 'axios';
 import '../../../../css/itemPages.css';
 import ItemUpdate from './ItemUpdate';
+import AuthenticationService from '../../../../../login/jwt/AuthenticationService'
 
 const Wrapper = styled.div`
     height: 1020px;
@@ -22,7 +24,6 @@ const Wrapper = styled.div`
     padding: 10px 60px;
 `;
 
-
 const Rule = ({ color }) => (
   <hr
     style={{
@@ -31,11 +32,14 @@ const Rule = ({ color }) => (
   />
 );
 
+const logined_user = AuthenticationService.getLoggedInUserName();
+
 const ItemPages = ({match}, {props}) => {
   const [isLoading, setLoading] = useState(true);
   const [item, setItem] = useState();
-  const [count, setCount] = useState(0);
-  const [abc, setAbc] = useState([]);
+  const [count, setCount] = useState();
+  const [imgArray, setimgArray] = useState([]);
+  const [loginUser, setLoginUser] = useState();
 
   useEffect(() => {
       axios.get(`/item/${match.params.id}`)
@@ -55,7 +59,11 @@ const ItemPages = ({match}, {props}) => {
           for (var i = 0; i < count; i++) {
             a.push(i);
           }
-          setAbc(a);
+          setimgArray(a);
+        });
+      axios.get(`/user/${logined_user}`)
+        .then(response => {
+          setLoginUser(response.data.userName);
         })
   }, [count])
 
@@ -63,16 +71,15 @@ const ItemPages = ({match}, {props}) => {
       return null;
   }
 
-  const imagesliderItem = abc.map((a) =>
+  const imagesliderItem = imgArray.map((img) =>
     <Carousel.Item>
       <img
         className="d-block"
-        src={`/showimage/${match.params.id}/${a}`}
+        src={`/showimage/${match.params.id}/${img}`}
         style={{display: "block", margin: "0px auto"}}
       />
     </Carousel.Item>
   )
-
   const imgslider = (
     <Carousel fade={true} wrap={false}>
         {imagesliderItem}
@@ -88,12 +95,16 @@ const ItemPages = ({match}, {props}) => {
         </div>
         <p className="title"><b>{item.title}</b></p>
         <Rule color="gray" />
-        <TextareaAutosize cols="110" className="content" value={item.content} disabled/>
+        {item.content &&
+            <TextareaAutosize className="content" value={item.content.replace(/<br\s?\/?>/g,"\n")} disabled style={{width: "100%"}}/>
+        }
         {imgslider}
-        <div>
-          <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/updateItem/${item.id}/${item.category}/${item.title}/${item.content}`}>수정</Link></button>
-          <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/deleteItem/${item.id}`}>삭제</Link></button>
-        </div>
+        {loginUser==item.writer &&
+          <div style={{margin: "0 0 0 50%"}}>
+            <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/updateItem/${item.id}/${item.category}/${item.title}/${item.content}`}>수정</Link></Button>{' '}
+            <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/deleteItem/${item.id}`}>삭제</Link></Button>{' '}
+          </div>
+        }
       </div>
     </Wrapper>
   )
