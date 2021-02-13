@@ -69,7 +69,6 @@ const Navi = () => (
                 </Grid>
                 <Grid item xs={1}>
                     {!isUserLoggedIn &&<SignUp buttonLabel={"회원가입"}></SignUp>}
-                    {isUserLoggedIn &&<Link className="navi_a_tag" to="/MyPage" style={{textDecoration: 'none'}}><div style={vertical_M}>내 정보</div></Link>}
                 </Grid>
             </Grid>
         </div>

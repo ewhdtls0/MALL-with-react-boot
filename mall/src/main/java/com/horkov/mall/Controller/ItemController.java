@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.horkov.mall.Mapper.ItemMapper;
 import com.horkov.mall.Model.Item;
+import com.horkov.mall.Model.basket;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -62,6 +63,12 @@ public class ItemController {
     @PostMapping("/item")
     public void postItem(@RequestBody Item item){
         mapper.insertItem(item.getTitle(), item.getContent(), item.getWriter(), item.getCategory(), item.getCost());
+    }
+
+    @CrossOrigin("*")
+    @PostMapping("/boxup")
+    public void BoxupItem(@RequestBody basket basket){
+        mapper.BoxupItem(basket.getId(), basket.getTitle(), basket.getCost());
     }
 
     @DeleteMapping("/item/{id}")

@@ -33,6 +33,9 @@ public interface ItemMapper {
     @Insert("INSERT INTO items(title, content, writer, category, cost) VALUES(#{title}, #{content}, #{writer}, #{category}, #{cost})")
     int insertItem(@Param("title") String title, @Param("content") String content, @Param("writer") String writer, @Param("category") String category, @Param("cost") int cost);
 
+    @Insert("INSERT INTO basket(id, title, cost) VALUES(#{id}, #{title}, #{cost}")
+    int BoxupItem(@Param("id") String id, @Param("title") String title, @Param("cost") int cost);
+
     @Update("UPDATE items SET title=#{title}, content=#{content}, category=#{category} WHERE id=#{id}")
     int re_writeItem(@Param("id") int id, @Param("title") String title, @Param("content") String content, @Param("category") String category);
 

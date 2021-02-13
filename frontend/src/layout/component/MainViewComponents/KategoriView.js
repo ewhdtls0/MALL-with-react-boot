@@ -82,7 +82,7 @@ class Body extends Component{
           </Grid>
         </div>
         <div  className="Kategori_Item_Wrap" style={contents_Size}>
-          <Infinite containerHeight={550} elementHeight={200}>
+          <Infinite containerHeight={550} elementHeight={1000}>
             {obj[this.state.activTab]}
           </Infinite>
         </div>

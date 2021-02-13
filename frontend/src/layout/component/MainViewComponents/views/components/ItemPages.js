@@ -40,6 +40,7 @@ const ItemPages = ({match}, {props}) => {
   const [count, setCount] = useState();
   const [imgArray, setimgArray] = useState([]);
   const [loginUser, setLoginUser] = useState();
+  const [UserID, setUserID] = useState();
 
   useEffect(() => {
       axios.get(`/item/${match.params.id}`)
@@ -64,6 +65,7 @@ const ItemPages = ({match}, {props}) => {
       axios.get(`/user/${logined_user}`)
         .then(response => {
           setLoginUser(response.data.userName);
+          setUserID(response.data.userID);
         })
   }, [count])
 
@@ -105,6 +107,11 @@ const ItemPages = ({match}, {props}) => {
           <div style={{margin: "0 0 0 50%"}}>
             <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/updateItem/${item.id}/${item.category}/${item.title}/${item.content}`}>수정</Link></Button>{' '}
             <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/deleteItem/${item.id}`}>삭제</Link></Button>{' '}
+          </div>
+        }
+        {loginUser!=item.writer && loginUser != null &&
+          <div style={{margin: "0 0 0 50%"}}>
+            <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/basket/${UserID}`}>담기</Link></Button>{' '}
           </div>
         }
       </div>
