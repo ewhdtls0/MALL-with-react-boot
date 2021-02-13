@@ -27,9 +27,12 @@ public class UserController {
     @CrossOrigin("*")
     @PostMapping("/login")
     public Member login(@RequestBody Member user){
-        
-
         return mapper.login(user.getuserID());
+    }
+
+    @GetMapping("/user/{userID}")
+    public Member getUserInfo(@PathVariable("userID") String userID){
+        return mapper.login(userID);
     }
 
     @GetMapping("/user/all")
