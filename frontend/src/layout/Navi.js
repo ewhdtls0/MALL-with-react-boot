@@ -40,10 +40,8 @@ const vertical_M = {
 
 }
 
+//토큰 확인
 const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
-
-console.log("===Headeromponent===");
-console.log(isUserLoggedIn);
 
 const Navi = () => (
     

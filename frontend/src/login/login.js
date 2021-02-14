@@ -35,6 +35,7 @@ export default class Login extends Component {
         this.setState({userPW : e.target.value});
     }
 
+    //로그인 시도
     handleFormSubmit(e){
         e.preventDefault();
         let user = {

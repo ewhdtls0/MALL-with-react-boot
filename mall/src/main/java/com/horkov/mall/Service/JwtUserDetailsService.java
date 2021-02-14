@@ -13,7 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
+// DB와 front로 부터 받은 정보 비교
 @Service
 public class JwtUserDetailsService implements UserDetailsService {
 
