@@ -23,7 +23,7 @@ class AuthenticationService {
         return 'Bearer ' + token
     }
 
-    
+    //토큰
     setupAxiosInterceptors() {
         axios.interceptors.request.use(
             config => {

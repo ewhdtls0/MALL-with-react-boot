@@ -37,6 +37,7 @@ export default class changeUserInfo extends Component {
         this.setState({userPH : e.target.value});
     }
 
+    
     handleFormSubmit(e){
         e.preventDefault();
         let user = {
