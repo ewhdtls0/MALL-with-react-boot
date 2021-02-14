@@ -19,6 +19,7 @@ Build mall web with react and spring boot
 
 !!! 
 if you want to run it
+
 => first, copy main
 
 On your Terminal
