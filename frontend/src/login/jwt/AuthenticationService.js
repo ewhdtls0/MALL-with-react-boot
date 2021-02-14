@@ -2,7 +2,7 @@ import axios from 'axios'
 
 class AuthenticationService {
 
-    // send username, password to the SERVER
+    // Backend 서버에 userID, userPW 전달
     executeJwtAuthenticationService(username, password) {
         return axios.post('http://localhost:8080/authenticate', {
             username,
@@ -10,19 +10,20 @@ class AuthenticationService {
         })
     }
 
+    // 로그인 성공시 토큰저장
     registerSuccessfulLoginForJwt(username, token) {
         console.log("===registerSuccessfulLoginForJwt===")
         localStorage.setItem('token', token);
         localStorage.setItem('authenticatedUser', username);
-        // sessionStorage.setItem('authenticatedUser', username)
-        //this.setupAxiosInterceptors(this.createJWTToken(token))
         this.setupAxiosInterceptors();
     }
 
+    // 토큰 생성
     createJWTToken(token) {
         return 'Bearer ' + token
     }
 
+    
     setupAxiosInterceptors() {
         axios.interceptors.request.use(
             config => {
@@ -38,13 +39,14 @@ class AuthenticationService {
             });
     }
 
+    //로그아웃시 토큰 제거
     logout() {
-        //sessionStorage.removeItem('authenticatedUser');
         localStorage.removeItem("authenticatedUser");
         localStorage.removeItem("token");
         window.location.href='http://localhost:3000/';
     }
 
+    //로그인토큰 확인
     isUserLoggedIn() {
         
         //let user = sessionStorage.getItem('authenticatedUser')
@@ -59,8 +61,8 @@ class AuthenticationService {
         return false;
     }
     
+    //로그인한 유저ID 확인
     getLoggedInUserName() {
-        //let user = sessionStorage.getItem('authenticatedUser')
         let user = localStorage.getItem('authenticatedUser');
         if(user===null) return '';
         return user;

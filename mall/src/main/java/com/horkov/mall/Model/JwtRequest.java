@@ -2,6 +2,7 @@ package com.horkov.mall.Model;
 
 import java.io.Serializable;
 
+//front로 부터 받은 ID, PW 저장
 public class JwtRequest implements Serializable {
 
     private static final long serialVersionUID = 5926468583005150707L;

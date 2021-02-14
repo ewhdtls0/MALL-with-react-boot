@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import axios from 'axios';
 
-import AuthenticationService from '../../../../login/jwt/AuthenticationService'
+import AuthenticationService from '../../../../login/jwt/AuthenticationService';
 
 const Wrapper = styled.div`
     height: 1020px;
@@ -22,6 +22,7 @@ const Wrapper = styled.div`
 
 const logined_user = AuthenticationService.getLoggedInUserName();
 
+//로그인 정보 받아옴
 const MyPage = ({match}, {props}) => {
     const [isLoading, setLoading] = useState(true);
     const [userInfo, setUserInfo] = useState();
@@ -47,8 +48,11 @@ const MyPage = ({match}, {props}) => {
         <p className="userID">E-mail : {userInfo.userEmail}</p>
         <p className="userID">Phone : {userInfo.userPH}</p>
         <p className="userID">가입날짜 : {userInfo.created}</p>
-        <p className="userID">수정날짜 : {userInfo.modified}</p>
+        <p className="userID">수정날짜 : {userInfo.modified} </p>
+        <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/updateItem/${item.id}/${item.category}/${item.title}/${item.content}`}>수정</Link></button>
+        <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/deleteItem/${item.id}`}>탈퇴</Link></button>
       </div>
+
     </Wrapper>
   )
 }

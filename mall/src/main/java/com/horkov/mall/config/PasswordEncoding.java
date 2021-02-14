@@ -3,6 +3,7 @@ package com.horkov.mall.config;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+//JWT에 사용되는 비밀번호 Encoding
 public class PasswordEncoding implements PasswordEncoder{
 
     private PasswordEncoder passwordEncoder;

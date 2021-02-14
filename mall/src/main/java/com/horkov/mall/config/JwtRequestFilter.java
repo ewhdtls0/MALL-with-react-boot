@@ -19,6 +19,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import io.jsonwebtoken.ExpiredJwtException;
 
+//front의 Request를 가로채서 Header의 토큰이 유효한지 검증
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 

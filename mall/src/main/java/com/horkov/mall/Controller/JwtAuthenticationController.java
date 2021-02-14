@@ -22,6 +22,7 @@ import com.horkov.mall.config.JwtTokenUtil;
 
 @RestController
 @CrossOrigin
+//로그인 및 토큰반환 
 public class JwtAuthenticationController {
 
     @Autowired
