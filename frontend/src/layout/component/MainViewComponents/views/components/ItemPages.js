@@ -40,8 +40,11 @@ const ItemPages = ({match}, {props}) => {
   const [count, setCount] = useState();
   const [imgArray, setimgArray] = useState([]);
   const [loginUser, setLoginUser] = useState();
+  const [UserID, setUserID] = useState();
 
   useEffect(() => {
+
+    // 상세 페이지 view에서 상품의 정보를 얻어오고 조회수를 1씩 증가
       axios.get(`/item/${match.params.id}`)
           .then(response => {
               setItem(response.data);
@@ -64,6 +67,7 @@ const ItemPages = ({match}, {props}) => {
       axios.get(`/user/${logined_user}`)
         .then(response => {
           setLoginUser(response.data.userName);
+          setUserID(response.data.userID);
         })
   }, [count])
 
@@ -77,6 +81,7 @@ const ItemPages = ({match}, {props}) => {
         className="d-block"
         src={`/showimage/${match.params.id}/${img}`}
         style={{display: "block", margin: "0px auto"}}
+        width="1024px" height="768px"
       />
     </Carousel.Item>
   )
@@ -94,6 +99,7 @@ const ItemPages = ({match}, {props}) => {
           <b className="title">{item.id}</b>
         </div>
         <p className="title"><b>{item.title}</b></p>
+        <div className="writer"><b>{item.cost}원</b></div>
         <Rule color="gray" />
         {item.content &&
             <TextareaAutosize className="content" value={item.content.replace(/<br\s?\/?>/g,"\n")} disabled style={{width: "100%"}}/>
@@ -103,6 +109,11 @@ const ItemPages = ({match}, {props}) => {
           <div style={{margin: "0 0 0 50%"}}>
             <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/updateItem/${item.id}/${item.category}/${item.title}/${item.content}`}>수정</Link></Button>{' '}
             <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/deleteItem/${item.id}`}>삭제</Link></Button>{' '}
+          </div>
+        }
+        {loginUser!=item.writer && loginUser != null &&
+          <div style={{margin: "0 0 0 50%"}}>
+            <Button variant="outline-secondary"><Link style={{textDecoration: "none", color: "black"}} to={`/basket/${item.id}/${UserID}`}>담기</Link></Button>{' '}
           </div>
         }
       </div>

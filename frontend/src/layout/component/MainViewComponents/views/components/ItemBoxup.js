@@ -12,26 +12,32 @@ const Rule = ({ px }, { color }) => (
     />
 );
 
-const ItemDelete = ({match}) => {
+const ItemBoxup = ({match}) => {
     const [isLoading, setLoading] = useState(true);
 
-    // 해당 상품의 id따라 삭제
+    // 상품을 담기 위해 상품정보 GET 이후 basket으로 POST
     useEffect(()=>{
-        axios.delete(`/item/${match.params.id}`)
+        axios.get(`/item/${match.params.id}`)
         .then(response => {
-            axios.delete(`/deleteimage/${match.params.id}`)
+            axios.post(`/boxup/${match.params.userID}`,{
+                "id": match.params.userID,
+                "item_id": response.data.id,
+                "title": response.data.title,
+                "cost": response.data.cost,
+            }
+            )
                 .then(result => {})
             setLoading(false);
-            alert('삭제되었습니다.');
+            alert('상품을 담았습니다.');
             window.location.href="/";
         })
     }, []);
 
-    if(isLoading) {return "삭제중"}
+    if(isLoading) {return "상품 담는중"}
     
     return (
-        <div>존재하지 않는 게시물입니다.</div>
+        <div>이미 상품을 담았습니다.</div>
     )
 }
 
-export default ItemDelete;
+export default ItemBoxup;

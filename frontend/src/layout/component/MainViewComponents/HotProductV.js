@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     align-items: center;
     justify-content: center;
     text-align: center;
-    height: 30%;
+    height: 40%;
     width: 100%;
     z-index: 5;
     
@@ -36,10 +36,10 @@ const HotProductV = () => {
     const [isLoading, setLoading] = useState(true);
     const [items, setItems] = useState();
 
+    // 조회수가 가장 높은 3개의 상품의 정보 GET
     useEffect(() => {
         axios.get("/item/best3")
             .then(response => {
-                console.log(response.data);
                 setItems(response.data);
                 setLoading(false);
             });
@@ -50,6 +50,7 @@ const HotProductV = () => {
     }
 
     return(
+        // 슬라이드 형식으로 얻어온 베스트 상품의 이미지를 보여줌
         <Wrapper>
             <Grid container spacing={1}>
                 <Grid item xs={12}>
@@ -57,17 +58,17 @@ const HotProductV = () => {
                     <Slide {...properties}>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[0].id}/0`} width='100%' height='306px'/>
+                                <a href={`/ItemPages/${items[0].id}`}><img alt="No IMAGE" style={fixImages} src={`/showimage/${items[0].id}/0`} width='100%' height='408px'/></a>
                             </div>
                             </div>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[1].id}/0`} width='100%' height='306px'/>
+                                <a href={`/ItemPages/${items[1].id}`}><img alt="No IMAGE" style={fixImages} src={`/showimage/${items[1].id}/0`} width='100%' height='408px'/></a>
                             </div>
                         </div>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[2].id}/0`} width='100%' height='306px'/>
+                                <a href={`/ItemPages/${items[2].id}`}><img alt="No IMAGE" style={fixImages} src={`/showimage/${items[2].id}/0`} width='100%' height='408px'/></a>
                             </div>
                         </div>
                     </Slide>

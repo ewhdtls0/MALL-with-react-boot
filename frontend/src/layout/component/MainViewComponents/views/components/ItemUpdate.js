@@ -14,6 +14,7 @@ const Rule = ({ px }, { color }) => (
 
 class ItemUpdate extends Component{
 
+    // 상품 등록과 같은 형식, 기존 상품의 정보를 미리 입력받아두고 PUT으로 상품을 업데이트
     constructor({props, match}){
         super(props);
         this.state = { id: match.params.id, title: match.params.title, content: match.params.content, category: match.params.category, file: null};

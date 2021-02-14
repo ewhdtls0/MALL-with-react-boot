@@ -9,6 +9,7 @@ const SearchViews = ({match}) => {
     const [isLoading, setLoading] = useState(true);
     const [items, setItems] = useState();
 
+    // 검색바에서 입력받은 값으로 해당 값을 포함하는 상품을 뷰에 나타냄
     useEffect(() => {
         axios.get(`/search/${match.params.search}`)
             .then(response => {

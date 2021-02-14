@@ -43,6 +43,7 @@ class Cart extends Component {
     return (
       <Wrapper>
         <CartViews
+          id={this.props.match.params.id}
           orderTotal={numberWithCommas(this.state.orderTotal)}
           updateOrder={this.updateOrder} />
       </Wrapper>
