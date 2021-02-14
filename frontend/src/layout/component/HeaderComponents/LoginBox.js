@@ -31,11 +31,10 @@ const LoginBox = () => {
             {loginUser != null && 
                 <Grid container >
                     <Grid item xs={6}>
-                        <a className="LoginBox" href="/">
+                        <a className="LoginBox" href="/myPage">
                             <div className="NoneBorder">
                                 <img src={Login} width="30%" height="50%"></img>
                                 <div className="LoginBoxDropDown">
-                                    <a href="/" className="DropDownMenu"><span>주문조회</span></a>
                                     <a href="/myPage" className="DropDownMenu"><span>회원정보</span></a>
                                 </div>
                             </div>

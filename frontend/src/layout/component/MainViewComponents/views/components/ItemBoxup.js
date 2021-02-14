@@ -27,7 +27,7 @@ const ItemBoxup = ({match}) => {
                 .then(result => {})
             setLoading(false);
             alert('상품을 담았습니다.');
-            window.href="/";
+            window.location.href="/";
         })
     }, []);
 

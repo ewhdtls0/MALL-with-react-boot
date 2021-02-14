@@ -21,7 +21,7 @@ const ItemDelete = ({match}) => {
                 .then(result => {})
             setLoading(false);
             alert('삭제되었습니다.');
-            window.href="/";
+            window.location.href="/";
         })
     }, []);
 
