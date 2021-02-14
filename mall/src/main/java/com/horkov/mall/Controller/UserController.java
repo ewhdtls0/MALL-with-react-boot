@@ -3,7 +3,7 @@ package com.horkov.mall.Controller;
 import java.util.List;
 
 import com.horkov.mall.Mapper.UserMapper;
-import com.horkov.mall.Model.User;
+import com.horkov.mall.Model.Member;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,18 +26,23 @@ public class UserController {
 
     @CrossOrigin("*")
     @PostMapping("/login")
-    public User getUser(@RequestBody User user){
-        return mapper.getUser(user.getuserID());
+    public Member login(@RequestBody Member user){
+        return mapper.login(user.getuserID());
+    }
+
+    @GetMapping("/user/{userID}")
+    public Member getUserInfo(@PathVariable("userID") String userID){
+        return mapper.login(userID);
     }
 
     @GetMapping("/user/all")
-    public List<User> getUserList(){
+    public List<Member> getUserList(){
         return mapper.getUserList();
     }
 
     @CrossOrigin("*")
     @PostMapping("/user")
-    public void putUser(@RequestBody User user){
+    public void putUser(@RequestBody Member user){
         mapper.insertUser(user.getuserID(), user.getuserPW(), user.getuserName(), user.getuserSex(), user.getuserEmail(), user.getuserPH());
     }
 
@@ -48,13 +53,13 @@ public class UserController {
 
     @CrossOrigin("*")
     @PostMapping("/changeInfo")
-    public void changeUserInfo(@RequestBody User user){
+    public void changeUserInfo(@RequestBody Member user){
         mapper.updateUserInfo(user.getuserID(), user.getuserName(), user.getuserSex(), user.getuserEmail(), user.getuserPH());
     }
 
     @CrossOrigin("*")
     @PostMapping("/delete")
-    public void deleteUser(@RequestBody User user){
+    public void deleteUser(@RequestBody Member user){
         mapper.deleteUser(user.getuserID());
     }
 

@@ -2,7 +2,7 @@
 .wrapper2 {
     border-left: 1px solid gray;
     border-right: 1px solid gray;
-    padding: 10px;
+    padding: 0px 10px 10px 10px;
 }
 .title {
     font-family: 'Nanum Myeongjo', serif;
@@ -16,4 +16,17 @@
 .content {
     font-family: 'Nanum Myeongjo', serif;
     font-size: 20px;
+    padding: 10px;
+    border: 0px;
+    background: white;
+}
+.back {
+    width: 50px;
+    float: left;
+    margin: 0px 10px 0px -10px;
+    border-right: 1px solid gray;
+    text-align: center;
+}
+.carousel-control-prev-icon {
+    color: black;
 }

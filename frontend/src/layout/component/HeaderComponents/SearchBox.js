@@ -1,4 +1,7 @@
-import React from 'react';
+import axios from 'axios';
+import React, {useState, useEffect, Component} from 'react';
+import searchIcon from '../../img/searchIcon.png';
+
 const SearchBoxOptions = {
     float: 'left',
     display: 'flex',
@@ -11,11 +14,42 @@ const SearchBoxOptions = {
     outline: 'none',
 }
 
+const searchIconOptions = {
+    display: 'flex',
+    borderRadius: '25px', 
+    border: 'none',
+    outline: 'none',
+}
 
-const SearchBox = (props) => {
-    return(
-        <input style={SearchBoxOptions} className="searchBox" type='search' className='search' placeholder={props.placeholder}/>
-    )
+class SearchBox extends Component{
+    
+    
+
+    constructor(props){
+        super(props);
+        this.state = {search: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleChange(event){
+        this.setState({ search : event.target.value})
+    }
+
+    // 검색바에 입력한 값을 뷰로 전달
+    handleSubmit(event){
+        var search = this.state;
+        event.preventDefault();
+        window.location = `/SearchViews/${search.search}`;
+    }
+    render(){
+        return(
+            <form onSubmit={this.handleSubmit}>
+                <input style={SearchBoxOptions} onChange={this.handleChange} className="searchBox" className='search' name="search"/>
+                <button type="submit" className="search_Icon" style={searchIconOptions}><img src={searchIcon} width='120%' height='38px'></img></button>
+            </form>
+        )
+    }
 }
 
 export default SearchBox;

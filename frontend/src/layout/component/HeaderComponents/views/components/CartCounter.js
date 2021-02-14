@@ -6,7 +6,7 @@ class Counter extends Component {
     state = {
         quantity: 0
     }
-
+    // 수량 확인 후 계산
     updateQuantity = modifier => {
       const minimum = this.props.min || 0;
       const maximum = this.props.max || Number.POSITIVE_INFINITY;
@@ -39,13 +39,13 @@ class Counter extends Component {
             <div className="prd-temp">
                 <img className="prd-img" src={this.props.url} alt=""/>
                 <span className="prd-name">{this.props.name}</span>
-                <span className="prd-price">{this.props.price}</span>
+                <span className="prd-price">{this.props.price}원</span>
                 <div className="prd-btn-wrap">
                     <button className="prd-btn minus" onClick={() => this.updateQuantity(-1)}>-</button>
                     <span className="prd-quantity">{this.state.quantity} </span>
                     <button className="prd-btn plus" onClick={() => this.updateQuantity(1)}>+</button>
                 </div>
-                <span className="prd-price-total"> {numberWithCommas(this.getPrice())}</span>
+                <span className="prd-price-total"> {numberWithCommas(this.getPrice())}원</span>
             </div>
         );
     }

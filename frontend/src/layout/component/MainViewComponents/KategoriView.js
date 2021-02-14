@@ -32,6 +32,7 @@ const Wrapper = styled.div`
   color: black;
 
   font-size: 2.5rem;
+  border: 1px solid black;
 `;
 
 const Kate_width = {
@@ -72,6 +73,7 @@ class Body extends Component{
   render(){
     return(
       <Wrapper>
+        {/* 카테고리 material-iu 모듈로 ListItem 구성 */}
         <div style={Kate_width}>
           <Grid container spacing={1}>
             <Grid item xs={12}>
@@ -85,10 +87,11 @@ class Body extends Component{
             </Grid>
           </Grid>
         </div>
+        {/* 리스트항목을 누를시 항목에 따른 내용 긁어오기 */}
         <div  className="Kategori_Item_Wrap" style={contents_Size}>
-          <ScrollView style={scroll_Size}>
+          <Infinite containerHeight={550} elementHeight={1000}>
             {obj[this.state.activTab]}
-          </ScrollView>
+          </Infinite>
         </div>
     </Wrapper>
     );

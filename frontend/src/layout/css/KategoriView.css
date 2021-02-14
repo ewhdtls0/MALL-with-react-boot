@@ -1,16 +1,16 @@
 .listWrap {
     font-size: 30px;
+    border-right: 1px solid black;
+    height: 600px;
 }
 
 .listWrap :focus {
-    border-radius: 3em;
-    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+    background-color: #DCDCDC;
     animation: slidebg 5s linear infinite;
 }
 
 .listWrap :hover {
-    border-radius: 3em;
-    background-image: linear-gradient(90deg, #00C0FF 0%, #FFCF00 49%, #FC4F4F 80%, #00C0FF 100%);
+    border-bottom: 2px solid red;
     animation: slidebg 5s linear infinite;
 }
 

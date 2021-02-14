@@ -9,6 +9,7 @@ const TodayItemViews = () => {
     const [isLoading, setLoading] = useState(true);
     const [items, setItems] = useState();
 
+    // 오늘의 조회 수가 가장 높은 순으로 모든 상품을 GET
     useEffect(() => {
         axios.get("/item/today")
             .then(response => {
@@ -22,21 +23,37 @@ const TodayItemViews = () => {
     }
     
     var rows = [];
-    var count = 0;
     for(var i=0; i < items.length; i++){
-        count++;
-        rows.push(
-            <Grid item xs={3}>
-                <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
-                    <div className="imgWrapper">
-                        <img src={testImage} width="80%" height="60%"></img>
-                    </div>
-                    <div className="cardWrapper">
-                        <p className="card">{items[i].title}</p>
-                    </div>
-                </div></Link>
-            </Grid>
-         )
+        if(items.length < 4)
+        {
+            rows.push(
+                <Grid item xs={24}>
+                    <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
+                        <div className="imgWrapper">
+                            <img alt="No IMAGE" src={`/showimage/${items[i].id}/0`} className="img"></img>
+                        </div>
+                        <div className="cardWrapper">
+                            <p className="card">{items[i].title}</p>
+                        </div>
+                    </div></Link>
+                </Grid>
+            )
+
+        }
+        else{
+            rows.push(
+                <Grid item xs={3}>
+                    <Link to={`/ItemPages/${items[i].id}`} style={{textDecoration: 'none'}} className="linkEffect"><div className="items">
+                        <div className="imgWrapper">
+                            <img alt="No IMAGE" src={`/showimage/${items[i].id}/0`} className="img"></img>
+                        </div>
+                        <div className="cardWrapper">
+                            <p className="card">{items[i].title}</p>
+                        </div>
+                    </div></Link>
+                </Grid>
+             )
+        }
     }
 
     return(
