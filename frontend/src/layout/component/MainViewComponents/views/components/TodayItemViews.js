@@ -9,6 +9,7 @@ const TodayItemViews = () => {
     const [isLoading, setLoading] = useState(true);
     const [items, setItems] = useState();
 
+    // 오늘의 조회 수가 가장 높은 순으로 모든 상품을 GET
     useEffect(() => {
         axios.get("/item/today")
             .then(response => {

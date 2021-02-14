@@ -4,12 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import '../../../../css/itemWriter.css';
 import axios from 'axios';
-
-document.addEventListener('keydown', function(event) {
-    if (event.code === 'Enter') {
-      event.preventDefault();
-    };
-}, true);
+import AuthenticationService from '../../../../../login/jwt/AuthenticationService'
 
 const Rule = ({ px }, { color }) => (
     <hr
@@ -19,15 +14,24 @@ const Rule = ({ px }, { color }) => (
     />
 );
 
+const logined_user = AuthenticationService.getLoggedInUserName();
+
 class itemWrite extends Component{
 
+    // 상품의 정보를 입력하고 POST
     constructor(props){
-        super(props);
-        this.state = { title: '', content: '', writer: '', category: '', file: null};
+        super(props);        
+        this.state = { title: '', content: '', writer: '', category: '', cost: '', file: null};
+        axios.get(`/user/${logined_user}`)
+          .then(res => {
+            const userInfo = res.data;
+            this.setState({ writer: userInfo.userName });
+          });
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // 이미지 업로드
     fileUpload(file){
         const url = '/upload';
         const formData = new FormData();
@@ -41,14 +45,22 @@ class itemWrite extends Component{
     }
 
     handleSubmit(event){
-        const { title, content, writer, category } = this.state;
+        var { title, content, writer, category, cost } = this.state;
         event.preventDefault();
-        
+        /*
+        "청바지
+
+        삽니다"
+        => "청바지\n\n삽니다" => "청바지<br><br>삽니다" 로 바꿔서 DB저장
+        */
+        content = content.replace(/\r\n|\r|\n/g,"<br>")
+
         axios.post('/item', {
             "title": title,
             "content": content,
             "writer": writer,
             "category": category,
+            "cost": cost,
         })
             .then((result) => {
                 window.location = "/";
@@ -69,7 +81,6 @@ class itemWrite extends Component{
         alert('등록되었습니다');
     }
 
-
     handleChange(event){
         this.setState({
             [event.target.name] : event.target.value
@@ -84,7 +95,7 @@ class itemWrite extends Component{
         return (
             <Router>
                 <br/>
-                <form onSubmit={this.handleSubmit} enctype="multipart/form-data">
+                <div encType="multipart/form-data">
                     <table>
                         <tbody>
                             <tr>
@@ -112,22 +123,24 @@ class itemWrite extends Component{
                                 <label for="sell_content"><small>판매 상품에 대한 내용을 입력해 주세요</small></label>
                             </tr>
                             <tr>
-                                <input name="content" value={this.state.content} onChange={this.handleChange} class="form-control" id="sell_content"/>
+                                <textarea name="content" value={this.state.content} rows="10" cols="50" onChange={this.handleChange} class="form-control" id="sell_content" onKeyUp={this.EnterNewLine}></textarea>
                             </tr>
                             <Rule px="3px" />
                             <tr>
-                                <label for="sell_writer" className="Jua">판매 글쓴이</label>
+                                <label for="sell_content" className="Nanum">판매 가격</label>
                                 <br />
-                                <label for="sell_writer"><small>판매하시는 분의 성함을 입력해주세요. 근데 여긴 입력이 아니고 자동처리?</small></label>
-                                <input name="writer" value={this.state.writer} onChange={this.handleChange} class="form-control" id="sell_writer"/>
+                                <label for="sell_content"><small>판매 상품 가격을 입력해 주세요</small></label>
                             </tr>
+                            <tr>
+                                <input name="cost" value={this.state.cost} onChange={this.handleChange} class="form-control" id="sell_cost"></input>
+                            </tr>
+                            <Rule px="3px" />
                             <input multiple="multiple" type="file" onChange={this.fileChange} name="file" />
                         </tbody>
                     </table>
                     <br/>
-                    <Button type="submit" variant="secondary">판매 등록</Button>
-                </form>
-                
+                    <Button type="submit" variant="secondary" onClick={this.handleSubmit}>판매 등록</Button>
+                </div>
             </Router>
         )
     }

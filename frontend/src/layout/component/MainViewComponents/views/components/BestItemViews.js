@@ -4,10 +4,13 @@ import '../../../../css/items.css';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import axios from 'axios';
 
+// 상품 view의 경우 같은 방식
+
 const BestItemViews = () => {
     const [isLoading, setLoading] = useState(true);
     const [items, setItems] = useState();
 
+    // 모든 상품을 GET
     useEffect(() => {
         axios.get("/item/all")
             .then(response => {
@@ -16,10 +19,12 @@ const BestItemViews = () => {
             });
     }, []);
 
+    // 다 불러올 때 까지
     if (isLoading) {
         return <div className="App">상품을 불러오는중...</div>;
     }
     
+    // 불러온 상품을 view에 나타냄
     var rows = [];
     for(var i=0; i < items.length; i++){
         if(items.length < 4)

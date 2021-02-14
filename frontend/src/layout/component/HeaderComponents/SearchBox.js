@@ -22,6 +22,8 @@ const searchIconOptions = {
 }
 
 class SearchBox extends Component{
+    
+    
 
     constructor(props){
         super(props);
@@ -34,6 +36,7 @@ class SearchBox extends Component{
         this.setState({ search : event.target.value})
     }
 
+    // 검색바에 입력한 값을 뷰로 전달
     handleSubmit(event){
         var search = this.state;
         event.preventDefault();

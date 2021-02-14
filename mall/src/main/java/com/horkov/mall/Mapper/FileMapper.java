@@ -15,7 +15,8 @@ public interface FileMapper {
 
     @Insert("INSERT INTO image(item_id, src) VALUES((select max(id) from items), #{src})")
     int insertFile(@Param("src") String src);
-
+    
+    // 해당 게시글의 이미지 경로를 List로 반환
     @Select("SELECT src FROM image WHERE item_id=#{item_id}")
     List<String> getItemList_id(@Param("item_id") int item_id);
 

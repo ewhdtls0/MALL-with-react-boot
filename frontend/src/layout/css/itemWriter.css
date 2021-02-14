@@ -9,6 +9,7 @@
 #sell_content {
     width: 1000px;
     height: 400px;
+    white-space: pre-line;
 }
 
 #sell_category {
