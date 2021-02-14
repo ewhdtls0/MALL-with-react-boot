@@ -37,11 +37,14 @@ public class FileController {
         this.mapper = mapper;
     }
 
+    // 해당 게시글에 몇개의 이미지 파일이 있는지 개수 반환
     @GetMapping(value = "/countimage/{item_id}")
     public int countImage(@PathVariable("item_id") int item_id) {
         return mapper.getCountImage_id(item_id);
     }
 
+    // 로컬에 저장된 이미지를 알맞은 타입으로 변환 후 view로 전달
+    // 43 게시글에 이미지가 5개면 '/showimage/43/0' ~ '/showimage/43/4' 까지
     @GetMapping(value = "/showimage/{item_id}/{num}", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<Resource> viewImage(@PathVariable("item_id") int item_id, @PathVariable("num") int num) throws IOException{
         final ByteArrayResource inputStream = new ByteArrayResource(Files.readAllBytes(Paths.get(mapper.getItemList_id(item_id).get(num))));
@@ -51,12 +54,14 @@ public class FileController {
                 .body(inputStream);
     }
 
+    // 이미지 삭제
     @DeleteMapping("/deleteimage/{item_id}")
     public int deleteImage(@PathVariable("item_id") int item_id){
         return mapper.deleteImage(item_id);
     }
     
 
+    // 업로드된 이미지를 중복이 되지않도록 해시값으로 변환 후 로컬에 저장 및 DB에 해당 이미지의 상품 ID와 로컬 주소 저장
     @CrossOrigin("*")
     @PostMapping("/upload")
     public void upload(@RequestParam("file") MultipartFile[] multipartFile) throws NoSuchAlgorithmException {

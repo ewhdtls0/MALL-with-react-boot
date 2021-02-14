@@ -14,6 +14,8 @@ const Rule = ({ px }, { color }) => (
 
 const ItemDelete = ({match}) => {
     const [isLoading, setLoading] = useState(true);
+
+    // 해당 상품의 id따라 삭제
     useEffect(()=>{
         axios.delete(`/item/${match.params.id}`)
         .then(response => {
@@ -21,7 +23,7 @@ const ItemDelete = ({match}) => {
                 .then(result => {})
             setLoading(false);
             alert('삭제되었습니다.');
-            window.href="/";
+            window.location.href="/";
         })
     }, []);
 

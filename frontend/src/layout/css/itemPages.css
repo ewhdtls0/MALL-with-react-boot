@@ -17,6 +17,8 @@
     font-family: 'Nanum Myeongjo', serif;
     font-size: 20px;
     padding: 10px;
+    border: 0px;
+    background: white;
 }
 .back {
     width: 50px;
@@ -25,8 +27,6 @@
     border-right: 1px solid gray;
     text-align: center;
 }
-.image {
-    width: 400px;
-    padding: 10px;
-    display: block;
+.carousel-control-prev-icon {
+    color: black;
 }

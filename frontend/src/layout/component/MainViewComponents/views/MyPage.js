@@ -20,16 +20,6 @@ const Wrapper = styled.div`
     padding: 10px 60px;
 `;
 
-
-const Rule = ({ color }) => (
-  <hr
-    style={{
-      borderColor: color,
-    }}
-  />
-);
-
-// 토큰확인
 const logined_user = AuthenticationService.getLoggedInUserName();
 
 //로그인 정보 받아옴

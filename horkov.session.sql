@@ -1,1 +1,1 @@
-select * from image
+delete from basket
