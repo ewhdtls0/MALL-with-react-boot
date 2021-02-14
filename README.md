@@ -23,10 +23,15 @@ if you want to run it
 => first, copy main
 
 On your Terminal
+
 => "cd frontend" 
+
 => "npm update"
+
 => "npm start"
 
+
 And after npm start, go to maven
+
 
 => Run MallAplication.java file
