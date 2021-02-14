@@ -5,6 +5,7 @@ import Basket from '../../img/basketIcon.png';
 import '../../css/Header.css';
 import axios from 'axios';
 import AuthenticationService from '../../../login/jwt/AuthenticationService';
+import { Link } from 'react-router-dom';
 
 const LoginBoxOptions = {
     display: 'flex',
@@ -22,7 +23,7 @@ const LoginBox = () => {
     useEffect(() => {
         axios.get(`/user/${logined_user}`)
         .then(response => {
-          setLoginUser(response.data.userName);
+          setLoginUser(response.data.userID);
         })
     }, [])
     return(
@@ -41,11 +42,11 @@ const LoginBox = () => {
                         </a>
                     </Grid>
                     <Grid item xs={6}>
-                        <a className="CartBox" href="/Cart">
+                        <Link className="CartBox" to={`/Cart/${loginUser}`}>
                             <div className="NoneBorder">
                                 <img src={Basket} width="30%" height="50%"></img>
                             </div>
-                        </a>
+                        </Link>
                     </Grid>
                 </Grid>            
             }

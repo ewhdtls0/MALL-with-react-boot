@@ -39,7 +39,6 @@ const HotProductV = () => {
     useEffect(() => {
         axios.get("/item/best3")
             .then(response => {
-                console.log(response.data);
                 setItems(response.data);
                 setLoading(false);
             });
@@ -57,17 +56,17 @@ const HotProductV = () => {
                     <Slide {...properties}>
                         <div className="each-fade">
                             <div className="image-container">
-                                 <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[0].id}/0`} width='100%' height='408px'/>
+                                <a href={`/ItemPages/${items[0].id}`}><img alt="No IMAGE" style={fixImages} src={`/showimage/${items[0].id}/0`} width='100%' height='408px'/></a>
                             </div>
                             </div>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[1].id}/0`} width='100%' height='408px'/>
+                                <a href={`/ItemPages/${items[1].id}`}><img alt="No IMAGE" style={fixImages} src={`/showimage/${items[1].id}/0`} width='100%' height='408px'/></a>
                             </div>
                         </div>
                         <div className="each-fade">
                             <div className="image-container">
-                                <img alt="No IMAGE" style={fixImages} src={`/showimage/${items[2].id}/0`} width='100%' height='408px'/>
+                                <a href={`/ItemPages/${items[2].id}`}><img alt="No IMAGE" style={fixImages} src={`/showimage/${items[2].id}/0`} width='100%' height='408px'/></a>
                             </div>
                         </div>
                     </Slide>

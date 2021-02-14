@@ -19,6 +19,7 @@ const ItemBoxup = ({match}) => {
         .then(response => {
             axios.post(`/boxup/${match.params.userID}`,{
                 "id": match.params.userID,
+                "item_id": response.data.id,
                 "title": response.data.title,
                 "cost": response.data.cost,
             }

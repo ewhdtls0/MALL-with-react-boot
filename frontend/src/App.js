@@ -9,7 +9,6 @@ function App(){
         <Grid container spacing={1}>
           <Grid item xs={2}></Grid>
           <Grid item xs={8}>
-            <Header/>
             <NaviRoutes/>
           </Grid>  
           <Grid item xs={2}></Grid> 

@@ -44,6 +44,11 @@ public class ItemController {
         return mapper.getBestList();
     }
 
+    @GetMapping("/basket/{id}")
+    public List<basket> getBasketList(@PathVariable("id") String id) {
+        return mapper.getBasketList(id);
+    }
+
     @GetMapping("/search/{search}")
     public List<Item> getSearchList(@PathVariable("search") String search) {
         return mapper.getSearchList(search);
@@ -66,9 +71,9 @@ public class ItemController {
     }
 
     @CrossOrigin("*")
-    @PostMapping("/boxup")
+    @PostMapping("/boxup/{id}")
     public void BoxupItem(@RequestBody basket basket){
-        mapper.BoxupItem(basket.getId(), basket.getTitle(), basket.getCost());
+        mapper.BoxupItem(basket.getId(), basket.getItem_id(), basket.getTitle(), basket.getCost());
     }
 
     @DeleteMapping("/item/{id}")

@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
+import Header from '../../Header';
 import Body from '../../Body';
 import Navi from '../../Navi';
 import Best100 from '../MainViewComponents/views/Best100';
@@ -18,6 +19,7 @@ import ItemBoxup from '../MainViewComponents/views/components/ItemBoxup';
 
 export default() => (
     <Router>
+        <Header/>
         <Navi/>
         <Route exact path="/" component={Body}></Route>
         <Route path="/Best100" component={Best100}></Route>
@@ -36,6 +38,6 @@ export default() => (
 
         <Route path="/MyPage" component={MyPage}></Route>
 
-        <Route path="/Cart" component={Cart}></Route>
+        <Route path="/Cart/:id" component={Cart}></Route>
     </Router>
 )
