@@ -47,7 +47,12 @@ class itemWrite extends Component{
     handleSubmit(event){
         var { title, content, writer, category, cost } = this.state;
         event.preventDefault();
-        
+        /*
+        "청바지
+
+        삽니다"
+        => "청바지\n\n삽니다" => "청바지<br><br>삽니다" 로 바꿔서 DB저장
+        */
         content = content.replace(/\r\n|\r|\n/g,"<br>")
 
         axios.post('/item', {

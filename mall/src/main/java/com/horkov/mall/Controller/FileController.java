@@ -36,12 +36,15 @@ public class FileController {
     public FileController(FileMapper mapper){
         this.mapper = mapper;
     }
+
+    // 해당 게시글에 몇개의 이미지 파일이 있는지 개수 반환
     @GetMapping(value = "/countimage/{item_id}")
     public int countImage(@PathVariable("item_id") int item_id) {
         return mapper.getCountImage_id(item_id);
     }
 
     // 로컬에 저장된 이미지를 알맞은 타입으로 변환 후 view로 전달
+    // 43 게시글에 이미지가 5개면 '/showimage/43/0' ~ '/showimage/43/4' 까지
     @GetMapping(value = "/showimage/{item_id}/{num}", produces = MediaType.IMAGE_JPEG_VALUE)
     public ResponseEntity<Resource> viewImage(@PathVariable("item_id") int item_id, @PathVariable("num") int num) throws IOException{
         final ByteArrayResource inputStream = new ByteArrayResource(Files.readAllBytes(Paths.get(mapper.getItemList_id(item_id).get(num))));

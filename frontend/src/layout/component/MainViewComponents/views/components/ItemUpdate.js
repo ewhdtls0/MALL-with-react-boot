@@ -37,7 +37,7 @@ class ItemUpdate extends Component{
     handleSubmit(event){
         var { id, title, content, category } = this.state;
         event.preventDefault();
-        
+        // 판매등록과 같은 방식
         content = content.replace(/\r\n|\r|\n/g,"<br>")
 
         axios.put(`/item/write/${id}`, {
@@ -107,6 +107,12 @@ class ItemUpdate extends Component{
                                 <label for="sell_content"><small>판매 상품에 대한 내용을 입력해 주세요</small></label>
                             </tr>
                             <tr>
+                                {/*
+                                "청바지<br><br>삽니다" 를 다시
+                                "청바지
+                                
+                                삽니다"로 보여줌
+                                */}
                                 <textarea name="content" value={this.state.content.replace(/<br\s?\/?>/g,"\n")} rows="10" cols="50" onChange={this.handleChange} class="form-control" id="sell_content" onKeyUp={this.EnterNewLine}></textarea>
                             </tr>
                             <Rule px="3px" />
