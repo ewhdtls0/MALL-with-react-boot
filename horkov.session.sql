@@ -1,1 +1,1 @@
-select * from basket
+delete from basket

@@ -43,6 +43,8 @@ const ItemPages = ({match}, {props}) => {
   const [UserID, setUserID] = useState();
 
   useEffect(() => {
+
+    // 상세 페이지 view에서 상품의 정보를 얻어오고 조회수를 1씩 증가
       axios.get(`/item/${match.params.id}`)
           .then(response => {
               setItem(response.data);

@@ -15,6 +15,7 @@ class CartViews extends Component{
     };
   }
 
+  // 담은 상품을 불러옴
   getBasketData(){
     axios.get(`/basket/${this.props.id}`)
       .then(response => {
@@ -25,6 +26,7 @@ class CartViews extends Component{
       })
   }
 
+  // 주문완료 버튼
   order(){
     alert('주문이 완료되었습니다. 감사합니다.');
     window.location.href="/";
@@ -38,6 +40,7 @@ class CartViews extends Component{
   render(){
     var rows = [];
 
+    // 담은 상품 목록을 view로 불러옴
     for(var i=0; i<this.state.Items.length; i++){
       rows.push(
         <Counter

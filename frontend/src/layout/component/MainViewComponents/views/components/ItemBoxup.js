@@ -14,6 +14,8 @@ const Rule = ({ px }, { color }) => (
 
 const ItemBoxup = ({match}) => {
     const [isLoading, setLoading] = useState(true);
+
+    // 상품을 담기 위해 상품정보 GET 이후 basket으로 POST
     useEffect(()=>{
         axios.get(`/item/${match.params.id}`)
         .then(response => {

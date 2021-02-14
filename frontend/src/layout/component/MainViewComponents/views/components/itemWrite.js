@@ -18,6 +18,7 @@ const logined_user = AuthenticationService.getLoggedInUserName();
 
 class itemWrite extends Component{
 
+    // 상품의 정보를 입력하고 POST
     constructor(props){
         super(props);        
         this.state = { title: '', content: '', writer: '', category: '', cost: '', file: null};
@@ -30,6 +31,7 @@ class itemWrite extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    // 이미지 업로드
     fileUpload(file){
         const url = '/upload';
         const formData = new FormData();

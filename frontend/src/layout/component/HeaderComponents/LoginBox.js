@@ -20,6 +20,7 @@ const logined_user = AuthenticationService.getLoggedInUserName();
 const LoginBox = () => {
     const [loginUser, setLoginUser] = useState();
 
+    // 로그인한 유저의 ID를 얻음
     useEffect(() => {
         axios.get(`/user/${logined_user}`)
         .then(response => {
@@ -27,6 +28,7 @@ const LoginBox = () => {
         })
     }, [])
     return(
+        // 로그인 한 경우 
         <div style={LoginBoxOptions}>
             {loginUser != null && 
                 <Grid container >
@@ -50,6 +52,7 @@ const LoginBox = () => {
                 </Grid>            
             }
             {loginUser == null && 
+            // 로그인 하지 않은 경우
                 <Grid container >
                     <Grid item xs={12}>
                         <div className="NoneBorder" style={{fontWeight: "bold", fontSize: "18px", color: "black"}}>

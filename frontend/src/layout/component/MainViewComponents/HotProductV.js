@@ -36,6 +36,7 @@ const HotProductV = () => {
     const [isLoading, setLoading] = useState(true);
     const [items, setItems] = useState();
 
+    // 조회수가 가장 높은 3개의 상품의 정보 GET
     useEffect(() => {
         axios.get("/item/best3")
             .then(response => {
@@ -49,6 +50,7 @@ const HotProductV = () => {
     }
 
     return(
+        // 슬라이드 형식으로 얻어온 베스트 상품의 이미지를 보여줌
         <Wrapper>
             <Grid container spacing={1}>
                 <Grid item xs={12}>

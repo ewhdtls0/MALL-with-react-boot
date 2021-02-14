@@ -17,6 +17,8 @@ import ItemDelete from '../MainViewComponents/views/components/ItemDelete';
 import MyPage from '../MainViewComponents/views/MyPage'
 import ItemBoxup from '../MainViewComponents/views/components/ItemBoxup';
 
+// 라우터 
+
 export default() => (
     <Router>
         <Header/>
