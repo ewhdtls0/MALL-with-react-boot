@@ -59,8 +59,8 @@ const MyPage = ({match}, {props}) => {
         <p className="userID">Phone : {userInfo.userPH}</p>
         <p className="userID">가입날짜 : {userInfo.created}</p>
         <p className="userID">수정날짜 : {userInfo.modified} </p>
-        <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/updateItem/${item.id}/${item.category}/${item.title}/${item.content}`}>수정</Link></button>
-        <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}} to={`/deleteItem/${item.id}`}>탈퇴</Link></button>
+        <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}}>수정</Link></button>
+        <button style={{float:"right"}}><Link style={{textDecoration: "none", color: "black"}}>탈퇴</Link></button>
       </div>
 
     </Wrapper>
